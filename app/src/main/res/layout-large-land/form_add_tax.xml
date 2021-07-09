@@ -1,0 +1,466 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="500dp"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/light_color"
+    app:cardCornerRadius="@dimen/spacing_xsmall"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true"
+    tools:ignore="MissingDefaultResource">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spacing_large"
+                    android:layout_marginRight="@dimen/spacing_large"
+                    android:gravity="left|center"
+                    android:background="@color/white"
+                    android:minHeight="40dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="ADD TAX"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/dark_color"
+                        app:fontFamily="sans-serif-medium" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/spacing_large"
+                    android:layout_height="0dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spacing_large"
+                    android:layout_marginRight="@dimen/spacing_large"
+                    android:gravity="end|center"
+                    android:minHeight="40dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/shortcodeTax"
+                        style="@style/EditText.Flat.Grey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_text_round_bg_white"
+                        android:gravity="start"
+                        android:hint="Short Name"
+                        android:minHeight="45dp"
+                        android:paddingLeft="@dimen/spacing_middle"
+                        android:paddingRight="@dimen/spacing_middle" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/taxName"
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:hint="Tax Name" />
+
+                <View
+                    android:layout_width="@dimen/spacing_large"
+                    android:layout_height="0dp" />
+
+                <EditText
+                    android:id="@+id/taxDate"
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="4"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:drawableEnd="@drawable/ic_baseline_date"
+                    android:drawableRight="@drawable/ic_baseline_date"
+                    android:editable="false"
+                    android:hint="Applies From"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <EditText
+                    android:id="@+id/taxExempt"
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:hint="Exempt After"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle" />
+
+                <View
+                    android:layout_width="@dimen/spacing_large"
+                    android:layout_height="0dp" />
+
+                <EditText
+                    android:id="@+id/taxPostingType"
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:editable="false"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:drawableEnd="@drawable/ic_expand_arrow"
+                    android:drawableRight="@drawable/ic_expand_arrow"
+                    android:hint="Posting Type"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle" />
+
+
+                <View
+                    android:layout_width="@dimen/spacing_large"
+                    android:layout_height="0dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/postingTypeLayout"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/postingAmount"
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:hint="Amount"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle" />
+
+                <View
+                    android:layout_width="@dimen/spacing_large"
+                    android:layout_height="0dp" />
+
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/taxandslab"
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:hint="Tax %"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle" />
+
+
+                <View
+                    android:layout_width="@dimen/spacing_large"
+                    android:layout_height="0dp" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/slabButton"
+                        android:visibility="gone"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/btn_rect_primary"
+                        android:text="Generate Slab"
+                        android:textAllCaps="false"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/generatedSlabList"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@color/white"
+                    android:padding="3dp"
+                    android:visibility="gone"></androidx.recyclerview.widget.RecyclerView>
+
+                <View
+                    android:layout_width="@dimen/spacing_medium"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@color/light_color"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:background="@color/dark_color"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:fontFamily="sans-serif-condensed"
+                            android:gravity="center"
+                            android:text="Tax Apply After"
+                            android:textColor="@color/light_color"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/sgst1"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:padding="3dp"
+                        android:text="SGST"
+                        android:textColor="@color/dark_color"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_medium" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/cgst1"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:padding="3dp"
+                        android:text="CGST"
+                        android:textColor="@color/dark_color"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_medium" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/sgst2"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:padding="3dp"
+                        android:text="SGST (6%)"
+                        android:textColor="@color/dark_color"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_medium" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/cgst2"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:padding="3dp"
+                        android:text="CGST (6%)"
+                        android:textColor="@color/dark_color"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_medium" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/sgst3"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:padding="3dp"
+                        android:text="SGST (2.5%)"
+                        android:textColor="@color/dark_color"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_medium" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/cgst3"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:padding="3dp"
+                        android:text="CGST (2.5%)"
+                        android:textColor="@color/dark_color"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_medium" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                       android:id="@+id/sc1"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:padding="3dp"
+                        android:text="S.C (5%)"
+                        android:textColor="@color/dark_color"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_medium" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_middle"
+                android:layout_marginBottom="@dimen/spacing_middle"
+                android:background="@color/light_color"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/spacing_small"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/spacing_medium"
+                    android:paddingRight="@dimen/spacing_medium"
+                    android:text="Apply Tax"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/dark_color"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_medium" />
+
+                <RadioGroup
+                    android:id="@+id/applyTaxGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/beforeDisButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Before Discount"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_90" />
+
+                    <View
+                        android:layout_width="@dimen/spacing_mlarge"
+                        android:layout_height="0dp" />
+
+                    <RadioButton
+                        android:id="@+id/afterDisButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="After Discount"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_90" />
+
+
+                </RadioGroup>
+
+                <View
+                    android:layout_width="@dimen/spacing_mlarge"
+                    android:layout_height="0dp" />
+
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/rackRateCheck"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:padding="3dp"
+                android:text="Apply Tax on Rack Rate"
+                android:textColor="@color/dark_color"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/add_tax_btn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginLeft="-4dp"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginRight="-4dp"
+                android:background="@drawable/btn_rect_primary"
+                android:text="ADD TAX"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textColor="@android:color/white" />
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.cardview.widget.CardView>

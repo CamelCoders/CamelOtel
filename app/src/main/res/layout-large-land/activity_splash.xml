@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_color"
+    android:orientation="vertical"
+    android:weightSum="3"
+    tools:context=".CommonActivity.SplashActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/img_logo"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                 android:layout_gravity="center|bottom"
+                android:src="@drawable/logo" />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/first_line"
+                android:layout_width="20dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="right"
+                android:background="@color/dark_color" />
+
+
+            <View
+                android:id="@+id/second_line"
+                android:layout_width="20dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/first_line"
+                android:background="@color/dark_color" />
+
+            <View
+                android:id="@+id/third_line"
+                android:layout_width="20dp"
+                android:layout_height="250dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/second_line"
+                android:background="@color/dark_color" />
+
+            <View
+                android:id="@+id/fourth_line"
+                android:layout_width="20dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/third_line"
+                android:background="@color/dark_color" />
+
+            <View
+                android:id="@+id/fifth_line"
+                android:layout_width="20dp"
+                android:layout_height="220dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/fourth_line"
+                android:background="@color/dark_color" />
+
+            <View
+                android:layout_marginRight="@dimen/spacing_xxlarge"
+                android:id="@+id/sixth_line"
+                android:layout_width="20dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/fifth_line"
+                android:background="@color/dark_color" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom|center">
+
+        <soup.neumorphism.NeumorphTextView
+            android:id="@+id/appName"
+            style="@style/Widget.Neumorph.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="C A M E L O T E L"
+            android:textColor="@color/dark_color"
+            android:textSize="80sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
+
+            <soup.neumorphism.NeumorphTextView
+                android:id="@+id/appTitle"
+                style="@style/Widget.Neumorph.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="50dp"
+                android:text="Hotel Mangement System"
+                android:textColor="@color/dark_color"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

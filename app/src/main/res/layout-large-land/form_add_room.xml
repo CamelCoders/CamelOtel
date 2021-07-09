@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="500dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/dark_color"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentInsetStartWithNavigation="0dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/light_color"
+            android:clipToPadding="false"
+            android:scrollbars="none"
+            android:scrollingCache="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:dividerPadding="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center"
+                    android:background="@color/light_color"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/world_map"
+                        app:tint="@color/dark_color" />
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/world_map"
+                        app:tint="@color/dark_color" />
+
+
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/light_color"
+                    app:cardCornerRadius="@dimen/spacing_xsmall"
+                    app:cardElevation="4dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:gravity="left|center"
+                                android:minHeight="40dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Add Room"
+                                    android:textAllCaps="true"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                    android:textColor="@color/dark_color"
+                                    app:fontFamily="sans-serif-medium" />
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/light_color" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/addRoomShortCode"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="0dp"
+                                android:layout_height="45dp"
+                                android:layout_weight="2"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:hint="Short Code"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle" />
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+                            <EditText
+                                android:id="@+id/addRoomShortKey"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="0dp"
+                                android:layout_height="45dp"
+                                android:layout_weight="2"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:hint="Short Key"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/addRoomName"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="0dp"
+                                android:layout_height="45dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:hint="Room Name"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <EditText
+                                android:id="@+id/addRoomType"
+                                android:editable="false"
+                                android:focusable="false"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="0dp"
+                                android:layout_height="45dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:drawableEnd="@drawable/ic_expand_arrow"
+                                android:drawableRight="@drawable/ic_expand_arrow"
+                                android:hint="Room Type"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle" />
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+                            <EditText
+                                android:id="@+id/addRoomBedType"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="0dp"
+                                android:layout_height="45dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:drawableEnd="@drawable/ic_expand_arrow"
+                                android:drawableRight="@drawable/ic_expand_arrow"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:hint="Bed Type"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle" />
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+                            <EditText
+                                android:id="@+id/addRoomNumber"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="0dp"
+                                android:layout_height="45dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:hint="Phn No"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle" />
+
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/addRoomDescription"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:background="@drawable/edit_text_round_bg_white"
+                            android:gravity="start"
+                            android:hint="Room Description"
+                            android:inputType="textMultiLine"
+                            android:maxHeight="120dp"
+                            android:minHeight="100dp"
+                            android:paddingLeft="@dimen/spacing_middle" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <androidx.appcompat.widget.AppCompatCheckBox
+                                android:id="@+id/isNonSmoking"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Non Smoking" />
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+                            <androidx.appcompat.widget.AppCompatCheckBox
+                                android:id="@+id/isPaymasterRoom"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Paymaster Room" />
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/paymasterLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:weightSum="3">
+
+                            <androidx.appcompat.widget.AppCompatCheckBox
+                                android:id="@+id/isPaymasterInventory"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="Count Paymaster Room in Inventory" />
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="@dimen/spacing_large" />
+
+                            <androidx.appcompat.widget.AppCompatCheckBox
+                                android:id="@+id/isSendVoucher"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="Send Voucher" />
+
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="@dimen/spacing_large" />
+
+                            <EditText
+                                android:id="@+id/addRoomTemplate"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:drawableEnd="@drawable/ic_expand_arrow"
+                                android:drawableRight="@drawable/ic_expand_arrow"
+                                android:hint="Template for Paymaster"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:orientation="horizontal"
+                            android:weightSum="4">
+
+                            <EditText
+                                android:id="@+id/addRoomSuiteName"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:drawableEnd="@drawable/ic_expand_arrow"
+                                android:drawableRight="@drawable/ic_expand_arrow"
+                                android:editable="false"
+                                android:hint="Suite Name"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle" />
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="@dimen/spacing_middle"
+                                android:layout_marginBottom="@dimen/spacing_middle"
+                                android:layout_weight="3"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="@dimen/spacing_small"
+                                    android:gravity="center"
+                                    android:paddingLeft="@dimen/spacing_medium"
+                                    android:paddingRight="@dimen/spacing_medium"
+                                    android:text="Room As"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/dark_color" />
+
+                                <RadioGroup
+                                    android:id="@+id/addRoomAs"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:checkedButton="@+id/normalRoom"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/normalRoom"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Normal"
+                                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                        android:textColor="@color/grey_90" />
+
+                                    <View
+                                        android:layout_width="@dimen/spacing_mlarge"
+                                        android:layout_height="0dp" />
+
+                                    <RadioButton
+                                        android:id="@+id/suiteRoom"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Suite"
+                                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                        android:textColor="@color/grey_90" />
+
+                                </RadioGroup>
+
+                                <View
+                                    android:layout_width="@dimen/spacing_mlarge"
+                                    android:layout_height="0dp" />
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="@dimen/spacing_large" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_large" />
+
+
+                        <Button
+                            android:id="@+id/bt_submit"
+                            style="@style/Widget.AppCompat.Button.Borderless"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginLeft="-4dp"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:layout_marginRight="-4dp"
+                            android:background="@drawable/btn_rect_primary"
+                            android:text="ADD ROOM"
+                            android:textAllCaps="false"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textColor="@android:color/white" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_large" />
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

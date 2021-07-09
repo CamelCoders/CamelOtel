@@ -1,0 +1,1178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="500dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/dark_color"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentInsetStartWithNavigation="0dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/light_color"
+            android:clipToPadding="false"
+            android:scrollbars="none"
+            android:scrollingCache="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:dividerPadding="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_gravity="center"
+                    android:background="@color/light_color"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/world_map"
+                        app:tint="@color/dark_color" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lyt_form"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_color"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_large">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/spacing_medium"
+                                android:text="ROOM TYPE"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@color/grey_60" />
+
+                            <EditText
+                                android:id="@+id/selectRoomType"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/spacing_xmlarge"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:drawableEnd="@drawable/ic_expand_arrow"
+                                android:drawableRight="@drawable/ic_expand_arrow"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:hint="select room"
+                                android:minHeight="@dimen/spacing_xmlarge"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="0dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/spacing_medium"
+                                android:text="RATE TYPE"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@color/grey_60" />
+
+                            <EditText
+                                android:id="@+id/ratetype"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/spacing_xmlarge"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:drawableEnd="@drawable/ic_expand_arrow"
+                                android:drawableRight="@drawable/ic_expand_arrow"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:hint="Select Rate Type"
+                                android:minHeight="@dimen/spacing_xmlarge"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:text="NAME"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/grey_60" />
+
+                    <EditText
+                        android:id="@+id/rateplanname"
+                        style="@style/EditText.Flat.Grey"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_xmlarge"
+                        android:background="@drawable/edit_text_round_bg_white"
+                        android:hint="Rate Plan Name"
+                        android:minHeight="@dimen/spacing_xmlarge"
+                        android:paddingLeft="@dimen/spacing_middle"
+                        android:paddingRight="@dimen/spacing_middle" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:text="WEB DESCRIPTION"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/grey_60" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_middle"
+                        android:background="@color/grey_3"
+                        app:hintEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/plandesc"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/edit_text_round_bg_white"
+                            android:gravity="start"
+                            android:inputType="textMultiLine"
+                            android:lines="4"
+                            android:text=" "
+                            android:textColor="@color/grey_60" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/spacing_medium"
+                                android:text="BASE ADULT"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@color/grey_60" />
+
+                            <EditText
+                                android:id="@+id/baseadultrate"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/spacing_xmlarge"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:drawableEnd="@drawable/ic_expand_arrow"
+                                android:drawableRight="@drawable/ic_expand_arrow"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:hint="Base adult number"
+                                android:inputType="number"
+                                android:minHeight="@dimen/spacing_xmlarge"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="0dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/spacing_medium"
+                                android:text="BASE CHILD"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@color/grey_60" />
+
+                            <EditText
+                                android:id="@+id/basechild"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/spacing_xmlarge"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:drawableEnd="@drawable/ic_expand_arrow"
+                                android:drawableRight="@drawable/ic_expand_arrow"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:hint="Base child number"
+                                android:inputType="number"
+                                android:minHeight="@dimen/spacing_xmlarge"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/spacing_medium"
+                                android:text="MAX ADULT"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@color/grey_60" />
+
+                            <EditText
+                                android:id="@+id/maxadult"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/spacing_xmlarge"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:drawableEnd="@drawable/ic_expand_arrow"
+                                android:drawableRight="@drawable/ic_expand_arrow"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:hint="Max adult number"
+                                android:inputType="number"
+                                android:minHeight="@dimen/spacing_xmlarge"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="0dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/spacing_medium"
+                                android:text="MAX CHILD"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@color/grey_60" />
+
+                            <EditText
+                                android:id="@+id/maxchild"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/spacing_xmlarge"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:drawableEnd="@drawable/ic_expand_arrow"
+                                android:drawableRight="@drawable/ic_expand_arrow"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:hint="Max child number"
+                                android:inputType="number"
+                                android:minHeight="@dimen/spacing_xmlarge"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/checkMaxOccupancy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_middle"
+                        android:text="CONFIGURE MAX OCCUPANCY" />
+
+                    <LinearLayout
+                        android:id="@+id/maxOccupancy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:layout_marginBottom="@dimen/spacing_medium"
+                            android:text="MAX OCCUPANCY"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="@color/grey_60" />
+
+                        <EditText
+                            android:id="@+id/maxOccupanc"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:background="@drawable/edit_text_round_bg_white"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_middle"
+                            android:paddingRight="@dimen/spacing_middle"
+                            android:text="" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/spacing_medium"
+                                android:text="MIN NIGHTS"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@color/grey_60" />
+
+                            <EditText
+                                android:id="@+id/minnight"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/spacing_xmlarge"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:minHeight="@dimen/spacing_xmlarge"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle"
+                                android:text="" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="0dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/spacing_medium"
+                                android:text="MAX NIGHTS"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@color/grey_60" />
+
+                            <EditText
+                                android:id="@+id/maxnight"
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/spacing_xmlarge"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:minHeight="@dimen/spacing_xmlarge"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle"
+                                android:text="" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:text="INCLUSIONS"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/grey_60" />
+
+                    <EditText
+
+                        android:id="@+id/inclusion"
+                        style="@style/EditText.Flat.Grey"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_xmlarge"
+                        android:background="@drawable/edit_text_round_bg_white"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:hint="Ex. Breakfast"
+                        android:minHeight="@dimen/spacing_xmlarge"
+                        android:paddingLeft="@dimen/spacing_middle"
+                        android:paddingRight="@dimen/spacing_middle" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:text="CREATE RATE PLAN AS"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/grey_60" />
+
+                    <EditText
+                        android:id="@+id/planas"
+                        style="@style/EditText.Flat.Grey"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_xmlarge"
+                        android:background="@drawable/edit_text_round_bg_white"
+                        android:drawableEnd="@drawable/ic_expand_arrow"
+                        android:drawableRight="@drawable/ic_expand_arrow"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:minHeight="@dimen/spacing_xmlarge"
+                        android:paddingLeft="@dimen/spacing_middle"
+                        android:paddingRight="@dimen/spacing_middle"
+                        android:text="Independent" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_medium" />
+
+                    <EditText
+                        android:id="@+id/derivedMaster"
+                        style="@style/EditText.Flat.Grey"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_xmlarge"
+                        android:background="@drawable/edit_text_round_bg_white"
+                        android:drawableEnd="@drawable/ic_expand_arrow"
+                        android:drawableRight="@drawable/ic_expand_arrow"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:hint="Master Plan"
+                        android:minHeight="@dimen/spacing_xmlarge"
+                        android:paddingLeft="@dimen/spacing_middle"
+                        android:paddingRight="@dimen/spacing_middle"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/independentLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/spacing_medium"
+                                    android:text="SINGLE OCCUPANCY RATE"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textColor="@color/grey_60" />
+
+                                <EditText
+                                    android:id="@+id/singleoccupancyIn"
+                                    style="@style/EditText.Flat.Grey"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/spacing_xmlarge"
+                                    android:background="@drawable/edit_text_round_bg_white"
+                                    android:inputType="number"
+                                    android:minHeight="@dimen/spacing_xmlarge"
+                                    android:paddingLeft="@dimen/spacing_middle"
+                                    android:paddingRight="@dimen/spacing_middle"
+                                    android:text="" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/spacing_medium"
+                                    android:text="DOUBLE OCCUPANCY RATE"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textColor="@color/grey_60" />
+
+                                <EditText
+                                    android:id="@+id/doubleoccupancyIn"
+                                    style="@style/EditText.Flat.Grey"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/spacing_xmlarge"
+                                    android:background="@drawable/edit_text_round_bg_white"
+                                    android:inputType="number"
+                                    android:minHeight="@dimen/spacing_xmlarge"
+                                    android:paddingLeft="@dimen/spacing_middle"
+                                    android:paddingRight="@dimen/spacing_middle"
+                                    android:text="" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/spacing_medium"
+                                    android:text="EXTRA ADULT RATE"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textColor="@color/grey_60" />
+
+                                <EditText
+                                    android:id="@+id/extraadultrateIn"
+                                    style="@style/EditText.Flat.Grey"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/spacing_xmlarge"
+                                    android:background="@drawable/edit_text_round_bg_white"
+                                    android:inputType="number"
+                                    android:minHeight="@dimen/spacing_xmlarge"
+                                    android:paddingLeft="@dimen/spacing_middle"
+                                    android:paddingRight="@dimen/spacing_middle"
+                                    android:text=" " />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/spacing_medium"
+                                    android:text="EXTRA CHILD RATE"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textColor="@color/grey_60" />
+
+                                <EditText
+                                    android:id="@+id/extraChildRateIn"
+                                    style="@style/EditText.Flat.Grey"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/spacing_xmlarge"
+                                    android:background="@drawable/edit_text_round_bg_white"
+                                    android:inputType="number"
+                                    android:minHeight="@dimen/spacing_xmlarge"
+                                    android:paddingLeft="@dimen/spacing_middle"
+                                    android:paddingRight="@dimen/spacing_middle"
+                                    android:text="" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/spacing_medium"
+                                    android:text="ASSOCIATED COMPANY"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textColor="@color/grey_60" />
+
+                                <EditText
+                                    android:id="@+id/associatedCompany"
+                                    style="@style/EditText.Flat.Grey"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/spacing_xmlarge"
+                                    android:background="@drawable/edit_text_round_bg_white"
+                                    android:minHeight="@dimen/spacing_xmlarge"
+                                    android:paddingLeft="@dimen/spacing_middle"
+                                    android:paddingRight="@dimen/spacing_middle"
+                                    android:text="" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/spacing_medium"
+                                    android:text="ASSOCIATED BUSINESS"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textColor="@color/grey_60" />
+
+                                <EditText
+                                    android:id="@+id/associatedBusinessSource"
+                                    style="@style/EditText.Flat.Grey"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/spacing_xmlarge"
+                                    android:background="@drawable/edit_text_round_bg_white"
+                                    android:minHeight="@dimen/spacing_xmlarge"
+                                    android:paddingLeft="@dimen/spacing_middle"
+                                    android:paddingRight="@dimen/spacing_middle"
+                                    android:text="" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/derivedLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/spacing_medium"
+                                    android:text="SINGLE OCCUPANCY RATE"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textColor="@color/grey_60" />
+
+                                <EditText
+                                    android:id="@+id/singleoccupancyFunc"
+                                    style="@style/EditText.Flat.Grey"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/spacing_xmlarge"
+                                    android:background="@drawable/edit_text_round_bg_white"
+                                    android:drawableEnd="@drawable/ic_expand_arrow"
+                                    android:drawableRight="@drawable/ic_expand_arrow"
+                                    android:focusable="false"
+                                    android:hint="Add/Percentage"
+                                    android:minHeight="@dimen/spacing_xmlarge"
+                                    android:paddingLeft="@dimen/spacing_middle"
+                                    android:paddingRight="@dimen/spacing_middle" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/spacing_medium"
+                                    android:text="SINGLE OCCUPANCY PRICE"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textColor="@color/grey_60" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:weightSum="2">
+
+                                    <EditText
+                                        android:id="@+id/singleoccupancy"
+                                        style="@style/EditText.Flat.Grey"
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/spacing_xmlarge"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/edit_text_round_bg_white"
+                                        android:focusable="false"
+                                        android:hint="Value"
+                                        android:inputType="number"
+                                        android:minHeight="@dimen/spacing_xmlarge"
+                                        android:paddingLeft="@dimen/spacing_middle"
+                                        android:paddingRight="@dimen/spacing_middle" />
+
+                                    <View
+                                        android:layout_width="@dimen/spacing_medium"
+                                        android:layout_height="match_parent" />
+
+                                    <EditText
+                                        android:id="@+id/singleoccupancyRate"
+                                        style="@style/EditText.Flat.Grey"
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/spacing_xmlarge"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/edit_text_round_bg_white"
+                                        android:focusable="false"
+                                        android:hint="Rs/-"
+                                        android:inputType="number"
+                                        android:minHeight="@dimen/spacing_xmlarge"
+                                        android:paddingLeft="@dimen/spacing_middle"
+                                        android:paddingRight="@dimen/spacing_middle" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/spacing_medium"
+                                    android:text="DOUBLE OCCUPANCY RATE"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textColor="@color/grey_60" />
+
+                                <EditText
+                                    android:id="@+id/doubleoccupancyFunc"
+                                    style="@style/EditText.Flat.Grey"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/spacing_xmlarge"
+                                    android:background="@drawable/edit_text_round_bg_white"
+                                    android:drawableEnd="@drawable/ic_expand_arrow"
+                                    android:drawableRight="@drawable/ic_expand_arrow"
+                                    android:focusable="false"
+                                    android:hint="Add/Percentage"
+                                    android:minHeight="@dimen/spacing_xmlarge"
+                                    android:paddingLeft="@dimen/spacing_middle"
+                                    android:paddingRight="@dimen/spacing_middle" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/spacing_medium"
+                                    android:inputType="number"
+                                    android:text="DOUBLE OCCUPANCY PRICE"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textColor="@color/grey_60" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:weightSum="2">
+
+                                    <EditText
+                                        android:id="@+id/doubleoccupancy"
+
+                                        style="@style/EditText.Flat.Grey"
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/spacing_xmlarge"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/edit_text_round_bg_white"
+                                        android:focusable="false"
+                                        android:hint="Value"
+                                        android:inputType="number"
+                                        android:minHeight="@dimen/spacing_xmlarge"
+                                        android:paddingLeft="@dimen/spacing_middle"
+                                        android:paddingRight="@dimen/spacing_middle" />
+
+                                    <View
+                                        android:layout_width="@dimen/spacing_medium"
+                                        android:layout_height="match_parent" />
+
+                                    <EditText
+                                        android:id="@+id/doubleoccupancyRate"
+                                        style="@style/EditText.Flat.Grey"
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/spacing_xmlarge"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/edit_text_round_bg_white"
+                                        android:editable="false"
+                                        android:focusable="false"
+                                        android:hint="Rs/-"
+                                        android:inputType="number"
+                                        android:minHeight="@dimen/spacing_xmlarge"
+                                        android:paddingLeft="@dimen/spacing_middle"
+                                        android:paddingRight="@dimen/spacing_middle" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/spacing_medium"
+                                    android:text="EXTRA ADULT RATE"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textColor="@color/grey_60" />
+
+                                <EditText
+                                    android:id="@+id/extraadultrateFunc"
+                                    style="@style/EditText.Flat.Grey"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/spacing_xmlarge"
+                                    android:background="@drawable/edit_text_round_bg_white"
+                                    android:drawableEnd="@drawable/ic_expand_arrow"
+                                    android:drawableRight="@drawable/ic_expand_arrow"
+                                    android:focusable="false"
+                                    android:hint="Add/Percentage"
+                                    android:minHeight="@dimen/spacing_xmlarge"
+                                    android:paddingLeft="@dimen/spacing_middle"
+                                    android:paddingRight="@dimen/spacing_middle" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/spacing_medium"
+                                    android:inputType="number"
+                                    android:text="EXTRA ADULT PRICE"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textColor="@color/grey_60" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:weightSum="2">
+
+                                    <EditText
+                                        android:id="@+id/extraadultrate"
+                                        style="@style/EditText.Flat.Grey"
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/spacing_xmlarge"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/edit_text_round_bg_white"
+                                        android:editable="false"
+                                        android:focusable="false"
+                                        android:hint="Value"
+                                        android:inputType="number"
+                                        android:minHeight="@dimen/spacing_xmlarge"
+                                        android:paddingLeft="@dimen/spacing_middle"
+                                        android:paddingRight="@dimen/spacing_middle" />
+
+                                    <View
+                                        android:layout_width="@dimen/spacing_medium"
+                                        android:layout_height="match_parent" />
+
+                                    <EditText
+                                        android:id="@+id/extraadultrateRate"
+                                        style="@style/EditText.Flat.Grey"
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/spacing_xmlarge"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/edit_text_round_bg_white"
+                                        android:focusable="false"
+                                        android:hint="Rs/-"
+                                        android:inputType="number"
+                                        android:minHeight="@dimen/spacing_xmlarge"
+                                        android:paddingLeft="@dimen/spacing_middle"
+                                        android:paddingRight="@dimen/spacing_middle" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/spacing_medium"
+                                    android:text="EXTRA CHILD RATE"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textColor="@color/grey_60" />
+
+                                <EditText
+                                    android:id="@+id/extrachildrateFunc"
+                                    style="@style/EditText.Flat.Grey"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/spacing_xmlarge"
+                                    android:background="@drawable/edit_text_round_bg_white"
+                                    android:drawableEnd="@drawable/ic_expand_arrow"
+                                    android:drawableRight="@drawable/ic_expand_arrow"
+                                    android:focusable="false"
+                                    android:hint="Add/Percentage"
+                                    android:minHeight="@dimen/spacing_xmlarge"
+                                    android:paddingLeft="@dimen/spacing_middle"
+                                    android:paddingRight="@dimen/spacing_middle" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/spacing_medium"
+                                    android:text="EXTRA CHILD PRICE"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textColor="@color/grey_60" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:weightSum="2">
+
+                                    <EditText
+                                        android:id="@+id/extrachildrate"
+                                        style="@style/EditText.Flat.Grey"
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/spacing_xmlarge"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/edit_text_round_bg_white"
+                                        android:focusable="false"
+                                        android:hint="Value"
+                                        android:inputType="number"
+                                        android:minHeight="@dimen/spacing_xmlarge"
+                                        android:paddingLeft="@dimen/spacing_middle"
+                                        android:paddingRight="@dimen/spacing_middle" />
+
+                                    <View
+                                        android:layout_width="@dimen/spacing_medium"
+                                        android:layout_height="match_parent" />
+
+                                    <EditText
+                                        android:id="@+id/extrachildrateRate"
+                                        style="@style/EditText.Flat.Grey"
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/spacing_xmlarge"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/edit_text_round_bg_white"
+                                        android:focusable="false"
+                                        android:hint="Rs/-"
+                                        android:inputType="number"
+                                        android:minHeight="@dimen/spacing_xmlarge"
+                                        android:paddingLeft="@dimen/spacing_middle"
+                                        android:paddingRight="@dimen/spacing_middle" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/bt_submit"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="-4dp"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:layout_marginRight="-4dp"
+                        android:background="@drawable/btn_rect_primary"
+                        android:text="ADD RATE PLAN"
+                        android:textAllCaps="false"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@android:color/white" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_smlarge"
+            android:clickable="true"
+            android:tint="@android:color/white"
+            app:backgroundTint="@color/dark_color"
+            app:fabSize="normal"
+            app:layout_anchor="@id/lyt_form"
+            app:layout_anchorGravity="top|end|right"
+            app:rippleColor="@android:color/white"
+            app:srcCompat="@drawable/ic_photo_camera" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/dark_color"
+    android:layout_height="wrap_content"
+android:weightSum="4"
+    android:orientation="horizontal"
+    tools:ignore="MissingDefaultResource">
+
+    <TextView
+        android:layout_weight="1"
+
+        android:layout_width="match_parent"
+
+        android:id="@+id/txtRank"
+
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:background="@drawable/table_content_cell_bg"
+        android:gravity="center"
+        android:text="Rank"
+        android:textColor="@color/light_color"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtMovieName"
+        android:layout_weight="1"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@drawable/table_content_cell_bg"
+        android:gravity="center"
+        android:text="Item NameLot of so somany names that appear to be there is no there is no way   "
+        android:textColor="@color/light_color"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtYear"
+        android:layout_weight="1"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:background="@drawable/table_content_cell_bg"
+        android:gravity="center"
+        android:text="Year"
+        android:textColor="@color/light_color"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtCost"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:background="@drawable/table_content_cell_bg"
+        android:gravity="center"
+        android:text="Cost (in millions)"
+        android:textColor="@color/light_color"
+        android:textSize="18sp" />
+
+</LinearLayout>

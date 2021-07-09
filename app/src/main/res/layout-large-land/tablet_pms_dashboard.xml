@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bgLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     tools:ignore="MissingDefaultResource">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:scrollingCache="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/viewLines"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@drawable/ic_wave_round_down"
+                android:backgroundTint="@color/dark_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/spacing_xxlarge"
+                android:paddingRight="@dimen/spacing_xxxlarge">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xxlarge"
+                    android:backgroundTint="@color/light_color" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="6dp"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="start|center"
+                            android:minHeight="60dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:orientation="horizontal"
+                                android:weightSum="3">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/spacing_xmedium">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Front/Desk"
+                                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                        android:textColor="@color/dark_color"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Reservation"
+                                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/spacing_xmedium">
+
+                                    <com.nightonke.boommenu.BoomMenuButton
+                                        android:id="@+id/selecthotel"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:bmb_buttonEnum="ham"
+                                        app:bmb_buttonPlaceEnum="buttonPlace_ham_3"
+                                        app:bmb_inList="true"
+                                        app:bmb_piecePlaceEnum="piecePlace_ham_3" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="match_parent" />
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:clickable="true"
+                                android:src="@drawable/ic_chat" />
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="match_parent" />
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:clickable="true"
+                                android:src="@drawable/ic_notifications" />
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="match_parent" />
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:clickable="true"
+                                android:src="@drawable/ic_settings" />
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="match_parent" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right|center"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:minHeight="60dp"
+                                android:orientation="vertical">
+
+                                <soup.neumorphism.NeumorphTextView
+                                    android:id="@+id/greetings"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:text=""
+                                    android:textAlignment="viewEnd"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                    android:textColor="@color/dark_color"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    tools:ignore="RtlCompat" />
+
+                                <TextView
+                                    android:id="@+id/userName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:text="Mr. Stranger"
+                                    android:textAlignment="viewEnd"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                                    android:textColor="@color/black"
+                                    tools:ignore="RtlCompat" />
+
+                            </LinearLayout>
+
+                            <com.mikhaellopez.circularimageview.CircularImageView
+                                android:id="@+id/navImg"
+                                android:layout_width="@dimen/spacing_xxlarge"
+                                android:layout_height="@dimen/spacing_xxlarge"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:foreground="@color/overlay_light_20"
+                                android:src="@drawable/photo_male"
+                                app:civ_border="true"
+                                app:civ_border_color="@color/dark_color"
+                                app:civ_border_width="1dp"
+                                app:civ_shadow="true"
+                                app:civ_shadow_radius="0" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_large"
+                    android:backgroundTint="@color/light_color" />
+
+                <FrameLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/main_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                </FrameLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xlarge"
+                    android:backgroundTint="@color/light_color" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="6dp"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <com.mikhaellopez.circularimageview.CircularImageView
+                            android:layout_width="@dimen/spacing_xxlarge"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:layout_marginLeft="@dimen/spacing_large"
+                            android:layout_marginRight="@dimen/spacing_large"
+                            android:foreground="@color/overlay_light_20"
+                            android:src="@drawable/logo"
+                            app:civ_border="true"
+                            app:civ_border_color="@color/dark_color"
+                            app:civ_border_width="1dp"
+                            app:civ_shadow="true"
+                            app:civ_shadow_radius="0" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/spacing_large"
+                            android:layout_marginRight="@dimen/spacing_large"
+                            android:gravity="left|center"
+                            android:minHeight="60dp"
+                            android:orientation="vertical">
+
+                            <soup.neumorphism.NeumorphTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:text="C A M E L O T E L"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="@color/dark_color"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:text="Hotel  Management  System"
+                                android:textAllCaps="true"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/black" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/spacing_large"
+                            android:layout_marginRight="@dimen/spacing_large"
+                            android:gravity="end|center"
+                            android:minHeight="60dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:src="@drawable/img_social_twitter" />
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:src="@drawable/img_social_youtube" />
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:src="@drawable/img_social_facebook" />
+
+                            <View
+                                android:layout_width="@dimen/spacing_large"
+                                android:layout_height="0dp" />
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:src="@drawable/img_social_instagram" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xlarge"
+                    android:backgroundTint="@color/light_color" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
