@@ -109,9 +109,9 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         app:bmb_buttonEnum="ham"
-                                        app:bmb_buttonPlaceEnum="buttonPlace_ham_3"
+                                        app:bmb_buttonPlaceEnum="buttonPlace_ham_6"
                                         app:bmb_inList="true"
-                                        app:bmb_piecePlaceEnum="piecePlace_ham_3" />
+                                        app:bmb_piecePlaceEnum="piecePlace_ham_6" />
 
                                 </LinearLayout>
 
@@ -223,16 +223,83 @@
                     android:layout_height="@dimen/spacing_large"
                     android:backgroundTint="@color/light_color" />
 
-                <FrameLayout
-                    xmlns:android="http://schemas.android.com/apk/res/android"
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     xmlns:tools="http://schemas.android.com/tools"
-                    android:id="@+id/main_container"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1.25">
 
-                </FrameLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.45"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:cardCornerRadius="6dp"
+                            app:cardElevation="5dp"
+                            app:cardUseCompatPadding="true">
+
+                            <EditText
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_margin="@dimen/spacing_small"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:drawableEnd="@drawable/ic_baseline_date"
+                                android:drawablePadding="30dp"
+                                android:drawableTint="@color/dark_color"
+                                android:focusable="false"
+                                android:hint="22-July-2021"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle"
+                                android:textColorHint="@color/dark_color"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                style="@style/EditText.Flat.Grey"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_gravity="right"
+                                android:layout_margin="@dimen/spacing_small"
+                                android:layout_weight="1"
+                                android:background="@drawable/edit_text_round_bg_white"
+                                android:focusable="false"
+                                android:gravity="right"
+                                android:hint="Booking List"
+                                android:paddingLeft="@dimen/spacing_middle"
+                                android:paddingRight="@dimen/spacing_middle"
+                                android:textColorHint="@color/dark_color"
+                                android:textStyle="bold" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/listRecyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            android:divider="@android:color/transparent"
+                            android:dividerHeight="10dp"
+                            android:scrollbars="none" />
+
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:id="@+id/main_container"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.80" />
+
+                </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"

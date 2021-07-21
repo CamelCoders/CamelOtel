@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.PmsTabDashboard;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Utilities.AppConfig;
 import soup.neumorphism.NeumorphTextView;
 
@@ -17,7 +18,7 @@ import static camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Utili
 
 
 public class SplashActivity extends AppCompatActivity {
-    private static int SPLASH = 4000;
+    private static final int SPLASH = 4000;
     View first, second, third, fourth, fifth, sixth;
     NeumorphTextView appName, appTitle;
     ImageView logo;
@@ -50,8 +51,8 @@ public class SplashActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    AppConfig.jumpTo(SplashActivity.this, LoginActivity.class, "slide");
-                    AppConfig.showwCustomToast(SplashActivity.this,"Welcome",""+AppConfig.getGreetings());
+                    AppConfig.jumpTo(SplashActivity.this, PmsTabDashboard.class, "slide");
+                    AppConfig.showwCustomToast(SplashActivity.this, "Welcome", "" + AppConfig.getGreetings());
                 }
             }, SPLASH);
         }

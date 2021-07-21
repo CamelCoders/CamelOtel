@@ -11,14 +11,11 @@
     <!-- CONTENT (UNFOLDED) LAYOUT (MUST BE AT LEAST 2x times BIGGER than content layout bellow)-->
     <include
         android:id="@+id/hidden"
-
         layout="@layout/cell_content_layout" />
 
     <!-- TITLE (FOLDED) LAYOUT (MUST BE AT LEAST 2x times SMALLER than content layout above) -->
     <include
         android:id="@+id/showed"
         layout="@layout/cell_title_layout" />
-
-
 
 </com.ramotion.foldingcell.FoldingCell>
