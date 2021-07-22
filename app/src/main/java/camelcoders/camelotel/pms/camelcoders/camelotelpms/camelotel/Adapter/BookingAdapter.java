@@ -20,7 +20,6 @@ import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
 
 public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHolder> {
 
-
     public OnItemClickListener onItemClick;
 
 

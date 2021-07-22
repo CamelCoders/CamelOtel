@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -48,12 +50,12 @@ public class PmsTabDashboard extends AppCompatActivity {
     final Fragment fragment1 = new FrontOffice();
     final Fragment fragment2 = new CheckInOffice();
     final FragmentManager fm = getSupportFragmentManager();
+    Fragment active = fragment1;
     String activeAudit = "Pending";
     CardView pendingReservationAudit, releaseReservationAudit, roomStatusAudit, unsetelledFolios, nightlyCharges,
             newDayAudit;
     TextView pendingReservationAuditText, releaseReservationAuditText, roomStatusAuditText, unsetelledFoliosText, nightlyChargesText, newDayAuditText;
     Reservation newReseravation = new Reservation();
-    Fragment active = fragment1;
     NeumorphTextView greetings;
     BoomMenuButton selectHotel;
     ImageView navImg;
@@ -63,8 +65,9 @@ public class PmsTabDashboard extends AppCompatActivity {
     Calendar calendar = Calendar.getInstance();
     SimpleDateFormat simpleDateFormat;
     List<StayInformation> stayInformationList = new ArrayList<>();
-    LinearLayout nightAudit;
+    LinearLayout nightAudit, guestView, dashboardMain, roomView, listLayout;
     DrawerLayout drawer;
+    FrameLayout main_container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,12 +76,10 @@ public class PmsTabDashboard extends AppCompatActivity {
         AppConfig.setOrientations(PmsTabDashboard.this);
         AppConfig.setStatusBarColor(PmsTabDashboard.this, R.color.dark_color);
         initView();
-        frgVlaue = getIntent().getStringExtra("frag");
-        if (frgVlaue == null) {
-            setFragment();
-        } else if (frgVlaue.equals("1")) {
-            setFragment2();
-        }
+
+        fm.beginTransaction().add(R.id.main_container, fragment2, "2").hide(fragment2).commit();
+        fm.beginTransaction().add(R.id.main_container, fragment1, "1").commit();
+
         greetings.setText(AppConfig.getGreetings());
         for (int i = 0; i < selectHotel.getPiecePlaceEnum().pieceNumber(); i++) {
             HamButton.Builder builder = new HamButton.Builder();
@@ -147,6 +148,17 @@ public class PmsTabDashboard extends AppCompatActivity {
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         mainRecyclerView = findViewById(R.id.listRecyclerView);
         getStayInformation();
+        dashboardMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                listLayout.setVisibility(View.VISIBLE);
+//                fm.beginTransaction().show(fragment1).commit();
+//                active = fragment1;
+//                main_container.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+//                drawer.closeDrawer(GravityCompat.END);
+            }
+        });
+
         nightAudit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,7 +166,29 @@ public class PmsTabDashboard extends AppCompatActivity {
                 drawer.closeDrawer(GravityCompat.END);
             }
         });
+
+        guestView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                fm.beginTransaction().hide(active).show(fragment2).commit();
+//                active = fragment2;
+//                listLayout.setVisibility(View.GONE);
+//                drawer.closeDrawer(GravityCompat.END);
+            }
+        });
+
+        roomView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                fm.beginTransaction().hide(active).show(fragment1).commit();
+//                main_container.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+//                active = fragment1;
+//                listLayout.setVisibility(View.GONE);
+//                drawer.closeDrawer(GravityCompat.END);
+            }
+        });
     }
+
 
     private void performNightAudit() {
         Dialog dialog = AppConfig.showFullScreenCustomDialog(R.layout.dialog_night_audit, PmsTabDashboard.this);
@@ -282,21 +316,17 @@ public class PmsTabDashboard extends AppCompatActivity {
 
     }
 
-    private void setFragment2() {
-        fm.beginTransaction().hide(active).show(fragment2).commit();
-        active = fragment2;
-    }
-
-    private void setFragment() {
-        fm.beginTransaction().add(R.id.main_container, fragment2, "2").hide(fragment2).commit();
-        fm.beginTransaction().add(R.id.main_container, fragment1, "1").commit();
-    }
 
     private void initView() {
         greetings = findViewById(R.id.greetings);
         selectHotel = findViewById(R.id.selecthotel);
         navImg = findViewById(R.id.navImg);
         nightAudit = findViewById(R.id.nightAudit);
+        guestView = findViewById(R.id.guestView);
+        dashboardMain = findViewById(R.id.dashboardMain);
+        roomView = findViewById(R.id.roomView);
+        listLayout = findViewById(R.id.listLayout);
+        main_container = findViewById(R.id.main_container);
     }
 
     private void initNavigationMenu() {

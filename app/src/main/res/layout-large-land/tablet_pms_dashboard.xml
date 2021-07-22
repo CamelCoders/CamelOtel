@@ -233,6 +233,7 @@
                     android:weightSum="1.25">
 
                     <LinearLayout
+                        android:id="@+id/listLayout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.45"
