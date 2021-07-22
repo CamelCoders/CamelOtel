@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,11 +45,12 @@ public class MasterCodeViewAdapter extends RecyclerView.Adapter {
             rowViewHolder.txtMovieName.setBackgroundResource(R.drawable.table_header_cell_bg);
             rowViewHolder.txtYear.setBackgroundResource(R.drawable.table_header_cell_bg);
             rowViewHolder.txtCost.setBackgroundResource(R.drawable.table_header_cell_bg);
-
-            rowViewHolder.txtRank.setText("Rank");
+            rowViewHolder.editMaster.setVisibility(View.INVISIBLE);
+            rowViewHolder.deleteMasters.setVisibility(View.INVISIBLE);
+            rowViewHolder.txtRank.setText("Code");
             rowViewHolder.txtMovieName.setText("Name");
-            rowViewHolder.txtYear.setText("Year");
-            rowViewHolder.txtCost.setText("Budget (in Millions)");
+            rowViewHolder.txtYear.setText("Status");
+            rowViewHolder.txtCost.setText("UID");
         } else {
             MasterListModal modal = movieList.get(rowPos-1);
 
@@ -75,7 +77,8 @@ public class MasterCodeViewAdapter extends RecyclerView.Adapter {
         protected TextView txtMovieName;
         protected TextView txtYear;
         protected TextView txtCost;
-
+        protected ImageView editMaster;
+        protected ImageView deleteMasters;
         public RowViewHolder(View itemView) {
             super(itemView);
 
@@ -83,6 +86,8 @@ public class MasterCodeViewAdapter extends RecyclerView.Adapter {
             txtMovieName = itemView.findViewById(R.id.txtMovieName);
             txtYear = itemView.findViewById(R.id.txtYear);
             txtCost = itemView.findViewById(R.id.txtCost);
+            editMaster = itemView.findViewById(R.id.editMaster);
+            deleteMasters = itemView.findViewById(R.id.deleteMasters);
         }
     }
 }

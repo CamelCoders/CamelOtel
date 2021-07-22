@@ -53,7 +53,6 @@ import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Ser
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Service.ApiInterface;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Models.SlabLlistModal;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.Masters.Fragments.MastersFragment;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Utilities.AppConfig;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.ActivityGeneralBinding;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.FormFolioTypeBinding;
@@ -63,7 +62,6 @@ import retrofit2.Response;
 
 public class GeneralActivity extends AppCompatActivity {
     public static String[] slabArr;
-    final Fragment fragment1 = new MastersFragment();
     final FragmentManager fm = getSupportFragmentManager();
     public ApiInterface apiInterface;
     public List<RoomsType> roomlist = new ArrayList<>();
@@ -84,7 +82,7 @@ public class GeneralActivity extends AppCompatActivity {
     LinearLayout roomsManagement, roomsManagementLayout;
     LinearLayout propertySetting, propertySettingLayout;
     LinearLayout companySetting, companySettingLayout, addCompany;
-    Fragment active = fragment1;
+
     boolean isPortrait;
     ProgressDialog progressDialog;
     RadioButton roomas;
@@ -466,7 +464,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 if (value.equals("1")) {
                                     Dialog dialog1 = AppConfig.showSuccessDialog(GeneralActivity.this, "Room Type Added Successfully");
                                     roomsTypeCrud.getRoomTypeList(GeneralActivity.this, binding.recyclerViewMovieList);
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -477,7 +475,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 } else {
                                     progressDialog.dismiss();
                                     Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -493,7 +491,7 @@ public class GeneralActivity extends AppCompatActivity {
                             public void onFailure(Call<RoomsType> call, Throwable t) {
                                 progressDialog.dismiss();
                                 Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         dialog1.dismiss();
@@ -552,7 +550,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 if (value.equals("1")) {
                                     Dialog dialog1 = AppConfig.showSuccessDialog(GeneralActivity.this, "Rate Type Added Successfully");
                                     rateTypeCrud.getRateTypeList(GeneralActivity.this, binding.recyclerViewMovieList);
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -563,7 +561,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 } else {
                                     progressDialog.dismiss();
                                     Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -579,7 +577,7 @@ public class GeneralActivity extends AppCompatActivity {
                             public void onFailure(Call<RateType> call, Throwable t) {
                                 progressDialog.dismiss();
                                 Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         dialog1.dismiss();
@@ -1236,7 +1234,7 @@ public class GeneralActivity extends AppCompatActivity {
                                     if (value.equals("1")) {
                                         Dialog dialog1 = AppConfig.showSuccessDialog(GeneralActivity.this, "Rate Plan Added Successfully");
                                         ratePlanCrud.getRatePlanList(GeneralActivity.this, binding.recyclerViewMovieList);
-                                        ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                        dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
                                                 dialog1.dismiss();
@@ -1247,7 +1245,7 @@ public class GeneralActivity extends AppCompatActivity {
                                     } else {
                                         progressDialog.dismiss();
                                         Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                        ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                        dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
                                                 dialog1.dismiss();
@@ -1263,7 +1261,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 public void onFailure(Call<RatePlan> call, Throwable t) {
                                     progressDialog.dismiss();
                                     Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -1300,7 +1298,7 @@ public class GeneralActivity extends AppCompatActivity {
                                     if (value.equals("1")) {
                                         Dialog dialog1 = AppConfig.showSuccessDialog(GeneralActivity.this, "Rate Plan Added Successfully");
                                         ratePlanCrud.getRatePlanList(GeneralActivity.this, binding.recyclerViewMovieList);
-                                        ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                        dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
                                                 dialog1.dismiss();
@@ -1311,7 +1309,7 @@ public class GeneralActivity extends AppCompatActivity {
                                     } else {
                                         progressDialog.dismiss();
                                         Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                        ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                        dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
                                                 dialog1.dismiss();
@@ -1328,7 +1326,7 @@ public class GeneralActivity extends AppCompatActivity {
                                     progressDialog.dismiss();
                                     progressDialog.dismiss();
                                     Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -1384,7 +1382,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 if (value.equals("1")) {
                                     Dialog dialog1 = AppConfig.showSuccessDialog(GeneralActivity.this, "Business Source Added Successfully");
                                     businessSourceCrud.getBusinessSource(GeneralActivity.this, binding.recyclerViewMovieList);
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -1395,7 +1393,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 } else {
                                     progressDialog.dismiss();
                                     Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -1412,7 +1410,7 @@ public class GeneralActivity extends AppCompatActivity {
                             public void onFailure(Call<BusinessSource> call, Throwable t) {
                                 progressDialog.dismiss();
                                 Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         dialog1.dismiss();
@@ -1462,7 +1460,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 if (value.equals("1")) {
                                     Dialog dialog1 = AppConfig.showSuccessDialog(GeneralActivity.this, "Booking Source Added Successfully");
                                     bokkingSourceCrud.getBookingSourceList(GeneralActivity.this, binding.recyclerViewMovieList);
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -1473,7 +1471,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 } else {
                                     progressDialog.dismiss();
                                     Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -1489,7 +1487,7 @@ public class GeneralActivity extends AppCompatActivity {
                             public void onFailure(Call<camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Masters.BokkingSource.BokkingSource> call, Throwable t) {
                                 progressDialog.dismiss();
                                 Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         dialog1.dismiss();
@@ -1567,7 +1565,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 if (value.equals("1")) {
                                     Dialog dialog1 = AppConfig.showSuccessDialog(GeneralActivity.this, "Payment Type Added Successfully");
                                     paymentTypeCrud.getPaymentList(GeneralActivity.this, binding.recyclerViewMovieList);
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -1578,7 +1576,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 } else {
                                     progressDialog.dismiss();
                                     Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -1594,7 +1592,7 @@ public class GeneralActivity extends AppCompatActivity {
                             public void onFailure(Call<PaymentType> call, Throwable t) {
                                 progressDialog.dismiss();
                                 Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         dialog1.dismiss();
@@ -1711,7 +1709,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 if (value.equals("1")) {
                                     Dialog dialog1 = AppConfig.showSuccessDialog(GeneralActivity.this, "Identity Type Added Successfully");
                                     identityTypeCrud.getIdentityType(GeneralActivity.this, binding.recyclerViewMovieList);
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -1722,7 +1720,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 } else {
                                     progressDialog.dismiss();
                                     Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -1738,7 +1736,7 @@ public class GeneralActivity extends AppCompatActivity {
                             public void onFailure(Call<IdentityType> call, Throwable t) {
                                 progressDialog.dismiss();
                                 Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         dialog1.dismiss();
@@ -1784,7 +1782,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 if (value.equals("1")) {
                                     Dialog dialog1 = AppConfig.showSuccessDialog(GeneralActivity.this, "Market Code Added Successfully");
                                     marketCodeTypeCrud.getMarketCodeType(GeneralActivity.this, binding.recyclerViewMovieList);
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -1795,7 +1793,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 } else {
                                     progressDialog.dismiss();
                                     Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -1811,7 +1809,7 @@ public class GeneralActivity extends AppCompatActivity {
                             public void onFailure(Call<MarketCodeType> call, Throwable t) {
                                 progressDialog.dismiss();
                                 Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         dialog1.dismiss();
@@ -1922,7 +1920,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 if (value.equals("1")) {
                                     Dialog dialog1 = AppConfig.showSuccessDialog(GeneralActivity.this, "Company Details Added Successfully");
                                     //identityTypeCrud.getIdentityType(GeneralActivity.this, binding.recyclerViewMovieList);
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -1933,7 +1931,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 } else {
                                     progressDialog.dismiss();
                                     Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -1949,7 +1947,7 @@ public class GeneralActivity extends AppCompatActivity {
                             public void onFailure(Call<CompanyDetails> call, Throwable t) {
                                 progressDialog.dismiss();
                                 Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         dialog1.dismiss();
@@ -2066,7 +2064,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 if (value.equals("1")) {
                                     Dialog dialog1 = AppConfig.showSuccessDialog(GeneralActivity.this, "Rooms Details Added Successfully");
                                     roomsCrud.getRoomList(GeneralActivity.this, binding.recyclerViewMovieList);
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -2077,7 +2075,7 @@ public class GeneralActivity extends AppCompatActivity {
                                 } else {
                                     progressDialog.dismiss();
                                     Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                    ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                    dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             dialog1.dismiss();
@@ -2093,7 +2091,7 @@ public class GeneralActivity extends AppCompatActivity {
                             public void onFailure(Call<Rooms> call, Throwable t) {
                                 progressDialog.dismiss();
                                 Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         dialog1.dismiss();
@@ -2422,7 +2420,7 @@ public class GeneralActivity extends AppCompatActivity {
                             if (value.equals("1")) {
                                 Dialog dialog1 = AppConfig.showSuccessDialog(GeneralActivity.this, "Rate Type Added Successfully");
                                 rateTypeCrud.getRateTypeList(GeneralActivity.this, binding.recyclerViewMovieList);
-                                ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         dialog1.dismiss();
@@ -2433,7 +2431,7 @@ public class GeneralActivity extends AppCompatActivity {
                             } else {
                                 progressDialog.dismiss();
                                 Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                                ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                                dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         dialog1.dismiss();
@@ -2449,7 +2447,7 @@ public class GeneralActivity extends AppCompatActivity {
                         public void onFailure(Call<RateType> call, Throwable t) {
                             progressDialog.dismiss();
                             Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
-                            ((AppCompatButton) dialog1.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+                            dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     dialog1.dismiss();
