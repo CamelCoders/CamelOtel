@@ -1,12 +1,16 @@
 package camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -41,10 +45,13 @@ import soup.neumorphism.NeumorphTextView;
 
 public class PmsTabDashboard extends AppCompatActivity {
 
-
     final Fragment fragment1 = new FrontOffice();
     final Fragment fragment2 = new CheckInOffice();
     final FragmentManager fm = getSupportFragmentManager();
+    String activeAudit = "Pending";
+    CardView pendingReservationAudit, releaseReservationAudit, roomStatusAudit, unsetelledFolios, nightlyCharges,
+            newDayAudit;
+    TextView pendingReservationAuditText, releaseReservationAuditText, roomStatusAuditText, unsetelledFoliosText, nightlyChargesText, newDayAuditText;
     Reservation newReseravation = new Reservation();
     Fragment active = fragment1;
     NeumorphTextView greetings;
@@ -56,6 +63,8 @@ public class PmsTabDashboard extends AppCompatActivity {
     Calendar calendar = Calendar.getInstance();
     SimpleDateFormat simpleDateFormat;
     List<StayInformation> stayInformationList = new ArrayList<>();
+    LinearLayout nightAudit;
+    DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,8 +147,108 @@ public class PmsTabDashboard extends AppCompatActivity {
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         mainRecyclerView = findViewById(R.id.listRecyclerView);
         getStayInformation();
-
+        nightAudit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                performNightAudit();
+                drawer.closeDrawer(GravityCompat.END);
+            }
+        });
     }
+
+    private void performNightAudit() {
+        Dialog dialog = AppConfig.showFullScreenCustomDialog(R.layout.dialog_night_audit, PmsTabDashboard.this);
+        pendingReservationAudit = dialog.findViewById(R.id.pendingReservationAudit);
+        releaseReservationAudit = dialog.findViewById(R.id.releaseReservationAudit);
+        roomStatusAudit = dialog.findViewById(R.id.roomStatusAudit);
+        unsetelledFolios = dialog.findViewById(R.id.unsetelledFolios);
+        nightlyCharges = dialog.findViewById(R.id.nightAudit);
+        newDayAudit = dialog.findViewById(R.id.newDayAudit);
+
+        pendingReservationAuditText = dialog.findViewById(R.id.pendingReservationAuditText);
+        releaseReservationAuditText = dialog.findViewById(R.id.releaseReservationAuditText);
+        roomStatusAuditText = dialog.findViewById(R.id.roomStatusAuditText);
+        unsetelledFoliosText = dialog.findViewById(R.id.unsetelledFoliosText);
+        nightlyChargesText = dialog.findViewById(R.id.nightlyChargesText);
+        newDayAuditText = dialog.findViewById(R.id.newDayAuditText);
+
+        dialog.show();
+    }
+
+//    private void setActiveAuditLayout() {
+//        if (activeAudit.equals("Pending")) {
+//            pendingReservationAudit.setCardBackgroundColor(getResources().getColor(R.color.dark_color));
+//            pendingReservationAuditText.setTextColor(getResources().getColor(R.color.light_color));
+//
+//            releaseReservationAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
+//            releaseReservationAuditText.setTextColor(getResources().getColor(R.color.dark_color));
+//
+//
+//            roomStatusAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
+//            roomStatusAuditText.setTextColor(getResources().getColor(R.color.dark_color));
+//
+//
+//            unsetelledFolios.setCardBackgroundColor(getResources().getColor(R.color.white));
+//            unsetelledFoliosText.setTextColor(getResources().getColor(R.color.dark_color));
+//
+//
+//            nightlyCharges.setCardBackgroundColor(getResources().getColor(R.color.white));
+//            nightlyChargesText.setTextColor(getResources().getColor(R.color.dark_color));
+//
+//
+//            newDayAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
+//            newDayAuditText.setTextColor(getResources().getColor(R.color.dark_color));
+//
+//        }else if(activeAudit.equals("Release")){
+//            pendingReservationAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
+//            pendingReservationAuditText.setTextColor(getResources().getColor(R.color.dark_color));
+//
+//            releaseReservationAudit.setCardBackgroundColor(getResources().getColor(R.color.dark_color));
+//            releaseReservationAuditText.setTextColor(getResources().getColor(R.color.light_color));
+//
+//
+//            roomStatusAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
+//            roomStatusAuditText.setTextColor(getResources().getColor(R.color.dark_color));
+//
+//
+//            unsetelledFolios.setCardBackgroundColor(getResources().getColor(R.color.white));
+//            unsetelledFoliosText.setTextColor(getResources().getColor(R.color.dark_color));
+//
+//
+//            nightlyCharges.setCardBackgroundColor(getResources().getColor(R.color.white));
+//            nightlyChargesText.setTextColor(getResources().getColor(R.color.dark_color));
+//
+//
+//            newDayAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
+//            newDayAuditText.setTextColor(getResources().getColor(R.color.dark_color));
+//        }
+//        else if(activeAudit.equals("Room")){
+//            pendingReservationAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
+//            pendingReservationAuditText.setTextColor(getResources().getColor(R.color.dark_color));
+//
+//            releaseReservationAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
+//            releaseReservationAuditText.setTextColor(getResources().getColor(R.color.dark_color));
+//
+//
+//            roomStatusAudit.setCardBackgroundColor(getResources().getColor(R.color.dark_color));
+//            roomStatusAuditText.setTextColor(getResources().getColor(R.color.light_color));
+//
+//
+//            unsetelledFolios.setCardBackgroundColor(getResources().getColor(R.color.white));
+//            unsetelledFoliosText.setTextColor(getResources().getColor(R.color.dark_color));
+//
+//
+//            nightlyCharges.setCardBackgroundColor(getResources().getColor(R.color.white));
+//            nightlyChargesText.setTextColor(getResources().getColor(R.color.dark_color));
+//
+//
+//            newDayAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
+//            newDayAuditText.setTextColor(getResources().getColor(R.color.dark_color));
+//        }else if(activeAudit.z"Unsetelled"){
+//
+//        }
+//    }
+
 
     public void getStayInformation() {
         StayInformationApiInterface apiInterface = ApiClient.getApiClient().create(StayInformationApiInterface.class);
@@ -160,11 +269,9 @@ public class PmsTabDashboard extends AppCompatActivity {
                 Log.e("", "" + stayInformationList.size());
 
                 LinearLayoutManager layoutManager = new LinearLayoutManager(PmsTabDashboard.this);
-
                 mainRecyclerView.setLayoutManager(layoutManager);
                 stayInformationAdapter = new StayInformationAdapter(PmsTabDashboard.this, stayInformationList);
                 mainRecyclerView.setAdapter(stayInformationAdapter);
-
 
             }
 
@@ -174,7 +281,6 @@ public class PmsTabDashboard extends AppCompatActivity {
         });
 
     }
-
 
     private void setFragment2() {
         fm.beginTransaction().hide(active).show(fragment2).commit();
@@ -187,14 +293,15 @@ public class PmsTabDashboard extends AppCompatActivity {
     }
 
     private void initView() {
-        greetings = (NeumorphTextView) findViewById(R.id.greetings);
-        selectHotel = (BoomMenuButton) findViewById(R.id.selecthotel);
-        navImg = (ImageView) findViewById(R.id.navImg);
+        greetings = findViewById(R.id.greetings);
+        selectHotel = findViewById(R.id.selecthotel);
+        navImg = findViewById(R.id.navImg);
+        nightAudit = findViewById(R.id.nightAudit);
     }
 
     private void initNavigationMenu() {
-        NavigationView nav_view = (NavigationView) findViewById(R.id.nav_view);
-        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        NavigationView nav_view = findViewById(R.id.nav_view);
+        drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);

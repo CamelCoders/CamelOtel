@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.PmsTabDashboard;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Utilities.AppConfig;
 import soup.neumorphism.NeumorphTextView;
 
@@ -50,7 +51,7 @@ public class SplashActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    AppConfig.jumpTo(SplashActivity.this, LoginActivity.class, "slide");
+                    AppConfig.jumpTo(SplashActivity.this, PmsTabDashboard.class, "slide");
                     AppConfig.showwCustomToast(SplashActivity.this, "Welcome", "" + AppConfig.getGreetings());
                 }
             }, SPLASH);
