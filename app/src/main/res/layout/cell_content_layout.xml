@@ -331,20 +331,25 @@
                             android:layout_width="@dimen/spacing_large"
                             android:layout_height="0dp" />
 
-                        <com.nightonke.boommenu.BoomMenuButton
+                        <LinearLayout
                             android:id="@+id/listItemDetails"
                             android:layout_width="0dp"
                             android:layout_height="35dp"
-                            android:layout_gravity="center"
+                            android:layout_gravity="right"
+                            android:gravity="right"
                             android:background="@color/dark_color"
-                            app:bmb_buttonEnum="textOutsideCircle"
+                            android:orientation="horizontal"
                             android:layout_weight="1"
-                            app:bmb_buttonPlaceEnum="buttonPlace_sc_9_1"
-                            app:bmb_buttonRadius="75dp"
-                            app:bmb_hamHeight="35dp"
-                            app:bmb_normalColor="@color/dark_color"
-                            app:bmb_piecePlaceEnum="piecePlace_dot_9_1"
-                            app:bmb_rippleEffect="true" />
+                            android:src="@drawable/ic_dns">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@color/dark_color"
+                                android:src="@drawable/ic_dns" />
+
+                        </LinearLayout>
 
 
                     </LinearLayout>

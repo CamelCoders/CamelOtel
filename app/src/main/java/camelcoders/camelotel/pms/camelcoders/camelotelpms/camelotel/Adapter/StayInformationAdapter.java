@@ -14,9 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.nightonke.boommenu.BoomButtons.BoomButton;
-import com.nightonke.boommenu.BoomMenuButton;
-import com.nightonke.boommenu.OnBoomListener;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -321,36 +318,13 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
 //
 //            }
 //        });
-        AppConfig.showStayInformationAdapterItemList(holder.listItemDetails);
-        holder.listItemDetails.setOnBoomListener(new OnBoomListener() {
+
+        holder.listItemDetails.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClicked(int index, BoomButton boomButton) {
-
-            }
-
-            @Override
-            public void onBackgroundClick() {
-
-            }
-
-            @Override
-            public void onBoomWillHide() {
-
-            }
-
-            @Override
-            public void onBoomDidHide() {
-
-            }
-
-            @Override
-            public void onBoomWillShow() {
-
-            }
-
-            @Override
-            public void onBoomDidShow() {
-
+            public void onClick(View v) {
+                String[] planArr = {"View Reservation", "Audit Trail", "Edit Guest Profile", "Void Transaction", "Amend Stay", "Cancel Reservation",
+                        "Change Reservation Type", "Assign Room", "Print Invoice"};
+                AppConfig.showOperationItemList(planArr, (Activity) ctx, "Operations");
             }
         });
 
@@ -375,7 +349,7 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
         public TextView roomnumber, title_time_label, title_date_label, phonenumber;
         LinearLayout checkinClick;
         OnItemClick onItemClick;
-        BoomMenuButton listItemDetails;
+        LinearLayout listItemDetails;
         public ViewHolder(View v, int viewType, OnItemClick onItemClick) {
             super(v);
 
