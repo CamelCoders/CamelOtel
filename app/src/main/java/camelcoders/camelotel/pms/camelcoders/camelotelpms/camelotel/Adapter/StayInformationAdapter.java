@@ -2,26 +2,21 @@ package camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Adapter;
 
 import android.app.Activity;
 import android.app.Dialog;
- import android.content.Context;
-import android.content.Intent;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.flexbox.FlexDirection;
-import com.google.android.flexbox.FlexboxLayoutManager;
-import com.google.android.flexbox.JustifyContent;
 import com.google.android.material.textfield.TextInputEditText;
+import com.nightonke.boommenu.BoomButtons.BoomButton;
+import com.nightonke.boommenu.BoomMenuButton;
+import com.nightonke.boommenu.OnBoomListener;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,9 +24,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.BookingDetails.Booking;
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.BookingDetails.BookingApiInterface;
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.BookingDetails.CheckIn.ChecKInApiInterface;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.BookingDetails.StayInformation.StayInformation;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.GuestDetails.Guest;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.GuestDetails.GuestApiInterface;
@@ -40,14 +32,7 @@ import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Gue
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Masters.Salutations.SalutationsCrud;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Service.ApiClient;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.CheckInData;
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.CheckInOffice;
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.FrontOffice;
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.PmsTabDashboard;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Utilities.AppConfig;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class StayInformationAdapter extends RecyclerView.Adapter<StayInformationAdapter.ViewHolder> {
@@ -67,8 +52,8 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
     public TextView guestInformationButtonText, stayInformationButtonText,
             otherInformationButtonText, billingInformationButtonText, multipleStayInformationInformationButtonText;
         SalutationsCrud salutationsCrud=new SalutationsCrud();
-        GuestCrud guestCrud=new GuestCrud();
-    private Context ctx;
+    GuestCrud guestCrud = new GuestCrud();
+    private final Context ctx;
     String guestIDs;
     private OnItemClickListener mOnItemClickListener;
     public TextInputEditText stayRooms, stayRoomType, stayRoomSelect, stayRateType,
@@ -106,231 +91,265 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final StayInformation p = items.get(position);
         holder.roomnumber.setText(p.getRoomnumber());
- //      holder.pincode.setText(p.getZipode());
+
+        // TODO: 7/22/2021 uncomment this intent
+        //      holder.pincode.setText(p.getZipode());
 
 
-        holder.checkinClick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(ctx, CheckInData.class);
-                intent.putExtra("id",p.getId());
-                ctx.startActivity(intent);
-
-              //  AppConfig.jumpTo((Activity) ctx,CheckInData.class,"fade");
-
-
-//                CheckinInfoDilog = AppConfig.showFullScreenCustomDialog(R.layout.checkindialog, ctx);
-//                initLayoutVariables(CheckinInfoDilog);
-//                stayArrivalDate.setText(p.getCheckin());
-//                stayDepartureDate.setText(p.getCheckout());
-//                stayArrivalNight.setText(p.getNoofnight());
-//                stayRoomType.setText(p.getRoomnumber()+"-"+p.getRoomtype());
-//                stayRateType.setText(p.getRoomratetype());
-//                stayRatePlan.setText(p.getRatePlan());
-//                stayAdult.setText(p.getNoofdault());
-//                stayChild.setText(p.getNoofchild());
+//        holder.checkinClick.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(ctx, CheckInData.class);
+//                intent.putExtra("id",p.getId());
+//                ctx.startActivity(intent);
+//
+//              //  AppConfig.jumpTo((Activity) ctx,CheckInData.class,"fade");
 //
 //
-//
-//                  currentString =p.getGuestid();
-//                  separated = currentString.split(",");
-//
-//
-//                setValue();
-//                setActiveForm("guestInformationButton", ctx);
-//                guestData=new String[Integer.parseInt(p.getNoofdault())+Integer.parseInt(p.getNoofchild())];
-//
-//                for (int i=0;i<separated.length;i++){
-//
-//                    addView((Activity) ctx);
-//
-//                }
-//                 AddGuest.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//
-//                            addGuestDialog=AppConfig.showFullScreenCustomDialog(R.layout.guest_layout,ctx);
-//
-//                            Button addGuest;
-//                        TextInputEditText guestSalutation, guestFirstName, guestMiddleName,
-//                                guestLastName, guestPincode, guestFullAddress,gender,
-//                                guestCity, guestCountry, guestPhone, guestEmail, guestIdType, guestIdNumber, guestState;
-//                        RecyclerView guestRecyler;
-//                        guestRecyler = addGuestDialog.findViewById(R.id.guestList);
-//                        addGuest = addGuestDialog.findViewById(R.id.SaveGuest);
-//                        guestSalutation = addGuestDialog.findViewById(R.id.guestSalutation);
-//                        guestFirstName = addGuestDialog.findViewById(R.id.guestFirstName);
-//                        guestMiddleName = addGuestDialog.findViewById(R.id.guestMiddleName);
-//                        guestLastName = addGuestDialog.findViewById(R.id.guestLastName);
-//                        guestPincode = addGuestDialog.findViewById(R.id.guestPincode);
-//                        guestState = addGuestDialog.findViewById(R.id.guestState);
-//                        gender = addGuestDialog.findViewById(R.id.guestGender);
-//                        guestCity = addGuestDialog.findViewById(R.id.guestCity);
-//                        guestFullAddress = addGuestDialog.findViewById(R.id.guestfullAdrress);
-//                         guestEmail = addGuestDialog.findViewById(R.id.guestEmail);
-//                        guestCountry = addGuestDialog.findViewById(R.id.guestCountry);
-//                        guestPhone = addGuestDialog.findViewById(R.id.guestPhoneNumber);
-//                        guestIdType = addGuestDialog.findViewById(R.id.guestIdType);
-//                        guestIdNumber = addGuestDialog.findViewById(R.id.guestIdNumber);
-//
-//              guestSalutation.setOnClickListener(new View.OnClickListener() {
-//                  @Override
-//                  public void onClick(View v) {
-//                      salutationsCrud.getSalutations(ctx, guestRecyler, guestSalutation,guestFirstName);
-//
-//                  }
-//              });
-//              Log.e("0",""+separated.length);
-//          if (!(separated.length<Integer.parseInt(p.getNoofdault())+Integer.parseInt(p.getNoofchild()))){
-//              addGuest.setVisibility(View.GONE);
-//
-//                        }
-//              addGuest.setOnClickListener(new View.OnClickListener() {
-//                  @Override
-//                  public void onClick(View v) {
-//                      if (guestSalutation.getText().toString().isEmpty()){
-//                          guestSalutation.requestFocus();
-//                      }else if (guestFirstName.getText().toString().isEmpty()){
-//                          guestFirstName.requestFocus();
-//                      }else if (guestState.getText().toString().isEmpty()){
-//                          guestState.requestFocus();
-//                      }else if (guestEmail.getText().toString().isEmpty()){
-//                          guestEmail.getText();
-//                      }else if (guestIdType.getText().toString().isEmpty()){
-//                          guestIdType.requestFocus();
-//                      }else if (guestPhone.getText().toString().isEmpty()){
-//                          guestPhone.requestFocus();
-//                      }else if (guestIdNumber.getText().toString().isEmpty()){
-//                          guestIdNumber.requestFocus();
-//                      }else if (gender.getText().toString().isEmpty()){
-//                          gender.requestFocus();
-//                      }else if (guestFullAddress.getText().toString().isEmpty()){
-//                          guestFullAddress.requestFocus();
-//                      }else {
-//
-//
-//                          DateFormat date = new SimpleDateFormat("MMddyyyyhhmmss");
-//
-//
-//                          String biilid = date.format(cal.getTime());
-//                          String guestId=guestFirstName.getText().toString()+biilid;
-//                          guestIDs=guestIDs+guestId+",";
-//                          guestAdd[0]=guestId+""+guestSalutation.getText().toString()+"!"+guestFirstName.getText().toString()+"!"
-//                                  +guestMiddleName.getText().toString()+"!"+guestLastName.getText().toString()+"!"+ guestFullAddress.getText().toString()
-//                                  +"!"+ guestState.getText().toString()+"!"+guestCity.getText().toString()+"!"+ guestPincode.getText().toString()
-//                                  +"!"+guestCountry.getText().toString()+"!"+guestCountry.getText().toString()+"!"+"VIP"
-//                                  +"!"+guestEmail.getText().toString()+"!"
-//                                  +guestPhone.getText().toString()+"!"+gender.getText().toString()
-//                                  +"!"+guestIdType.getText().toString()+"!"+guestIdNumber.getText().toString();
-//
-//                          ChecKInApiInterface apiInterface = ApiClient.getApiClient().create(ChecKInApiInterface.class);
-//
-//                          Call<StayInformation> call = apiInterface.checkIn(
-//                                  guestAdd,guestIDs,p.getId()
-//
-//                          );
-//
-//                          call.enqueue(new Callback<StayInformation>() {
-//                              @Override
-//                              public void onResponse(Call<StayInformation> call, Response<StayInformation> response) {
-//
-//                                  String value = response.body().getValue();
-//                                  String message = response.body().getMassage();
-//
-//                                  if (value.equals("1")) {
-//                                      addGuestDialog.dismiss();
-//
-//                                  } else {
-//
-//                                      Log.e("rr", message);
-//
-//                                  }
-//
-//                              }
-//
-//                              @Override
-//                              public void onFailure(Call<StayInformation> call, Throwable t) {
-//                                  Log.e("rr", "" + t.getMessage());
-//
-//                                  Toast.makeText(ctx, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
-//                              }
-//                          });
-//                      }
-//                  }
-//              });
-//
-//
-//                        addGuestDialog.show();
-//
-//
-//
-//
-//                    }
-//                });
-//
-//                CheckInBook.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                     boolean result=   setTotalPrice();
-//                     if (result){
-//
-//                         ChecKInApiInterface apiInterface = ApiClient.getApiClient().create(ChecKInApiInterface.class);
-//
-//                         Call<StayInformation> call = apiInterface.checkIn(guestData,guestIDs,p.getId());
-//
-//                         call.enqueue(new Callback<StayInformation>() {
-//                             @Override
-//                             public void onResponse(Call<StayInformation> call, Response<StayInformation> response) {
-//
-//                                 String value = response.body().getValue();
-//                                 String message = response.body().getMassage();
-//
-//                                 if (value.equals("1")) {
+////                CheckinInfoDilog = AppConfig.showFullScreenCustomDialog(R.layout.checkindialog, ctx);
+////                initLayoutVariables(CheckinInfoDilog);
+////                stayArrivalDate.setText(p.getCheckin());
+////                stayDepartureDate.setText(p.getCheckout());
+////                stayArrivalNight.setText(p.getNoofnight());
+////                stayRoomType.setText(p.getRoomnumber()+"-"+p.getRoomtype());
+////                stayRateType.setText(p.getRoomratetype());
+////                stayRatePlan.setText(p.getRatePlan());
+////                stayAdult.setText(p.getNoofdault());
+////                stayChild.setText(p.getNoofchild());
 ////
-////                                     Intent intent=new Intent(ctx, FrontOffice.class);
-////                                     ctx.startActivity(intent);
-//                                     addGuestDialog.dismiss();
+////
+////
+////                  currentString =p.getGuestid();
+////                  separated = currentString.split(",");
+////
+////
+////                setValue();
+////                setActiveForm("guestInformationButton", ctx);
+////                guestData=new String[Integer.parseInt(p.getNoofdault())+Integer.parseInt(p.getNoofchild())];
+////
+////                for (int i=0;i<separated.length;i++){
+////
+////                    addView((Activity) ctx);
+////
+////                }
+////                 AddGuest.setOnClickListener(new View.OnClickListener() {
+////                    @Override
+////                    public void onClick(View v) {
+////
+////                            addGuestDialog=AppConfig.showFullScreenCustomDialog(R.layout.guest_layout,ctx);
+////
+////                            Button addGuest;
+////                        TextInputEditText guestSalutation, guestFirstName, guestMiddleName,
+////                                guestLastName, guestPincode, guestFullAddress,gender,
+////                                guestCity, guestCountry, guestPhone, guestEmail, guestIdType, guestIdNumber, guestState;
+////                        RecyclerView guestRecyler;
+////                        guestRecyler = addGuestDialog.findViewById(R.id.guestList);
+////                        addGuest = addGuestDialog.findViewById(R.id.SaveGuest);
+////                        guestSalutation = addGuestDialog.findViewById(R.id.guestSalutation);
+////                        guestFirstName = addGuestDialog.findViewById(R.id.guestFirstName);
+////                        guestMiddleName = addGuestDialog.findViewById(R.id.guestMiddleName);
+////                        guestLastName = addGuestDialog.findViewById(R.id.guestLastName);
+////                        guestPincode = addGuestDialog.findViewById(R.id.guestPincode);
+////                        guestState = addGuestDialog.findViewById(R.id.guestState);
+////                        gender = addGuestDialog.findViewById(R.id.guestGender);
+////                        guestCity = addGuestDialog.findViewById(R.id.guestCity);
+////                        guestFullAddress = addGuestDialog.findViewById(R.id.guestfullAdrress);
+////                         guestEmail = addGuestDialog.findViewById(R.id.guestEmail);
+////                        guestCountry = addGuestDialog.findViewById(R.id.guestCountry);
+////                        guestPhone = addGuestDialog.findViewById(R.id.guestPhoneNumber);
+////                        guestIdType = addGuestDialog.findViewById(R.id.guestIdType);
+////                        guestIdNumber = addGuestDialog.findViewById(R.id.guestIdNumber);
+////
+////              guestSalutation.setOnClickListener(new View.OnClickListener() {
+////                  @Override
+////                  public void onClick(View v) {
+////                      salutationsCrud.getSalutations(ctx, guestRecyler, guestSalutation,guestFirstName);
+////
+////                  }
+////              });
+////              Log.e("0",""+separated.length);
+////          if (!(separated.length<Integer.parseInt(p.getNoofdault())+Integer.parseInt(p.getNoofchild()))){
+////              addGuest.setVisibility(View.GONE);
+////
+////                        }
+////              addGuest.setOnClickListener(new View.OnClickListener() {
+////                  @Override
+////                  public void onClick(View v) {
+////                      if (guestSalutation.getText().toString().isEmpty()){
+////                          guestSalutation.requestFocus();
+////                      }else if (guestFirstName.getText().toString().isEmpty()){
+////                          guestFirstName.requestFocus();
+////                      }else if (guestState.getText().toString().isEmpty()){
+////                          guestState.requestFocus();
+////                      }else if (guestEmail.getText().toString().isEmpty()){
+////                          guestEmail.getText();
+////                      }else if (guestIdType.getText().toString().isEmpty()){
+////                          guestIdType.requestFocus();
+////                      }else if (guestPhone.getText().toString().isEmpty()){
+////                          guestPhone.requestFocus();
+////                      }else if (guestIdNumber.getText().toString().isEmpty()){
+////                          guestIdNumber.requestFocus();
+////                      }else if (gender.getText().toString().isEmpty()){
+////                          gender.requestFocus();
+////                      }else if (guestFullAddress.getText().toString().isEmpty()){
+////                          guestFullAddress.requestFocus();
+////                      }else {
+////
+////
+////                          DateFormat date = new SimpleDateFormat("MMddyyyyhhmmss");
+////
+////
+////                          String biilid = date.format(cal.getTime());
+////                          String guestId=guestFirstName.getText().toString()+biilid;
+////                          guestIDs=guestIDs+guestId+",";
+////                          guestAdd[0]=guestId+""+guestSalutation.getText().toString()+"!"+guestFirstName.getText().toString()+"!"
+////                                  +guestMiddleName.getText().toString()+"!"+guestLastName.getText().toString()+"!"+ guestFullAddress.getText().toString()
+////                                  +"!"+ guestState.getText().toString()+"!"+guestCity.getText().toString()+"!"+ guestPincode.getText().toString()
+////                                  +"!"+guestCountry.getText().toString()+"!"+guestCountry.getText().toString()+"!"+"VIP"
+////                                  +"!"+guestEmail.getText().toString()+"!"
+////                                  +guestPhone.getText().toString()+"!"+gender.getText().toString()
+////                                  +"!"+guestIdType.getText().toString()+"!"+guestIdNumber.getText().toString();
+////
+////                          ChecKInApiInterface apiInterface = ApiClient.getApiClient().create(ChecKInApiInterface.class);
+////
+////                          Call<StayInformation> call = apiInterface.checkIn(
+////                                  guestAdd,guestIDs,p.getId()
+////
+////                          );
+////
+////                          call.enqueue(new Callback<StayInformation>() {
+////                              @Override
+////                              public void onResponse(Call<StayInformation> call, Response<StayInformation> response) {
+////
+////                                  String value = response.body().getValue();
+////                                  String message = response.body().getMassage();
+////
+////                                  if (value.equals("1")) {
+////                                      addGuestDialog.dismiss();
+////
+////                                  } else {
+////
+////                                      Log.e("rr", message);
+////
+////                                  }
+////
+////                              }
+////
+////                              @Override
+////                              public void onFailure(Call<StayInformation> call, Throwable t) {
+////                                  Log.e("rr", "" + t.getMessage());
+////
+////                                  Toast.makeText(ctx, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
+////                              }
+////                          });
+////                      }
+////                  }
+////              });
+////
+////
+////                        addGuestDialog.show();
+////
+////
+////
+////
+////                    }
+////                });
+////
+////                CheckInBook.setOnClickListener(new View.OnClickListener() {
+////                    @Override
+////                    public void onClick(View v) {
+////                     boolean result=   setTotalPrice();
+////                     if (result){
+////
+////                         ChecKInApiInterface apiInterface = ApiClient.getApiClient().create(ChecKInApiInterface.class);
+////
+////                         Call<StayInformation> call = apiInterface.checkIn(guestData,guestIDs,p.getId());
+////
+////                         call.enqueue(new Callback<StayInformation>() {
+////                             @Override
+////                             public void onResponse(Call<StayInformation> call, Response<StayInformation> response) {
+////
+////                                 String value = response.body().getValue();
+////                                 String message = response.body().getMassage();
+////
+////                                 if (value.equals("1")) {
+//////
+//////                                     Intent intent=new Intent(ctx, FrontOffice.class);
+//////                                     ctx.startActivity(intent);
+////                                     addGuestDialog.dismiss();
+////
+////
+////                                 } else {
+////
+////                                     Log.e("rr", message);
+////
+////                                 }
+////
+////                             }
+////
+////                             @Override
+////                             public void onFailure(Call<StayInformation> call, Throwable t) {
+////                                 Log.e("rr", "" + t.getMessage());
+////
+////                                 Toast.makeText(ctx, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
+////                             }
+////                         });
+////
+////
+////                     }
+////                     }
+////                });
+////
+////                stayInformationButton.setOnClickListener(new View.OnClickListener() {
+////                    @Override
+////                    public void onClick(View v) {
+////                        setActiveForm("stayInformationButton", ctx);
+////                    }
+////                });
+////
+////                guestInformationButton.setOnClickListener(new View.OnClickListener() {
+////                    @Override
+////                    public void onClick(View v) {
+////
+////                        setActiveForm("guestInformationButton", ctx);
+////
+////                    }
+////                });
+////
+////                CheckinInfoDilog.show();
+////
 //
-//
-//                                 } else {
-//
-//                                     Log.e("rr", message);
-//
-//                                 }
-//
-//                             }
-//
-//                             @Override
-//                             public void onFailure(Call<StayInformation> call, Throwable t) {
-//                                 Log.e("rr", "" + t.getMessage());
-//
-//                                 Toast.makeText(ctx, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
-//                             }
-//                         });
-//
-//
-//                     }
-//                     }
-//                });
-//
-//                stayInformationButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        setActiveForm("stayInformationButton", ctx);
-//                    }
-//                });
-//
-//                guestInformationButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//
-//                        setActiveForm("guestInformationButton", ctx);
-//
-//                    }
-//                });
-//
-//                CheckinInfoDilog.show();
-//
+//            }
+//        });
+        AppConfig.showStayInformationAdapterItemList(holder.listItemDetails);
+        holder.listItemDetails.setOnBoomListener(new OnBoomListener() {
+            @Override
+            public void onClicked(int index, BoomButton boomButton) {
+
+            }
+
+            @Override
+            public void onBackgroundClick() {
+
+            }
+
+            @Override
+            public void onBoomWillHide() {
+
+            }
+
+            @Override
+            public void onBoomDidHide() {
+
+            }
+
+            @Override
+            public void onBoomWillShow() {
+
+            }
+
+            @Override
+            public void onBoomDidShow() {
 
             }
         });
@@ -356,13 +375,14 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
         public TextView roomnumber, title_time_label, title_date_label, phonenumber;
         LinearLayout checkinClick;
         OnItemClick onItemClick;
-
+        BoomMenuButton listItemDetails;
         public ViewHolder(View v, int viewType, OnItemClick onItemClick) {
             super(v);
 
             this.onItemClick = onItemClick;
             roomnumber = v.findViewById(R.id.roomnumber);
             title_time_label = v.findViewById(R.id.title_time_label);
+            listItemDetails = v.findViewById(R.id.listItemDetails);
             title_date_label = v.findViewById(R.id.title_date_label);
             checkinClick = v.findViewById(R.id.checkinClick);
 
@@ -375,6 +395,7 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
             }
         }
     }
+
     public void initLayoutVariables(Dialog view) {
 
         formGuestInformation = view.findViewById(R.id.formGuestInformation);
@@ -558,6 +579,7 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
             stayInformationButtonText.setTextColor(context.getResources().getColor(R.color.light_color));
         }
     }
+
     private boolean setTotalPrice() {
         Float roomPriceWOtax=00.00f,roomPriceWtax=00.00f,roomTaxAmount=00.00f;
          boolean result = true;
@@ -625,6 +647,7 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
         return result;
 
     }
+
     private void setValue() {
         Float roomPriceWOtax=00.00f,roomPriceWtax=00.00f,roomTaxAmount=00.00f;
         boolean result = true;
@@ -687,8 +710,5 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
 
 
     }
-
-
-
 
 }

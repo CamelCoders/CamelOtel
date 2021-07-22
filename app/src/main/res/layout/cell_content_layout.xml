@@ -320,8 +320,8 @@
                             android:layout_height="35dp"
                             android:layout_margin="@dimen/spacing_small"
                             android:layout_weight="1"
-                            android:focusable="false"
                             android:background="@drawable/edit_text_round_bg_white"
+                            android:focusable="false"
                             android:hint="Arrived"
                             android:paddingLeft="@dimen/spacing_middle"
                             android:paddingRight="@dimen/spacing_middle"
@@ -331,15 +331,20 @@
                             android:layout_width="@dimen/spacing_large"
                             android:layout_height="0dp" />
 
-                        <ImageView
+                        <com.nightonke.boommenu.BoomMenuButton
+                            android:id="@+id/listItemDetails"
                             android:layout_width="0dp"
                             android:layout_height="35dp"
-                            android:layout_margin="@dimen/spacing_small"
+                            android:layout_gravity="center"
+                            android:background="@color/dark_color"
+                            app:bmb_buttonEnum="textOutsideCircle"
                             android:layout_weight="1"
-                            android:gravity="right"
-                            android:background="@drawable/edit_text_round_bg_white"
-                            android:src="@drawable/ic_threedotmenu"
-                            app:tint="@color/dark_color" />
+                            app:bmb_buttonPlaceEnum="buttonPlace_sc_9_1"
+                            app:bmb_buttonRadius="75dp"
+                            app:bmb_hamHeight="35dp"
+                            app:bmb_normalColor="@color/dark_color"
+                            app:bmb_piecePlaceEnum="piecePlace_dot_9_1"
+                            app:bmb_rippleEffect="true" />
 
 
                     </LinearLayout>

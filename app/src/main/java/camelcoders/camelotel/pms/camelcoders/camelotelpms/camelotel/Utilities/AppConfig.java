@@ -29,7 +29,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.ContextCompat;
 import androidx.core.util.Pair;
 import androidx.fragment.app.FragmentActivity;
@@ -66,6 +65,8 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
+import com.nightonke.boommenu.BoomMenuButton;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.text.SimpleDateFormat;
@@ -812,5 +813,39 @@ public class AppConfig {
 
     }
 
+    public static void showStayInformationAdapterItemList(BoomMenuButton boomMenuButton) {
+        for (int i = 0; i < boomMenuButton.getPiecePlaceEnum().pieceNumber(); i++) {
+            TextOutsideCircleButton.Builder builder = new TextOutsideCircleButton.Builder();
+            if (i == 0) {
+                builder.normalText("View Reservation");
+                builder.normalImageRes(R.drawable.logo_round);
+            } else if (i == 1) {
+                builder.normalText("Audit Trail");
+                builder.normalImageRes(R.drawable.logo_round);
+            } else if (i == 2) {
+                builder.normalText("Edit Guest Profile");
+                builder.normalImageRes(R.drawable.logo_round);
+            } else if (i == 3) {
+                builder.normalText("Void Transaction");
+                builder.normalImageRes(R.drawable.logo_round);
+            } else if (i == 4) {
+                builder.normalText("Amend Stay");
+                builder.normalImageRes(R.drawable.logo_round);
+            } else if (i == 5) {
+                builder.normalText("Cancel RReservation");
+                builder.normalImageRes(R.drawable.logo_round);
+            } else if (i == 6) {
+                builder.normalText("Change Reservation Type");
+                builder.normalImageRes(R.drawable.logo_round);
+            } else if (i == 7) {
+                builder.normalText("Asign Room");
+                builder.normalImageRes(R.drawable.logo_round);
+            } else if (i == 8) {
+                builder.normalText("Print Invoice");
+                builder.normalImageRes(R.drawable.logo_round);
+            }
+            boomMenuButton.addBuilder(builder);
+        }
+    }
 
 }

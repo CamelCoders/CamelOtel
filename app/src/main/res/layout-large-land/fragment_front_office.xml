@@ -1,35 +1,328 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/bgLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="2dp"
+    android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true">
 
-        <HorizontalScrollView
-            android:id="@+id/mainLayout"
-            android:layout_width="match_parent"
+        <EditText
+            style="@style/EditText.Flat.Grey"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_margin="@dimen/spacing_small"
+            android:background="@drawable/edit_text_round_bg_white"
+            android:drawableEnd="@drawable/ic_baseline_date"
+            android:drawablePadding="30dp"
+            android:drawableTint="@color/dark_color"
+            android:focusable="false"
+            android:hint="22/July/2021"
+            android:paddingLeft="@dimen/spacing_middle"
+            android:paddingRight="@dimen/spacing_middle"
+            android:textColorHint="@color/dark_color"
+            android:textStyle="bold" />
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/mainRecyclerView"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:clipChildren="false"
-                            android:clipToPadding="false"
-                            android:divider="@android:color/transparent"
-                            android:dividerHeight="10dp"
-                            android:paddingLeft="@dimen/activity_horizontal_margin"
-                            android:paddingTop="@dimen/activity_vertical_margin"
-                            android:paddingRight="@dimen/activity_horizontal_margin"
-                            android:paddingBottom="@dimen/activity_vertical_margin"
-                            android:scrollbars="none" />
+        <EditText
+            style="@style/EditText.Flat.Grey"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="right"
+            android:layout_margin="@dimen/spacing_small"
+            android:layout_weight="1"
+            android:background="@drawable/edit_text_round_bg_white"
+            android:focusable="false"
+            android:gravity="right"
+            android:hint="Room View"
+            android:paddingLeft="@dimen/spacing_middle"
+            android:paddingRight="@dimen/spacing_middle"
+            android:textColorHint="@color/dark_color"
+            android:textStyle="bold" />
 
+    </androidx.cardview.widget.CardView>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/shape_circle"
+                    app:tint="@color/dark_color" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:focusable="false"
+                    android:hint="Available"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle"
+                    android:textColorHint="@color/dark_color"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/shape_circle"
+                    app:tint="@color/orange_500" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:focusable="false"
+                    android:hint="Checked Out"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle"
+                    android:textColorHint="@color/dark_color"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/shape_circle"
+                    app:tint="@color/red_800" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:focusable="false"
+                    android:hint="Ocuupied"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle"
+                    android:textColorHint="@color/dark_color"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/shape_circle"
+                    app:tint="@color/light_green_700" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:focusable="false"
+                    android:hint="Confirmed Reservation"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle"
+                    android:textColorHint="@color/dark_color"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/shape_circle"
+                    app:tint="@color/black" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:focusable="false"
+                    android:hint="Maintenance Block"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle"
+                    android:textColorHint="@color/dark_color"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/shape_circle"
+                    app:tint="@color/orange_100" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:focusable="false"
+                    android:hint="StayOver"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle"
+                    android:textColorHint="@color/dark_color"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/shape_circle"
+                    app:tint="@color/green_900" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:focusable="false"
+                    android:hint="Dayuse Reservation"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle"
+                    android:textColorHint="@color/dark_color"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/shape_circle"
+                    app:tint="@color/blue_600" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:focusable="false"
+                    android:hint="Day Use"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle"
+                    android:textColorHint="@color/dark_color"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
 
     </HorizontalScrollView>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/roomViewRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

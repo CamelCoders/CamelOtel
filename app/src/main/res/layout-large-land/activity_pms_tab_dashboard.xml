@@ -105,12 +105,13 @@
                         android:layout_width="@dimen/spacing_mlarge"
                         android:layout_height="@dimen/spacing_mlarge"
                         android:layout_margin="@dimen/spacing_middle"
-                        app:srcCompat="@drawable/ic_stayview" />
+                        app:srcCompat="@drawable/ic_dns"
+                        app:tint="@color/dark_color" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Stay View" />
+                        android:text="Dashboard" />
 
                 </LinearLayout>
 
