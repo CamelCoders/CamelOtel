@@ -80,6 +80,21 @@ public class PmsTabDashboard extends AppCompatActivity {
         AppConfig.setOrientations(PmsTabDashboard.this);
         AppConfig.setStatusBarColor(PmsTabDashboard.this, R.color.dark_color);
         initView();
+
+        SelectDate=findViewById(R.id.SelectDate);
+        SelectDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppConfig.datepick(
+
+
+                        PmsTabDashboard.this,SelectDate);
+            }
+        });
+
+
+
+
         fm.beginTransaction().add(R.id.main_container, fragment2, "2").hide(fragment2).commit();
         fm.beginTransaction().add(R.id.main_container, fragment1, "1").commit();
         getStayInformation();

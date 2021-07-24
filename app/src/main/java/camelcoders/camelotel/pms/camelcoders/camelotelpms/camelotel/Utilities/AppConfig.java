@@ -67,6 +67,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.text.SimpleDateFormat;
@@ -903,6 +904,79 @@ public class AppConfig {
 
 
     }
+    public  static  void datepick(Activity context, final View v) {
+        int mYear, mMonth, mDay, mHour, mMinute;
 
+        // Get Current Date
+        final Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+        DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public   void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.set(Calendar.YEAR, year);
+                        calendar.set(Calendar.MONTH, monthOfYear);
+                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        long date_ship_millis = calendar.getTimeInMillis();
+                        String meetDate = "";
+                        if (String.valueOf(dayOfMonth).length() == 1 && String.valueOf(dayOfMonth).length() == 1) {
+
+                            meetDate = "0" +dayOfMonth + "-0" +  (monthOfYear + 1) + "-" + year;
+
+
+                        } else if (String.valueOf(monthOfYear).length() == 2 && String.valueOf(dayOfMonth).length() == 1) {
+
+                            meetDate = dayOfMonth + "-0" + (monthOfYear + 1) + "-" + year;
+
+
+                        } else if (String.valueOf(monthOfYear).length() == 1 && String.valueOf(dayOfMonth).length() == 2) {
+
+                            meetDate = "0" + dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+
+
+                        } else if (String.valueOf(monthOfYear).length() == 2 && String.valueOf(dayOfMonth).length() == 2) {
+
+                            meetDate = dayOfMonth + "-" + (monthOfYear + 1)  + "-" + year;
+
+
+                        }
+
+                        ((EditText) v).setText(meetDate);
+
+                        //((TextView) findViewById(R.id.result)).setText(Tools.getFormattedDateSimple(date_ship_millis));
+                    }
+                },
+                mYear, mMonth, mDay);
+
+        //set dark light
+        datePickerDialog.show(context.getFragmentManager(), "Datepickerdialog");
+        datePickerDialog.setThemeDark(false);
+
+
+
+        datePickerDialog.setMinDate(c);
+
+        datePickerDialog.setTitle("Select  Date");
+
+
+
+
+        datePickerDialog.setCancelable(true);
+
+        datePickerDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public     void onCancel(DialogInterface dialog) {
+            }
+        });
+
+
+
+
+    }
 
 }
