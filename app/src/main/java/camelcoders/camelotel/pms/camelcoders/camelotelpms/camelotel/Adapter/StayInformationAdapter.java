@@ -68,7 +68,7 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
     String currentString ;
     String[] separated ;
 
-    public StayInformationAdapter(Context context, List<StayInformation> items) {
+    public StayInformationAdapter(Context context, List<StayInformation> items,String function) {
         this.items = items;
         this.itemFilter = items;
         ctx = context;

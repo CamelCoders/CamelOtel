@@ -22,9 +22,11 @@ import java.util.Calendar;
 import java.util.List;
 
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.BookingDetails.StayInformation.StayInformation;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.BookingDetails.StayInformation.StayInformationApiInterface;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.GuestDetails.Guest;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.GuestDetails.GuestApiInterface;
- import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Service.ApiClient;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Masters.Rooms.Rooms;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Service.ApiClient;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,16 +35,19 @@ import retrofit2.Response;
 public class RoomViewAdapter extends RecyclerView.Adapter<RoomViewAdapter.RoomViewHolder> {
     public GuestApiInterface apiInterface = ApiClient.getApiClient().create(GuestApiInterface.class);
     String currentString ;
-    SimpleDateFormat simpleDateFormat;
     String[] separated ;
-    Calendar calendar=Calendar.getInstance();
     // List to store all the contact details
-    List<StayInformation> StayInformationArrayList=new ArrayList<>();
+    List<Rooms> RoomsArrayList=new ArrayList<>();
     List<Guest> guestList=new ArrayList<>();
+
+    List<StayInformation> stayInformationList=new ArrayList<>();
+    SimpleDateFormat simpleDateFormat;
+    Calendar calendar=Calendar.getInstance();
+
     private final Context mContext;
 
-     public RoomViewAdapter(List<StayInformation> StayInformationArrayList, Context context) {
-        this.StayInformationArrayList = StayInformationArrayList;
+     public RoomViewAdapter(List<Rooms> RoomsArrayList, Context context) {
+        this.RoomsArrayList = RoomsArrayList;
         this.mContext = context;
     }
 
@@ -58,37 +63,84 @@ public class RoomViewAdapter extends RecyclerView.Adapter<RoomViewAdapter.RoomVi
 
     @Override
     public int getItemCount() {
-        return StayInformationArrayList == null ? 0 : StayInformationArrayList.size();
+        return RoomsArrayList == null ? 0 : RoomsArrayList.size();
     }
 
     // This method is called when binding the data to the views being created in RecyclerView
 
     @Override
     public void onBindViewHolder(@NonNull RoomViewHolder holder, final int position) {
-        final StayInformation contact = StayInformationArrayList.get(position);
-
-        // Set the data to the views here
+        final Rooms contact = RoomsArrayList.get(position);
         simpleDateFormat=new SimpleDateFormat("dd-MM-yyyy");
 
-        holder.roomCat.setText(contact.getRoomtype());
-        holder.roomNumber.setText(contact.getRoomnumber());
-        currentString =contact.getGuestid();
+        // Set the data to the views here
+        holder.roomCat.setText(contact.getRoom_type_id());
+        holder.roomNumber.setText(contact.getRoom_name());
 
-        separated = currentString.split(",");
-         Call<List<Guest>> call = apiInterface.getGuest();
-        call.enqueue(new Callback<List<Guest>>() {
+
+
+
+        StayInformationApiInterface stayInformationApiInterface = ApiClient.getApiClient().create(StayInformationApiInterface.class);
+
+        Call<List<StayInformation>> call = stayInformationApiInterface.getStayInfomation();
+        call.enqueue(new Callback<List<StayInformation>>() {
+            @Override
+            public void onResponse(Call<List<StayInformation>> call, Response<List<StayInformation>> response) {
+                stayInformationList = response.body();
+
+
+                for (int i=0;i<stayInformationList.size();i++){
+
+                    if (stayInformationList.get(i).getRoomnumber().equals(contact.getRoom_name()) &&
+                            stayInformationList.get(i).getCheckin().equals(simpleDateFormat.format(calendar.getTime()))){
+                        currentString =stayInformationList.get(i).getGuestid();
+                        separated = currentString.split(",");
+
+
+                        if (stayInformationList.get(i).getStatus().equals("0")){
+                            holder.roomCat.setTextColor(ContextCompat.getColor(mContext, R.color.green_800));
+
+                        }
+
+                    }
+
+
+
+                    }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<StayInformation>> call, Throwable t) {
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+        Call<List<Guest>> callGuest = apiInterface.getGuest();
+        callGuest.enqueue(new Callback<List<Guest>>() {
             @Override
             public void onResponse(Call<List<Guest>> call, Response<List<Guest>> response) {
                 guestList = response.body();
                 for (int i=0;i<guestList.size() ;i++){
-                    
+
                     if (guestList.get(i).getGuestid().equals(separated[0])){
                         holder.guestName.setText(guestList.get(i).getFirstName()+" "+guestList.get(i).getMidName()
                         +" "+guestList.get(i).getLastName());
                     }
-                    
+
                 }
-               
+
 
             }
             @Override
@@ -97,17 +149,16 @@ public class RoomViewAdapter extends RecyclerView.Adapter<RoomViewAdapter.RoomVi
 
             }
         });
-  
+//
+        holder.guestName.setTextColor(ContextCompat.getColor(mContext, R.color.blue_800));
 
-        if (contact.getCheckout().equals(simpleDateFormat.format(calendar.getTime()))){
-               holder.guestName.setTextColor(ContextCompat.getColor(mContext, R.color.orange_800));
-        }
-        if (contact.getCheckin().equals(simpleDateFormat.format(calendar.getTime()))){
-               holder.guestName.setTextColor(ContextCompat.getColor(mContext, R.color.blue_800));
-        }
         if (contact.getStatus().equals("1")){
-            holder.guestName.setTextColor(ContextCompat.getColor(mContext, R.color.red_800));
+               holder.guestName.setTextColor(ContextCompat.getColor(mContext, R.color.red_800));
+
+        }else  if (contact.getStatus().equals("2")){
+              holder.guestName.setTextColor(ContextCompat.getColor(mContext, R.color.orange_500));
         }
+
 
 
 

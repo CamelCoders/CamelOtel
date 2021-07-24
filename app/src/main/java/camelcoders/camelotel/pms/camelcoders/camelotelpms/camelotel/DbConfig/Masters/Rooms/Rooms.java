@@ -43,7 +43,6 @@ public class Rooms {
     private String roomStatus;
     @SerializedName("value")
     private String value;
-
     @SerializedName("message")
     private String message;
 

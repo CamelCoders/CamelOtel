@@ -92,6 +92,6 @@ public class GuestCrud {
             }
         }
 
-        guestAdapter.filterList(filterdNames);
+  ///      guestAdapter.filterList(filterdNames);
     }
 }

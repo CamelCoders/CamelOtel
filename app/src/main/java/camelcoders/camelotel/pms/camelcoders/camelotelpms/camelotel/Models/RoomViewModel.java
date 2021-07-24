@@ -1,14 +1,45 @@
 package camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class RoomViewModel {
+    @SerializedName("roomCat")
     private String roomCat;
+
+    @SerializedName("roomNumber")
     private String roomNumber;
+
+    @SerializedName("guestName")
     private String guestName;
+
+
+    @SerializedName("color")
     private String color;
+
+
+    @SerializedName("isSmoking")
     private boolean isSmoking;
+    @SerializedName("isDirty")
     private boolean isDirty;
-    private boolean isMeal;
+    @SerializedName("isMeal")
+     private boolean isMeal;
+    @SerializedName("isVip")
     private boolean isVip;
+
+
+
+
+    @SerializedName("guestId")
+    private boolean guestId;
+
+    @SerializedName("stayInformationId")
+    private boolean stayInformationId;
+
+
+    @SerializedName("reservationId")
+    private boolean reservationId;
+
+
 
     public RoomViewModel(String roomCat, String roomNumber, String guestName, String color, boolean isSmoking, boolean isDirty, boolean isMeal, boolean isVip) {
         this.roomCat = roomCat;

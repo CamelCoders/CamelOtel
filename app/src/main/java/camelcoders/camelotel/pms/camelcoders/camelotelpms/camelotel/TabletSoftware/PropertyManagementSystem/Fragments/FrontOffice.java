@@ -56,7 +56,7 @@ public class FrontOffice extends Fragment {
 //        return view;
         binding = FragmentFrontOfficeBinding.inflate(inflater, container, false);
         simpleDateFormat=new SimpleDateFormat("dd-MM-yyyy");
-        getStayInformation();
+        getRooms();
         //Load the date from the network or other resources
 //        //into the array list asynchronously
 //        roomViewModelArrayList.add(new RoomViewModel("Play Deluxe", "101", "Mr. Camelotel", "available", true, true, false, true));
@@ -79,7 +79,7 @@ public class FrontOffice extends Fragment {
         return binding.getRoot();
     }
 
-    public   void getStayInformation() {
+    public void getStayInformation() {
         StayInformationApiInterface apiInterface = ApiClient.getApiClient().create(StayInformationApiInterface.class);
 
         Call<List<StayInformation>> call = apiInterface.getStayInfomation();
@@ -101,9 +101,9 @@ public class FrontOffice extends Fragment {
                 FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(getContext());
                 layoutManager.setFlexDirection(FlexDirection.ROW);
                 binding.roomViewRecycler.setLayoutManager(layoutManager);
-                roomViewAdapter = new RoomViewAdapter(stayInformationList,getContext());
-                 binding.roomViewRecycler.setAdapter(roomViewAdapter);
-
+//                roomViewAdapter = new RoomViewAdapter(stayInformationList,getContext());
+//                 binding.roomViewRecycler.setAdapter(roomViewAdapter);
+//
 
             }
 
@@ -113,25 +113,26 @@ public class FrontOffice extends Fragment {
         });
 
     }
-//    public   void getRooms() {
+    public   void getRooms() {
+
+        Call<List<Rooms>> call = roomsApiInterface.getRoom();
+        call.enqueue(new Callback<List<Rooms>>() {
+            @Override
+            public void onResponse(Call<List<Rooms>> call, Response<List<Rooms>> response) {
+                Roomss = response.body();
+                FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(getContext());
+                layoutManager.setFlexDirection(FlexDirection.ROW);
+                binding.roomViewRecycler.setLayoutManager(layoutManager);
+                roomViewAdapter = new RoomViewAdapter(Roomss,getContext());
+                binding.roomViewRecycler.setAdapter(roomViewAdapter);
 //
-//        Call<List<Rooms>> call = roomsApiInterface.getRoom();
-//        call.enqueue(new Callback<List<Rooms>>() {
-//            @Override
-//            public void onResponse(Call<List<Rooms>> call, Response<List<Rooms>> response) {
-//                Roomss = response.body();
-//                FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(getContext());
-//                layoutManager.setFlexDirection(FlexDirection.ROW);
-//                binding.roomViewRecycler.setLayoutManager(layoutManager);
-//                roomViewAdapter = new RoomViewAdapter(Roomss,getContext());
-//                binding.roomViewRecycler.setAdapter(roomViewAdapter);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Rooms>> call, Throwable t) {
-//            }
-//        });
-//
-//    }
+}
+
+            @Override
+            public void onFailure(Call<List<Rooms>> call, Throwable t) {
+            }
+        });
+
+    }
 
 }
