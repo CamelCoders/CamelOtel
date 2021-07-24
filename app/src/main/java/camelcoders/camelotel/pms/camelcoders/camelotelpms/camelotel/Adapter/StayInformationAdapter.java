@@ -331,6 +331,7 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
                         @Override
                         public void onClick(View v) {
                             AppConfig.jumpTo((Activity) ctx, ViewReservationActivity.class,"fade");
+                            ((Activity) ctx).finish();
                         }
                     });
                 } else if (function.equals("Arrival")) {
@@ -339,6 +340,7 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
                         @Override
                         public void onClick(View v) {
                             AppConfig.jumpTo((Activity) ctx, ViewReservationActivity.class,"fade");
+                            ((Activity) ctx).finish();
                         }
                     });
                 } else if (function.equals("Departure")) {
@@ -347,6 +349,7 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
                         @Override
                         public void onClick(View v) {
                             AppConfig.jumpTo((Activity) ctx, ViewReservationActivity.class,"fade");
+                            ((Activity) ctx).finish();
                         }
                     });
                 } else if (function.equals("InHouse")) {
@@ -355,6 +358,7 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
                         @Override
                         public void onClick(View v) {
                             AppConfig.jumpTo((Activity) ctx, ViewReservationActivity.class,"fade");
+                            ((Activity) ctx).finish();
                         }
                     });
                 }

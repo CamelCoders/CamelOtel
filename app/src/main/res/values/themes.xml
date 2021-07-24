@@ -20,7 +20,9 @@
         <item name="colorControlNormal">@color/grey_60</item>
         <item name="android:textColorPrimary">@color/grey_60</item>
     </style>
-
+<style name="TabText">
+    <item name="fontFamily">monospace</item>
+</style>
     <style name="BaseTheme.Material" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/light_color</item>
