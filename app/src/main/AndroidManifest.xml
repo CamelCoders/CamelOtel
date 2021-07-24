@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Camelotel"
         android:usesCleartextTraffic="true">
-        <activity android:name=".TabletSoftware.PropertyManagementSystem.CheckInData"></activity>
+        <activity android:name=".TabletSoftware.PropertyManagementSystem.ViewReservationActivity"></activity>
+        <activity android:name=".TabletSoftware.PropertyManagementSystem.CheckInData" />
         <activity
             android:name=".TabletSoftware.PropertyManagementSystem.PmsTabDashboard"
             android:windowSoftInputMode="adjustResize" />

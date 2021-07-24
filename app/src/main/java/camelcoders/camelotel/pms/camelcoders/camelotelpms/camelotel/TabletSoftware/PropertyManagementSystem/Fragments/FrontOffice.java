@@ -49,6 +49,9 @@ public class FrontOffice extends Fragment {
     SimpleDateFormat simpleDateFormat;
     List<Booking> bookingList=new ArrayList<>();
     List<StayInformation> stayInformationList=new ArrayList<>();
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

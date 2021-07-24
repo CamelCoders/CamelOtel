@@ -29,6 +29,7 @@ import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Gue
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Masters.Salutations.SalutationsCrud;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Service.ApiClient;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.ViewReservationActivity;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Utilities.AppConfig;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.DialogArrivalListBinding;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.DialogDepartureListBinding;
@@ -326,12 +327,36 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
             public void onClick(View v) {
                 if (function.equals("Reservation")) {
                     DialogReservationListBinding binding = AppConfig.showReservationOperations((Activity) ctx);
+                    binding.viewReservationReservation.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AppConfig.jumpTo((Activity) ctx, ViewReservationActivity.class,"fade");
+                        }
+                    });
                 } else if (function.equals("Arrival")) {
                     DialogArrivalListBinding binding = AppConfig.showArrivalOperations((Activity) ctx);
+                    binding.viewArrivalReservation.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AppConfig.jumpTo((Activity) ctx, ViewReservationActivity.class,"fade");
+                        }
+                    });
                 } else if (function.equals("Departure")) {
                     DialogDepartureListBinding binding = AppConfig.showDepartureOperations((Activity)ctx);
+                    binding.viewDepartureReservation.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AppConfig.jumpTo((Activity) ctx, ViewReservationActivity.class,"fade");
+                        }
+                    });
                 } else if (function.equals("InHouse")) {
                     DialogInhouseListBinding binding = AppConfig.showInHouseOperations((Activity)ctx);
+                    binding.viewInHouseReservaton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AppConfig.jumpTo((Activity) ctx, ViewReservationActivity.class,"fade");
+                        }
+                    });
                 }
             }
         });
