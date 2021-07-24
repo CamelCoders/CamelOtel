@@ -20,8 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationView;
 import com.nightonke.boommenu.BoomButtons.BoomButton;
 import com.nightonke.boommenu.BoomButtons.HamButton;
@@ -39,7 +37,6 @@ import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Boo
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Service.ApiClient;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Modules.Reservation;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.CheckInOffice;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.FrontOffice;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Utilities.AppConfig;
 import retrofit2.Call;
@@ -50,7 +47,6 @@ import soup.neumorphism.NeumorphTextView;
 public class PmsTabDashboard extends AppCompatActivity {
 
     final Fragment fragment1 = new FrontOffice();
-    final Fragment fragment2 = new CheckInOffice();
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = fragment1;
     String activeAudit = "Pending";
@@ -100,7 +96,6 @@ public class PmsTabDashboard extends AppCompatActivity {
 
 
 
-        fm.beginTransaction().add(R.id.main_container, fragment2, "2").hide(fragment2).commit();
         fm.beginTransaction().add(R.id.main_container, fragment1, "1").commit();
         getStayInformation();
         greetings.setText(AppConfig.getGreetings());

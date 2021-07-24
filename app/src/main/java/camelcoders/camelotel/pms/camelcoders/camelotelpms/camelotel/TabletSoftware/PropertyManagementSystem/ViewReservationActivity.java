@@ -8,18 +8,15 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
-import com.google.android.material.tabs.TabLayout;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.CommonActivities.LoginActivity;
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Modules.CheckIn;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.CheckInOffice;
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.FrontOffice;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.FolioDetailsFragment;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.GeneralInformationFragment;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.RoomChargesFragment;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.SharerInformationFragment;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Utilities.AppConfig;
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.ActivityLoginBinding;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.ActivityViewReservationBinding;
 
 public class ViewReservationActivity extends AppCompatActivity {
@@ -40,10 +37,10 @@ public class ViewReservationActivity extends AppCompatActivity {
     }
     private void setupViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(CheckInOffice.newInstance(), "Genral Information");
-        adapter.addFragment(CheckInOffice.newInstance(), "Room Charges");
-        adapter.addFragment(CheckInOffice.newInstance(), "Folio Details");
-        adapter.addFragment(CheckInOffice.newInstance(), "Sharer Information");
+        adapter.addFragment(GeneralInformationFragment.newInstance(), "Genral Information");
+        adapter.addFragment(RoomChargesFragment.newInstance(), "Room Charges");
+        adapter.addFragment(FolioDetailsFragment.newInstance(), "Folio Details");
+        adapter.addFragment(SharerInformationFragment.newInstance(), "Sharer Information");
         viewPager.setAdapter(adapter);
     }
     private class SectionsPagerAdapter extends FragmentPagerAdapter {
