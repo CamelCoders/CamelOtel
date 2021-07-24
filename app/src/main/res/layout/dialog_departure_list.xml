@@ -71,7 +71,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/spacing_xlarge"
                         android:gravity="center"
-                        android:text="Arrival Operations"
+                        android:text="Departure Operations"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:textColor="@color/grey_5" />
 
@@ -85,7 +85,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/viewArrivalReservation"
+                android:id="@+id/viewDepartureReservation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/operations"
@@ -109,10 +109,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalAuditTrail"
+                android:id="@+id/departureAuditTrail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/viewArrivalReservation"
+                android:layout_below="@+id/viewDepartureReservation"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"
@@ -133,58 +133,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalGuestProfileEdit"
+                android:id="@+id/departureAmendStay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalAuditTrail"
-                android:layout_marginLeft="@dimen/spacing_large"
-                android:layout_marginTop="05dp"
-                android:layout_marginRight="@dimen/spacing_large"
-                app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="@dimen/spacing_medium"
-                app:cardElevation="1dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/spacing_xlarge"
-                    android:gravity="center"
-                    android:paddingLeft="@dimen/spacing_large"
-                    android:paddingRight="@dimen/spacing_large"
-                    android:text="Edit Guest Profile"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textColor="@color/grey_90" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalAssignRoom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalGuestProfileEdit"
-                android:layout_marginLeft="@dimen/spacing_large"
-                android:layout_marginTop="05dp"
-                android:layout_marginRight="@dimen/spacing_large"
-                app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="@dimen/spacing_medium"
-                app:cardElevation="1dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/spacing_xlarge"
-                    android:gravity="center"
-                    android:paddingLeft="@dimen/spacing_large"
-                    android:paddingRight="@dimen/spacing_large"
-                    android:text="Assign Room"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textColor="@color/grey_90" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalAmendStay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalAssignRoom"
+                android:layout_below="@+id/departureAuditTrail"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"
@@ -205,10 +157,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalVoidTransaction"
+                android:id="@+id/departureVoidTransaction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalAmendStay"
+                android:layout_below="@+id/departureAmendStay"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"
@@ -229,10 +181,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalPrintInvoice"
+                android:id="@+id/departurePrintInvoice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalVoidTransaction"
+                android:layout_below="@+id/departureVoidTransaction"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"

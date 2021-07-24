@@ -394,7 +394,7 @@ public class PmsTabDashboard extends AppCompatActivity {
                 FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(PmsTabDashboard.this);
                 layoutManager.setFlexDirection(FlexDirection.ROW);
                 mainRecyclerView.setLayoutManager(layoutManager);
-                stayInformationAdapter = new StayInformationAdapter(PmsTabDashboard.this, stayInformationList2,"");
+                stayInformationAdapter = new StayInformationAdapter(PmsTabDashboard.this, stayInformationList2,"Reservation");
                 mainRecyclerView.setAdapter(stayInformationAdapter);
 //
 

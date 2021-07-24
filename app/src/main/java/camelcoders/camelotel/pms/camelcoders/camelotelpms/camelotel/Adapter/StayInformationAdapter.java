@@ -31,6 +31,9 @@ import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Ser
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Utilities.AppConfig;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.DialogArrivalListBinding;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.DialogDepartureListBinding;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.DialogInhouseListBinding;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.DialogReservationListBinding;
 
 
 public class StayInformationAdapter extends RecyclerView.Adapter<StayInformationAdapter.ViewHolder> {
@@ -322,21 +325,13 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
             @Override
             public void onClick(View v) {
                 if (function.equals("Reservation")) {
-                    String[] planArr = {"View Reservation", "Audit Trail", "Edit Guest Profile", "Void Transaction", "Amend Stay", "Cancel Reservation",
-                            "Change Reservation Type", "Assign Room", "Print Invoice"};
-                    AppConfig.showOperationItemList(planArr, (Activity) ctx, "Operations");
+                    DialogReservationListBinding binding = AppConfig.showReservationOperations((Activity) ctx);
                 } else if (function.equals("Arrival")) {
-                        DialogArrivalListBinding binding = AppConfig.showArrivalOperations((Activity)ctx);
-                        binding.arrivalAmendStay.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-
-                            }
-                        });
+                    DialogArrivalListBinding binding = AppConfig.showArrivalOperations((Activity) ctx);
                 } else if (function.equals("Departure")) {
-
+                    DialogDepartureListBinding binding = AppConfig.showDepartureOperations((Activity)ctx);
                 } else if (function.equals("InHouse")) {
-
+                    DialogInhouseListBinding binding = AppConfig.showInHouseOperations((Activity)ctx);
                 }
             }
         });

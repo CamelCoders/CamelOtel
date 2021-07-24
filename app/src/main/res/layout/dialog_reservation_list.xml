@@ -26,7 +26,9 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
                 android:scaleType="centerCrop"
+                android:background="@drawable/card_blue"
                 android:src="@drawable/card_blue" />
 
             <ImageButton
@@ -71,7 +73,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/spacing_xlarge"
                         android:gravity="center"
-                        android:text="Arrival Operations"
+                        android:text="Reservation Operations"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:textColor="@color/grey_5" />
 
@@ -85,7 +87,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/viewArrivalReservation"
+                android:id="@+id/viewReservationReservation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/operations"
@@ -109,10 +111,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalAuditTrail"
+                android:id="@+id/ReservationAuditTrail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/viewArrivalReservation"
+                android:layout_below="@+id/viewReservationReservation"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"
@@ -133,10 +135,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalGuestProfileEdit"
+                android:id="@+id/ReservationGuestProfileEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalAuditTrail"
+                android:layout_below="@+id/ReservationAuditTrail"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"
@@ -157,10 +159,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalAssignRoom"
+                android:id="@+id/ReservationUnassignRoom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalGuestProfileEdit"
+                android:layout_below="@+id/ReservationGuestProfileEdit"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"
@@ -174,17 +176,17 @@
                     android:gravity="center"
                     android:paddingLeft="@dimen/spacing_large"
                     android:paddingRight="@dimen/spacing_large"
-                    android:text="Assign Room"
+                    android:text="Unassign Room"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/grey_90" />
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalAmendStay"
+                android:id="@+id/ReservationAmendStay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalAssignRoom"
+                android:layout_below="@+id/ReservationUnassignRoom"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"
@@ -205,10 +207,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalVoidTransaction"
+                android:id="@+id/ReservationVoidTransaction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalAmendStay"
+                android:layout_below="@+id/ReservationAmendStay"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"
@@ -228,11 +230,60 @@
 
             </androidx.cardview.widget.CardView>
 
+
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalPrintInvoice"
+                android:id="@+id/ReservationCancelReservation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalVoidTransaction"
+                android:layout_below="@+id/ReservationVoidTransaction"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:layout_marginTop="05dp"
+                android:layout_marginRight="@dimen/spacing_large"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="@dimen/spacing_medium"
+                app:cardElevation="1dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/spacing_xlarge"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large"
+                    android:text="Cancel Reservation"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/grey_90" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/ReservationChangeReservationType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ReservationCancelReservation"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:layout_marginTop="05dp"
+                android:layout_marginRight="@dimen/spacing_large"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="@dimen/spacing_medium"
+                app:cardElevation="1dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/spacing_xlarge"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large"
+                    android:text="Change Reservation Type"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/grey_90" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/ReservationPrintInvoice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ReservationChangeReservationType"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"
@@ -251,8 +302,6 @@
                     android:textColor="@color/grey_90" />
 
             </androidx.cardview.widget.CardView>
-
-
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>

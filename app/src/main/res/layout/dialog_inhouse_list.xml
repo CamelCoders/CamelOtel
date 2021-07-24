@@ -71,7 +71,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/spacing_xlarge"
                         android:gravity="center"
-                        android:text="Arrival Operations"
+                        android:text="InHouse Operations"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:textColor="@color/grey_5" />
 
@@ -85,7 +85,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/viewArrivalReservation"
+                android:id="@+id/viewInHouseReservaton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/operations"
@@ -109,10 +109,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalAuditTrail"
+                android:id="@+id/InHouseAuditTrail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/viewArrivalReservation"
+                android:layout_below="@+id/viewInHouseReservaton"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"
@@ -133,10 +133,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalGuestProfileEdit"
+                android:id="@+id/InHouseUndoCheckIn_DayUse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalAuditTrail"
+                android:layout_below="@+id/InHouseAuditTrail"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"
@@ -150,17 +150,17 @@
                     android:gravity="center"
                     android:paddingLeft="@dimen/spacing_large"
                     android:paddingRight="@dimen/spacing_large"
-                    android:text="Edit Guest Profile"
+                    android:text="Undo Check-in/Day-use"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/grey_90" />
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalAssignRoom"
+                android:id="@+id/InHouseRoomMove"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalGuestProfileEdit"
+                android:layout_below="@+id/InHouseUndoCheckIn_DayUse"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"
@@ -174,17 +174,17 @@
                     android:gravity="center"
                     android:paddingLeft="@dimen/spacing_large"
                     android:paddingRight="@dimen/spacing_large"
-                    android:text="Assign Room"
+                    android:text="Room Move"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/grey_90" />
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalAmendStay"
+                android:id="@+id/InHouseAmendStay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalAssignRoom"
+                android:layout_below="@+id/InHouseRoomMove"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"
@@ -205,10 +205,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalVoidTransaction"
+                android:id="@+id/InHouseVoidTransaction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalAmendStay"
+                android:layout_below="@+id/InHouseAmendStay"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"
@@ -228,11 +228,36 @@
 
             </androidx.cardview.widget.CardView>
 
+
             <androidx.cardview.widget.CardView
-                android:id="@+id/arrivalPrintInvoice"
+                android:id="@+id/InHouseStopRoomMove"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalVoidTransaction"
+                android:layout_below="@+id/InHouseVoidTransaction"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:layout_marginTop="05dp"
+                android:layout_marginRight="@dimen/spacing_large"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="@dimen/spacing_medium"
+                app:cardElevation="1dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/spacing_xlarge"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large"
+                    android:text="Stop Room Move"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/grey_90" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/InHousePrintInvoice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/InHouseStopRoomMove"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="05dp"
                 android:layout_marginRight="@dimen/spacing_large"
@@ -251,7 +276,6 @@
                     android:textColor="@color/grey_90" />
 
             </androidx.cardview.widget.CardView>
-
 
         </RelativeLayout>
 
