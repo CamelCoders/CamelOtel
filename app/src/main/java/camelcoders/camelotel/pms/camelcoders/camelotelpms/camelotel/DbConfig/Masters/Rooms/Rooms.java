@@ -39,6 +39,8 @@ public class Rooms {
     private String is_dirty;
     @SerializedName("status")
     private String status;
+    @SerializedName("roomStatus")
+    private String roomStatus;
     @SerializedName("value")
     private String value;
 
@@ -51,25 +53,12 @@ public class Rooms {
 
     }
 
-    public Rooms(String room_short_code, String room_short_key, String room_name, String room_type_id, String room_bed_type_id, String room_phone_number, String room_key_card_alias, String room_is_smoking, String room_is_pay_master, String room_paymaster_inventory, String room_is_voucher, String room_template_id, String room_as, String room_suite_name, String room_description, String room_image_link, String is_dirty, String status) {
-        this.room_short_code = room_short_code;
-        this.room_short_key = room_short_key;
-        this.room_name = room_name;
-        this.room_type_id = room_type_id;
-        this.room_bed_type_id = room_bed_type_id;
-        this.room_phone_number = room_phone_number;
-        this.room_key_card_alias = room_key_card_alias;
-        this.room_is_smoking = room_is_smoking;
-        this.room_is_pay_master = room_is_pay_master;
-        this.room_paymaster_inventory = room_paymaster_inventory;
-        this.room_is_voucher = room_is_voucher;
-        this.room_template_id = room_template_id;
-        this.room_as = room_as;
-        this.room_suite_name = room_suite_name;
-        this.room_description = room_description;
-        this.room_image_link = room_image_link;
-        this.is_dirty = is_dirty;
-        this.status = status;
+    public String getRoomStatus() {
+        return roomStatus;
+    }
+
+    public void setRoomStatus(String roomStatus) {
+        this.roomStatus = roomStatus;
     }
 
     public String getRoom_short_code() {

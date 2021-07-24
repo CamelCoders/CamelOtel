@@ -76,7 +76,6 @@ public class PmsTabDashboard extends AppCompatActivity {
         AppConfig.setOrientations(PmsTabDashboard.this);
         AppConfig.setStatusBarColor(PmsTabDashboard.this, R.color.dark_color);
         initView();
-
         fm.beginTransaction().add(R.id.main_container, fragment2, "2").hide(fragment2).commit();
         fm.beginTransaction().add(R.id.main_container, fragment1, "1").commit();
 
@@ -147,8 +146,7 @@ public class PmsTabDashboard extends AppCompatActivity {
         });
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         mainRecyclerView = findViewById(R.id.listRecyclerView);
-        getStayInformation();
-        dashboardMain.setOnClickListener(new View.OnClickListener() {
+         dashboardMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                listLayout.setVisibility(View.VISIBLE);
@@ -194,129 +192,7 @@ public class PmsTabDashboard extends AppCompatActivity {
         Dialog dialog = AppConfig.showFullScreenCustomDialog(R.layout.dialog_night_audit, PmsTabDashboard.this);
         pendingReservationAudit = dialog.findViewById(R.id.pendingReservationAudit);
         releaseReservationAudit = dialog.findViewById(R.id.releaseReservationAudit);
-        roomStatusAudit = dialog.findViewById(R.id.roomStatusAudit);
-        unsetelledFolios = dialog.findViewById(R.id.unsetelledFolios);
-        nightlyCharges = dialog.findViewById(R.id.nightAudit);
-        newDayAudit = dialog.findViewById(R.id.newDayAudit);
-
-        pendingReservationAuditText = dialog.findViewById(R.id.pendingReservationAuditText);
-        releaseReservationAuditText = dialog.findViewById(R.id.releaseReservationAuditText);
-        roomStatusAuditText = dialog.findViewById(R.id.roomStatusAuditText);
-        unsetelledFoliosText = dialog.findViewById(R.id.unsetelledFoliosText);
-        nightlyChargesText = dialog.findViewById(R.id.nightlyChargesText);
-        newDayAuditText = dialog.findViewById(R.id.newDayAuditText);
-
-        dialog.show();
     }
-
-//    private void setActiveAuditLayout() {
-//        if (activeAudit.equals("Pending")) {
-//            pendingReservationAudit.setCardBackgroundColor(getResources().getColor(R.color.dark_color));
-//            pendingReservationAuditText.setTextColor(getResources().getColor(R.color.light_color));
-//
-//            releaseReservationAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
-//            releaseReservationAuditText.setTextColor(getResources().getColor(R.color.dark_color));
-//
-//
-//            roomStatusAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
-//            roomStatusAuditText.setTextColor(getResources().getColor(R.color.dark_color));
-//
-//
-//            unsetelledFolios.setCardBackgroundColor(getResources().getColor(R.color.white));
-//            unsetelledFoliosText.setTextColor(getResources().getColor(R.color.dark_color));
-//
-//
-//            nightlyCharges.setCardBackgroundColor(getResources().getColor(R.color.white));
-//            nightlyChargesText.setTextColor(getResources().getColor(R.color.dark_color));
-//
-//
-//            newDayAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
-//            newDayAuditText.setTextColor(getResources().getColor(R.color.dark_color));
-//
-//        }else if(activeAudit.equals("Release")){
-//            pendingReservationAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
-//            pendingReservationAuditText.setTextColor(getResources().getColor(R.color.dark_color));
-//
-//            releaseReservationAudit.setCardBackgroundColor(getResources().getColor(R.color.dark_color));
-//            releaseReservationAuditText.setTextColor(getResources().getColor(R.color.light_color));
-//
-//
-//            roomStatusAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
-//            roomStatusAuditText.setTextColor(getResources().getColor(R.color.dark_color));
-//
-//
-//            unsetelledFolios.setCardBackgroundColor(getResources().getColor(R.color.white));
-//            unsetelledFoliosText.setTextColor(getResources().getColor(R.color.dark_color));
-//
-//
-//            nightlyCharges.setCardBackgroundColor(getResources().getColor(R.color.white));
-//            nightlyChargesText.setTextColor(getResources().getColor(R.color.dark_color));
-//
-//
-//            newDayAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
-//            newDayAuditText.setTextColor(getResources().getColor(R.color.dark_color));
-//        }
-//        else if(activeAudit.equals("Room")){
-//            pendingReservationAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
-//            pendingReservationAuditText.setTextColor(getResources().getColor(R.color.dark_color));
-//
-//            releaseReservationAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
-//            releaseReservationAuditText.setTextColor(getResources().getColor(R.color.dark_color));
-//
-//
-//            roomStatusAudit.setCardBackgroundColor(getResources().getColor(R.color.dark_color));
-//            roomStatusAuditText.setTextColor(getResources().getColor(R.color.light_color));
-//
-//
-//            unsetelledFolios.setCardBackgroundColor(getResources().getColor(R.color.white));
-//            unsetelledFoliosText.setTextColor(getResources().getColor(R.color.dark_color));
-//
-//
-//            nightlyCharges.setCardBackgroundColor(getResources().getColor(R.color.white));
-//            nightlyChargesText.setTextColor(getResources().getColor(R.color.dark_color));
-//
-//
-//            newDayAudit.setCardBackgroundColor(getResources().getColor(R.color.white));
-//            newDayAuditText.setTextColor(getResources().getColor(R.color.dark_color));
-//        }else if(activeAudit.z"Unsetelled"){
-//
-//        }
-//    }
-
-
-    public void getStayInformation() {
-        StayInformationApiInterface apiInterface = ApiClient.getApiClient().create(StayInformationApiInterface.class);
-
-        Call<List<StayInformation>> call = apiInterface.getStayInfomation();
-        call.enqueue(new Callback<List<StayInformation>>() {
-            @Override
-            public void onResponse(Call<List<StayInformation>> call, Response<List<StayInformation>> response) {
-                stayInformationList = response.body();
-
-
-                for (int i = 0; i < stayInformationList.size(); i++) {
-                    if (!stayInformationList.get(i).getCheckin().equals(simpleDateFormat.format(calendar.getTime()))) {
-                        stayInformationList.remove(i);
-                    }
-                }
-
-                Log.e("", "" + stayInformationList.size());
-
-                LinearLayoutManager layoutManager = new LinearLayoutManager(PmsTabDashboard.this);
-                mainRecyclerView.setLayoutManager(layoutManager);
-                stayInformationAdapter = new StayInformationAdapter(PmsTabDashboard.this, stayInformationList);
-                mainRecyclerView.setAdapter(stayInformationAdapter);
-
-            }
-
-            @Override
-            public void onFailure(Call<List<StayInformation>> call, Throwable t) {
-            }
-        });
-
-    }
-
-
     private void initView() {
         greetings = findViewById(R.id.greetings);
         selectHotel = findViewById(R.id.selecthotel);
