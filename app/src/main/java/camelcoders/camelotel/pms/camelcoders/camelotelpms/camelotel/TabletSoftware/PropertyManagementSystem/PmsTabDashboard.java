@@ -2,6 +2,8 @@ package camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftw
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -69,6 +71,7 @@ public class PmsTabDashboard extends AppCompatActivity {
     DrawerLayout drawer;
     FrameLayout main_container;
     EditText SelectDate;
+    TextView selectedList;
 
 
     @Override
@@ -80,6 +83,7 @@ public class PmsTabDashboard extends AppCompatActivity {
         initView();
 
         SelectDate=findViewById(R.id.SelectDate);
+        selectedList=findViewById(R.id.selectedList);
 
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -96,7 +100,45 @@ public class PmsTabDashboard extends AppCompatActivity {
         });
 
 
+SelectDate.addTextChangedListener(new TextWatcher() {
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        if (selectedList.getText().toString().equals("In-House View")){
+
+            getInHouseInformation();
+
+        }
+
+        if (selectedList.getText().toString().equals("Arrival List")){
+
+            getArrivalInformation();
+
+        }
+        if (selectedList.getText().toString().equals("Departure List")){
+
+            getDepartureInformation();
+
+        }
+        if (selectedList.getText().toString().equals("Reservation / Booking List")){
+
+            getStayInformation();
+
+        }
+
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
+});
 
          fm.beginTransaction().add(R.id.main_container, fragment1, "1").commit();
         getStayInformation();
@@ -131,6 +173,8 @@ public class PmsTabDashboard extends AppCompatActivity {
                     newReseravation.createReservation(PmsTabDashboard.this);
                 }
                 if (index == 2){
+
+                    selectedList.setText("Reservation / Booking List");
                     stayInformationList.clear();
 
                     StayInformationApiInterface apiInterface = ApiClient.getApiClient().create(StayInformationApiInterface.class);
@@ -164,123 +208,18 @@ public class PmsTabDashboard extends AppCompatActivity {
                     });
                 }
                 if (index == 3) {
-                     stayInformationList.clear();
-                    StayInformationApiInterface apiInterface = ApiClient.getApiClient().create(StayInformationApiInterface.class);
+                    selectedList.setText("Arrival List");
 
-                    Call<List<StayInformation>> call = apiInterface.getStayInfomation();
-                    call.enqueue(new Callback<List<StayInformation>>() {
-                        @Override
-                        public void onResponse(Call<List<StayInformation>> call, Response<List<StayInformation>> response) {
-                            stayInformationList = response.body();
-
-                            for (int i = 0; i < stayInformationList.size(); i++) {
-
-                                if (!stayInformationList.get(i).getCheckin().equals(SelectDate.getText().toString())){
-                                        stayInformationList.remove(i);
-                                }
-                            }
-                            for (int i = 0; i < stayInformationList.size(); i++) {
-
-                                if (!stayInformationList.get(i).getStatus().equals("0")){
-                                        stayInformationList.remove(i);
-                                }
-                            }
-
-
-                            FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(PmsTabDashboard.this);
-                            layoutManager.setFlexDirection(FlexDirection.ROW);
-                            mainRecyclerView.setLayoutManager(layoutManager);
-                            stayInformationAdapter = new StayInformationAdapter(PmsTabDashboard.this, stayInformationList,"Arrival");
-                            mainRecyclerView.setAdapter(stayInformationAdapter);
-//
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<List<StayInformation>> call, Throwable t) {
-                        }
-                    });
+                 getArrivalInformation();
                 }
                 if (index == 4) {
-                    stayInformationList.clear();
-                    StayInformationApiInterface apiInterface = ApiClient.getApiClient().create(StayInformationApiInterface.class);
+                    selectedList.setText("Departure List");
+                    getDepartureInformation();
 
-                    Call<List<StayInformation>> call = apiInterface.getStayInfomation();
-                    call.enqueue(new Callback<List<StayInformation>>() {
-                        @Override
-                        public void onResponse(Call<List<StayInformation>> call, Response<List<StayInformation>> response) {
-                            stayInformationList = response.body();
-
-
-                            for (int i = 0; i < stayInformationList.size(); i++) {
-                                if (!(stayInformationList.get(i).getCheckout().equals(SelectDate.getText().toString()))
-                                ) {
-                                    stayInformationList.remove(i);
-                                }
-                            }
-                            for (int i = 0; i < stayInformationList.size(); i++) {
-
-                                if (!stayInformationList.get(i).getStatus().equals("1")){
-                                    stayInformationList.remove(i);
-                                }
-                            }
-
-
-                            FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(PmsTabDashboard.this);
-                            layoutManager.setFlexDirection(FlexDirection.ROW);
-                            mainRecyclerView.setLayoutManager(layoutManager);
-                            stayInformationAdapter = new StayInformationAdapter(PmsTabDashboard.this, stayInformationList,"Departure");
-                            mainRecyclerView.setAdapter(stayInformationAdapter);
-//
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<List<StayInformation>> call, Throwable t) {
-                        }
-                    });
                 }
                 if (index == 5) {
-                    stayInformationList.clear();
-                    StayInformationApiInterface apiInterface = ApiClient.getApiClient().create(StayInformationApiInterface.class);
-
-                    Call<List<StayInformation>> call = apiInterface.getStayInfomation();
-                    call.enqueue(new Callback<List<StayInformation>>() {
-                        @Override
-                        public void onResponse(Call<List<StayInformation>> call, Response<List<StayInformation>> response) {
-                            stayInformationList = response.body();
-
-
-
-
-                            for (int i = 0; i < stayInformationList.size(); i++) {
-
-                                if (!stayInformationList.get(i).getCheckout().equals(SelectDate.getText().toString())){
-                                    stayInformationList.remove(i);
-                                }
-                            }
-                            for (int i = 0; i < stayInformationList.size(); i++) {
-
-                                if (!stayInformationList.get(i).getStatus().equals("1")){
-                                    stayInformationList.remove(i);
-                                }
-                            }
-
-
-
-                            FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(PmsTabDashboard.this);
-                            layoutManager.setFlexDirection(FlexDirection.ROW);
-                            mainRecyclerView.setLayoutManager(layoutManager);
-                            stayInformationAdapter = new StayInformationAdapter(PmsTabDashboard.this, stayInformationList,"InHouse");
-                            mainRecyclerView.setAdapter(stayInformationAdapter);
-//
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<List<StayInformation>> call, Throwable t) {
-                        }
-                    });
+                    selectedList.setText("In-House View");
+                   getInHouseInformation();
                 }
 
             }
@@ -424,5 +363,128 @@ public class PmsTabDashboard extends AppCompatActivity {
         });
 
     }
+    public void getArrivalInformation() {
+        stayInformationList.clear();
+        StayInformationApiInterface apiInterface = ApiClient.getApiClient().create(StayInformationApiInterface.class);
 
+        Call<List<StayInformation>> call = apiInterface.getStayInfomation();
+        call.enqueue(new Callback<List<StayInformation>>() {
+            @Override
+            public void onResponse(Call<List<StayInformation>> call, Response<List<StayInformation>> response) {
+                stayInformationList = response.body();
+
+                for (int i = 0; i < stayInformationList.size(); i++) {
+
+                    if (!stayInformationList.get(i).getCheckin().equals(SelectDate.getText().toString())){
+                        stayInformationList.remove(i);
+                    }
+                }
+                for (int i = 0; i < stayInformationList.size(); i++) {
+
+                    if (!stayInformationList.get(i).getStatus().equals("0")){
+                        stayInformationList.remove(i);
+                    }
+                }
+
+
+                FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(PmsTabDashboard.this);
+                layoutManager.setFlexDirection(FlexDirection.ROW);
+                mainRecyclerView.setLayoutManager(layoutManager);
+                stayInformationAdapter = new StayInformationAdapter(PmsTabDashboard.this, stayInformationList,"Arrival");
+                mainRecyclerView.setAdapter(stayInformationAdapter);
+//
+
+            }
+
+            @Override
+            public void onFailure(Call<List<StayInformation>> call, Throwable t) {
+            }
+        });
+    }
+
+    public void getDepartureInformation() {
+
+        stayInformationList.clear();
+        StayInformationApiInterface apiInterface = ApiClient.getApiClient().create(StayInformationApiInterface.class);
+
+        Call<List<StayInformation>> call = apiInterface.getStayInfomation();
+        call.enqueue(new Callback<List<StayInformation>>() {
+            @Override
+            public void onResponse(Call<List<StayInformation>> call, Response<List<StayInformation>> response) {
+                stayInformationList = response.body();
+
+
+                for (int i = 0; i < stayInformationList.size(); i++) {
+                    if (!(stayInformationList.get(i).getCheckout().equals(SelectDate.getText().toString()))
+                    ) {
+                        stayInformationList.remove(i);
+                    }
+                }
+                for (int i = 0; i < stayInformationList.size(); i++) {
+
+                    if (!stayInformationList.get(i).getStatus().equals("1")){
+                        stayInformationList.remove(i);
+                    }
+                }
+
+
+                FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(PmsTabDashboard.this);
+                layoutManager.setFlexDirection(FlexDirection.ROW);
+                mainRecyclerView.setLayoutManager(layoutManager);
+                stayInformationAdapter = new StayInformationAdapter(PmsTabDashboard.this, stayInformationList,"Departure");
+                mainRecyclerView.setAdapter(stayInformationAdapter);
+//
+
+            }
+
+            @Override
+            public void onFailure(Call<List<StayInformation>> call, Throwable t) {
+            }
+        });
+
+    }
+
+    public void getInHouseInformation() {
+
+        stayInformationList.clear();
+        StayInformationApiInterface apiInterface = ApiClient.getApiClient().create(StayInformationApiInterface.class);
+
+        Call<List<StayInformation>> call = apiInterface.getStayInfomation();
+        call.enqueue(new Callback<List<StayInformation>>() {
+            @Override
+            public void onResponse(Call<List<StayInformation>> call, Response<List<StayInformation>> response) {
+                stayInformationList = response.body();
+
+
+
+
+                for (int i = 0; i < stayInformationList.size(); i++) {
+
+                    if (!stayInformationList.get(i).getCheckout().equals(SelectDate.getText().toString())){
+                        stayInformationList.remove(i);
+                    }
+                }
+                for (int i = 0; i < stayInformationList.size(); i++) {
+
+                    if (!stayInformationList.get(i).getStatus().equals("1")){
+                        stayInformationList.remove(i);
+                    }
+                }
+
+
+
+                FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(PmsTabDashboard.this);
+                layoutManager.setFlexDirection(FlexDirection.ROW);
+                mainRecyclerView.setLayoutManager(layoutManager);
+                stayInformationAdapter = new StayInformationAdapter(PmsTabDashboard.this, stayInformationList,"InHouse");
+                mainRecyclerView.setAdapter(stayInformationAdapter);
+//
+
+            }
+
+            @Override
+            public void onFailure(Call<List<StayInformation>> call, Throwable t) {
+            }
+        });
+    }
 }

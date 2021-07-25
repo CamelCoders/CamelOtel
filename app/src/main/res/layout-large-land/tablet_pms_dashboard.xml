@@ -224,9 +224,7 @@
                     android:backgroundTint="@color/light_color" />
 
 
-                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    xmlns:tools="http://schemas.android.com/tools"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -265,16 +263,17 @@
                                 android:textStyle="bold" />
 
                             <EditText
+                                android:id="@+id/selectedList"
                                 style="@style/EditText.Flat.Grey"
                                 android:layout_width="wrap_content"
-                                android:layout_height="35dp"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="right"
                                 android:layout_margin="@dimen/spacing_small"
                                 android:layout_weight="1"
                                 android:background="@drawable/edit_text_round_bg_white"
                                 android:focusable="false"
                                 android:gravity="right"
-                                android:hint="Booking List"
+                                android:hint="Reservation / Booking List"
                                 android:paddingLeft="@dimen/spacing_middle"
                                 android:paddingRight="@dimen/spacing_middle"
                                 android:textColorHint="@color/dark_color"
