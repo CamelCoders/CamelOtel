@@ -11,6 +11,10 @@ import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
 
 
 public class CheckInOffice extends Fragment {
+    public static CheckInOffice newInstance() {
+        CheckInOffice fragment = new CheckInOffice();
+        return fragment;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
