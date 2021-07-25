@@ -30,48 +30,50 @@ import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Mas
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Service.ApiClient;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Utilities.AppConfig;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.DialogArrivalListBinding;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.DialogDepartureListBinding;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.DialogInhouseListBinding;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.DialogReservationListBinding;
 
 
 public class StayInformationAdapter extends RecyclerView.Adapter<StayInformationAdapter.ViewHolder> {
+    private final Context ctx;
     public GuestApiInterface apiInterface = ApiClient.getApiClient().create(GuestApiInterface.class);
-
-    Calendar cal=Calendar.getInstance();
     public OnItemClickListener onItemClick;
     public LinearLayout guestInformationButton, stayInformationButton,
             otherInformationButton, billingInformationButton, multipleStayInformationInformationButton;
-    public LinearLayout formGuestInformation, formStayInformation,formGuestLayout;
-    private List<StayInformation> items = new ArrayList<>();
-    private List<StayInformation> itemFilter = new ArrayList<>();
+    public LinearLayout formGuestInformation, formStayInformation, formGuestLayout;
     public List<Guest> guestList = new ArrayList<>();
-    Dialog CheckinInfoDilog,addGuestDialog;
-
-    Button AddGuest;
     public TextView guestInformationButtonText, stayInformationButtonText,
             otherInformationButtonText, billingInformationButtonText, multipleStayInformationInformationButtonText;
-        SalutationsCrud salutationsCrud=new SalutationsCrud();
-    GuestCrud guestCrud = new GuestCrud();
-    private final Context ctx;
-    String guestIDs;
-    private OnItemClickListener mOnItemClickListener;
     public TextInputEditText stayRooms, stayRoomType, stayRoomSelect, stayRateType,
             stayArrivalDate, stayArrivalTime,
             stayRatePlan, staySubStayPlan,
             stayArrivalNight, stayDepartureDate, stayDepartureTime,
             stayAdult, stayReserType, stayChild, stayGuestStatus;
-    RecyclerView selectStayREcycler;
-    String[] guestData ;
-    String[] guestAdd= new String[1];
-    Button CheckInBook;
     public TextView rate, taxPercentage, amount, taxAmount;
+    Calendar cal = Calendar.getInstance();
+    Dialog CheckinInfoDilog, addGuestDialog;
+    Button AddGuest;
+    SalutationsCrud salutationsCrud = new SalutationsCrud();
+    GuestCrud guestCrud = new GuestCrud();
+    String function;
+    String guestIDs;
+    RecyclerView selectStayREcycler;
+    String[] guestData;
+    String[] guestAdd = new String[1];
+    Button CheckInBook;
+    String currentString;
+    String[] separated;
+    private List<StayInformation> items = new ArrayList<>();
+    private List<StayInformation> itemFilter = new ArrayList<>();
+    private OnItemClickListener mOnItemClickListener;
 
-
-    String currentString ;
-    String[] separated ;
-
-    public StayInformationAdapter(Context context, List<StayInformation> items,String function) {
+    public StayInformationAdapter(Context context, List<StayInformation> items, String function) {
         this.items = items;
         this.itemFilter = items;
         ctx = context;
+        this.function = function;
     }
 
     public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
@@ -322,9 +324,15 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
         holder.listItemDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] planArr = {"View Reservation", "Audit Trail", "Edit Guest Profile", "Void Transaction", "Amend Stay", "Cancel Reservation",
-                        "Change Reservation Type", "Assign Room", "Print Invoice"};
-                AppConfig.showOperationItemList(planArr, (Activity) ctx, "Operations");
+                if (function.equals("Reservation")) {
+                    DialogReservationListBinding binding = AppConfig.showReservationOperations((Activity) ctx);
+                } else if (function.equals("Arrival")) {
+                    DialogArrivalListBinding binding = AppConfig.showArrivalOperations((Activity) ctx);
+                } else if (function.equals("Departure")) {
+                    DialogDepartureListBinding binding = AppConfig.showDepartureOperations((Activity)ctx);
+                } else if (function.equals("InHouse")) {
+                    DialogInhouseListBinding binding = AppConfig.showInHouseOperations((Activity)ctx);
+                }
             }
         });
 
@@ -341,35 +349,6 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
         notifyDataSetChanged();
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(View view, StayInformation obj, int position);
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView roomnumber, title_time_label, title_date_label, phonenumber;
-        LinearLayout checkinClick;
-        OnItemClick onItemClick;
-        LinearLayout listItemDetails;
-        public ViewHolder(View v, int viewType, OnItemClick onItemClick) {
-            super(v);
-
-            this.onItemClick = onItemClick;
-            roomnumber = v.findViewById(R.id.roomnumber);
-            title_time_label = v.findViewById(R.id.title_time_label);
-            listItemDetails = v.findViewById(R.id.listItemDetails);
-            title_date_label = v.findViewById(R.id.title_date_label);
-            checkinClick = v.findViewById(R.id.checkinClick);
-
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (onItemClick != null) {
-                onItemClick.onItemClick(getLayoutPosition(), view);
-            }
-        }
-    }
-
     public void initLayoutVariables(Dialog view) {
 
         formGuestInformation = view.findViewById(R.id.formGuestInformation);
@@ -379,7 +358,7 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
         selectStayREcycler = view.findViewById(R.id.selectItemLayout);
 
 
-        CheckInBook=view.findViewById(R.id.CheckIButton);
+        CheckInBook = view.findViewById(R.id.CheckIButton);
 
         rate = view.findViewById(R.id.rate);
 
@@ -388,9 +367,8 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
         taxAmount = view.findViewById(R.id.taxAmount);
 
 
-
         stayRatePlan = (view.findViewById(R.id.stayRatePlan));
-         stayRoomType = (view.findViewById(R.id.stayRoomType));
+        stayRoomType = (view.findViewById(R.id.stayRoomType));
 
         staySubStayPlan = (view.findViewById(R.id.subRatePlan));
         stayAdult = (view.findViewById(R.id.stayAdult));
@@ -409,7 +387,46 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
         stayInformationButtonText = view.findViewById(R.id.stayInformationButtonText);
         guestInformationButton = view.findViewById(R.id.guestInformationButton);
         stayInformationButton = view.findViewById(R.id.stayInformationButton);
-          }
+    }
+
+    public void addView(Activity activity) {
+
+
+        final View view = activity.getLayoutInflater().inflate(R.layout.guest_list, null, false);
+
+
+        TextView guestName, identitynumber, pincode, phonenumber;
+
+
+        guestName = view.findViewById(R.id.guestName);
+        pincode = view.findViewById(R.id.pincode);
+        identitynumber = view.findViewById(R.id.Identitiynumber);
+        phonenumber = view.findViewById(R.id.phonenumber);
+
+
+        formGuestLayout.addView(view);
+
+
+    }
+
+    public void setActiveForm(String activeForm, Context context) {
+        if (activeForm.equals("guestInformationButton")) {
+            formGuestInformation.setVisibility(View.VISIBLE);
+            formStayInformation.setVisibility(View.GONE);
+            guestInformationButton.setBackgroundColor(context.getResources().getColor(R.color.dark_color));
+            stayInformationButton.setBackgroundColor(context.getResources().getColor(R.color.light_color));
+            guestInformationButtonText.setTextColor(context.getResources().getColor(R.color.light_color));
+            stayInformationButtonText.setTextColor(context.getResources().getColor(R.color.dark_color));
+
+        } else if (activeForm.equals("stayInformationButton")) {
+            formGuestInformation.setVisibility(View.GONE);
+            formStayInformation.setVisibility(View.VISIBLE);
+            guestInformationButton.setBackgroundColor(context.getResources().getColor(R.color.light_color));
+            stayInformationButton.setBackgroundColor(context.getResources().getColor(R.color.dark_color));
+            guestInformationButtonText.setTextColor(context.getResources().getColor(R.color.dark_color));
+            stayInformationButtonText.setTextColor(context.getResources().getColor(R.color.light_color));
+        }
+    }
 
 //          public void addView(Activity activity,String guestID){
 //              final View view = activity.getLayoutInflater().inflate(R.layout.guest_layout,null,false);
@@ -515,50 +532,11 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
 //          }
 //
 
-    public void addView(Activity activity){
-
-
-        final View view = activity.getLayoutInflater().inflate(R.layout.guest_list,null,false);
-
-
-          TextView guestName,identitynumber,pincode,phonenumber;
-
-
-        guestName=view.findViewById(R.id.guestName);
-        pincode=view.findViewById(R.id.pincode);
-        identitynumber=view.findViewById(R.id.Identitiynumber);
-        phonenumber=view.findViewById(R.id.phonenumber);
-
-
-        formGuestLayout.addView(view);
-
-
-    }
-
-    public void setActiveForm(String activeForm, Context context) {
-        if (activeForm.equals("guestInformationButton")) {
-            formGuestInformation.setVisibility(View.VISIBLE);
-            formStayInformation.setVisibility(View.GONE);
-            guestInformationButton.setBackgroundColor(context.getResources().getColor(R.color.dark_color));
-            stayInformationButton.setBackgroundColor(context.getResources().getColor(R.color.light_color));
-            guestInformationButtonText.setTextColor(context.getResources().getColor(R.color.light_color));
-            stayInformationButtonText.setTextColor(context.getResources().getColor(R.color.dark_color));
-
-        } else if (activeForm.equals("stayInformationButton")) {
-            formGuestInformation.setVisibility(View.GONE);
-            formStayInformation.setVisibility(View.VISIBLE);
-            guestInformationButton.setBackgroundColor(context.getResources().getColor(R.color.light_color));
-            stayInformationButton.setBackgroundColor(context.getResources().getColor(R.color.dark_color));
-            guestInformationButtonText.setTextColor(context.getResources().getColor(R.color.dark_color));
-            stayInformationButtonText.setTextColor(context.getResources().getColor(R.color.light_color));
-        }
-    }
-
     private boolean setTotalPrice() {
-        Float roomPriceWOtax=00.00f,roomPriceWtax=00.00f,roomTaxAmount=00.00f;
-         boolean result = true;
+        Float roomPriceWOtax = 00.00f, roomPriceWtax = 00.00f, roomTaxAmount = 00.00f;
+        boolean result = true;
 
-        for(int i=0;i<formGuestInformation.getChildCount();i++){
+        for (int i = 0; i < formGuestInformation.getChildCount(); i++) {
             View view = formGuestInformation.getChildAt(i);
             TextInputEditText guestSalutation, guestFirstName, guestMiddleName,
                     guestLastName, guestPincode, guestAddress, guestFullAddress,
@@ -580,42 +558,40 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
             guestIdType = view.findViewById(R.id.guestIdType);
             guestIdNumber = view.findViewById(R.id.guestIdNumber);
 
-            if(guestSalutation.getText().toString().isEmpty() || guestFirstName.getText().toString().isEmpty() ||
-            guestPhone.getText().toString().isEmpty() ||
-            guestCountry.getText().toString().isEmpty() || guestEmail.getText().toString().isEmpty() ||
-            guestPincode.getText().toString().isEmpty() || guestState.getText().toString().isEmpty() ||
-            guestFullAddress.getText().toString().isEmpty() || guestCity.getText().toString().isEmpty() ||
-            guestIdType.getText().toString().isEmpty() || guestIdNumber.getText().toString().isEmpty()){
+            if (guestSalutation.getText().toString().isEmpty() || guestFirstName.getText().toString().isEmpty() ||
+                    guestPhone.getText().toString().isEmpty() ||
+                    guestCountry.getText().toString().isEmpty() || guestEmail.getText().toString().isEmpty() ||
+                    guestPincode.getText().toString().isEmpty() || guestState.getText().toString().isEmpty() ||
+                    guestFullAddress.getText().toString().isEmpty() || guestCity.getText().toString().isEmpty() ||
+                    guestIdType.getText().toString().isEmpty() || guestIdNumber.getText().toString().isEmpty()) {
 
 
                 result = false;
                 break;
 
-            }else {
+            } else {
 
                 DateFormat date = new SimpleDateFormat("MMddyyyyhhmmss");
 
 
                 String biilid = date.format(cal.getTime());
-                String guestId=guestFirstName.getText().toString()+biilid;
-                guestIDs=guestIDs+guestId+",";
+                String guestId = guestFirstName.getText().toString() + biilid;
+                guestIDs = guestIDs + guestId + ",";
 
 
-              guestData[i]=guestId+""+guestSalutation.getText().toString()+"!"+guestFirstName.getText().toString()+"!"
-                      +guestMiddleName.getText().toString()+"!"+guestLastName.getText().toString()+"!"+ guestFullAddress.getText().toString()
-                    +"!"+ guestAddress.getText().toString()+"!"+guestCity.getText().toString()+"!"+ guestPincode.getText().toString()
-                      +"!"+guestCountry.getText().toString()+"!"+guestCountry.getText().toString()+"!"+"VIP"
-                      +"!"+guestEmail.getText().toString()+"!"
-                      +guestPhone.getText().toString()+"!"+"GENDER"+"!"+guestIdType.getText().toString()+"!"+guestIdNumber.getText().toString();
+                guestData[i] = guestId + "" + guestSalutation.getText().toString() + "!" + guestFirstName.getText().toString() + "!"
+                        + guestMiddleName.getText().toString() + "!" + guestLastName.getText().toString() + "!" + guestFullAddress.getText().toString()
+                        + "!" + guestAddress.getText().toString() + "!" + guestCity.getText().toString() + "!" + guestPincode.getText().toString()
+                        + "!" + guestCountry.getText().toString() + "!" + guestCountry.getText().toString() + "!" + "VIP"
+                        + "!" + guestEmail.getText().toString() + "!"
+                        + guestPhone.getText().toString() + "!" + "GENDER" + "!" + guestIdType.getText().toString() + "!" + guestIdNumber.getText().toString();
 
                 result = true;
 
             }
 
 
-
         }
-
 
 
         return result;
@@ -623,66 +599,87 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
     }
 
     private void setValue() {
-        Float roomPriceWOtax=00.00f,roomPriceWtax=00.00f,roomTaxAmount=00.00f;
+        Float roomPriceWOtax = 00.00f, roomPriceWtax = 00.00f, roomTaxAmount = 00.00f;
         boolean result = true;
 
 
+        for (int i = 0; i < separated.length; i++) {
 
+            for (int j = 0; j < guestList.size(); j++) {
+                if (guestList.get(i).getGuestid().equals(separated[i])) {
 
-
-        for(int i=0;i<separated.length;i++){
-
-           for (int j=0;j<guestList.size();j++){
-               if (guestList.get(i).getGuestid().equals(separated[i])){
-
-                   View view = formGuestInformation.getChildAt(i);
-                   TextInputEditText guestSalutation, guestFirstName, guestMiddleName,
-                           guestLastName, guestPincode, guestAddress, guestFullAddress,
-                           guestCity, guestCountry, guestPhone, guestEmail, guestIdType, guestIdNumber, guestState;
-                   RecyclerView guestRecyler;
-                   guestRecyler = view.findViewById(R.id.guestList);
-                   guestSalutation = view.findViewById(R.id.guestSalutation);
-                   guestFirstName = view.findViewById(R.id.guestFirstName);
-                   guestMiddleName = view.findViewById(R.id.guestMiddleName);
-                   guestLastName = view.findViewById(R.id.guestLastName);
-                   guestPincode = view.findViewById(R.id.guestPincode);
-                   guestState = view.findViewById(R.id.guestState);
-                   guestCity = view.findViewById(R.id.guestCity);
-                   guestFullAddress = view.findViewById(R.id.guestfullAdrress);
+                    View view = formGuestInformation.getChildAt(i);
+                    TextInputEditText guestSalutation, guestFirstName, guestMiddleName,
+                            guestLastName, guestPincode, guestAddress, guestFullAddress,
+                            guestCity, guestCountry, guestPhone, guestEmail, guestIdType, guestIdNumber, guestState;
+                    RecyclerView guestRecyler;
+                    guestRecyler = view.findViewById(R.id.guestList);
+                    guestSalutation = view.findViewById(R.id.guestSalutation);
+                    guestFirstName = view.findViewById(R.id.guestFirstName);
+                    guestMiddleName = view.findViewById(R.id.guestMiddleName);
+                    guestLastName = view.findViewById(R.id.guestLastName);
+                    guestPincode = view.findViewById(R.id.guestPincode);
+                    guestState = view.findViewById(R.id.guestState);
+                    guestCity = view.findViewById(R.id.guestCity);
+                    guestFullAddress = view.findViewById(R.id.guestfullAdrress);
                     guestEmail = view.findViewById(R.id.guestEmail);
-                   guestCountry = view.findViewById(R.id.guestCountry);
-                   guestPhone = view.findViewById(R.id.guestPhoneNumber);
-                   guestIdType = view.findViewById(R.id.guestIdType);
-                   guestIdNumber = view.findViewById(R.id.guestIdNumber);
+                    guestCountry = view.findViewById(R.id.guestCountry);
+                    guestPhone = view.findViewById(R.id.guestPhoneNumber);
+                    guestIdType = view.findViewById(R.id.guestIdType);
+                    guestIdNumber = view.findViewById(R.id.guestIdNumber);
 
-                   guestFullAddress.setText(guestList.get(i).getAddress());
-                   guestFirstName.setText(guestList.get(i).getFirstName());
-                   guestMiddleName.setText(guestList.get(i).getMidName());
-                   guestPincode.setText(guestList.get(i).getZipode());
-                   guestState.setText(guestList.get(i).getState());
-                   guestCity.setText(guestList.get(i).getCity());
-                   guestEmail.setText(guestList.get(i).getEmail());
-                   guestCountry.setText(guestList.get(i).getCountry());
-                   guestLastName.setText(guestList.get(i).getLastName());
-                   guestLastName.setText(guestList.get(i).getLastName());
-                   guestPhone.setText(guestList.get(i).getNumber());
-                   guestIdType.setText(guestList.get(i).getIdType());
-                   guestIdNumber.setText(guestList.get(i).getIdNumber());
+                    guestFullAddress.setText(guestList.get(i).getAddress());
+                    guestFirstName.setText(guestList.get(i).getFirstName());
+                    guestMiddleName.setText(guestList.get(i).getMidName());
+                    guestPincode.setText(guestList.get(i).getZipode());
+                    guestState.setText(guestList.get(i).getState());
+                    guestCity.setText(guestList.get(i).getCity());
+                    guestEmail.setText(guestList.get(i).getEmail());
+                    guestCountry.setText(guestList.get(i).getCountry());
+                    guestLastName.setText(guestList.get(i).getLastName());
+                    guestLastName.setText(guestList.get(i).getLastName());
+                    guestPhone.setText(guestList.get(i).getNumber());
+                    guestIdType.setText(guestList.get(i).getIdType());
+                    guestIdNumber.setText(guestList.get(i).getIdNumber());
 
-               }
+                }
 
-           }
-
-
-
-
+            }
 
 
         }
 
 
+    }
 
+    public interface OnItemClickListener {
+        void onItemClick(View view, StayInformation obj, int position);
+    }
 
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public TextView roomnumber, title_time_label, title_date_label, phonenumber;
+        LinearLayout checkinClick;
+        OnItemClick onItemClick;
+        LinearLayout listItemDetails;
+
+        public ViewHolder(View v, int viewType, OnItemClick onItemClick) {
+            super(v);
+
+            this.onItemClick = onItemClick;
+            roomnumber = v.findViewById(R.id.roomnumber);
+            title_time_label = v.findViewById(R.id.title_time_label);
+            listItemDetails = v.findViewById(R.id.listItemDetails);
+            title_date_label = v.findViewById(R.id.title_date_label);
+            checkinClick = v.findViewById(R.id.checkinClick);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (onItemClick != null) {
+                onItemClick.onItemClick(getLayoutPosition(), view);
+            }
+        }
     }
 
 }

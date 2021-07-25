@@ -20,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationView;
 import com.nightonke.boommenu.BoomButtons.BoomButton;
 import com.nightonke.boommenu.BoomButtons.HamButton;
@@ -133,7 +135,7 @@ public class PmsTabDashboard extends AppCompatActivity {
                             FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(PmsTabDashboard.this);
                             layoutManager.setFlexDirection(FlexDirection.ROW);
                             mainRecyclerView.setLayoutManager(layoutManager);
-                            stayInformationAdapter = new StayInformationAdapter(PmsTabDashboard.this, stayInformationList2,"");
+                            stayInformationAdapter = new StayInformationAdapter(PmsTabDashboard.this, stayInformationList2,"Reservation");
                             mainRecyclerView.setAdapter(stayInformationAdapter);
 //
 
@@ -394,7 +396,7 @@ public class PmsTabDashboard extends AppCompatActivity {
                 FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(PmsTabDashboard.this);
                 layoutManager.setFlexDirection(FlexDirection.ROW);
                 mainRecyclerView.setLayoutManager(layoutManager);
-                stayInformationAdapter = new StayInformationAdapter(PmsTabDashboard.this, stayInformationList2,"");
+                stayInformationAdapter = new StayInformationAdapter(PmsTabDashboard.this, stayInformationList2,"Reservation");
                 mainRecyclerView.setAdapter(stayInformationAdapter);
 //
 

@@ -16,7 +16,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -72,7 +74,19 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Masters.RateType.RateType;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Service.ApiClient;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Service.ApiInterface;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.Masters.GeneralActivity;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.DialogArrivalListBinding;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.DialogDepartureListBinding;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.DialogInhouseListBinding;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.DialogReservationListBinding;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.FormFolioTypeBinding;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AppConfig {
 
@@ -750,6 +764,71 @@ public class AppConfig {
         dialog.getWindow().setAttributes(lp);
         return dialog;
     }
+
+    public static DialogArrivalListBinding showArrivalOperations(Activity activity) {
+        final Dialog dialog = new Dialog(activity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        DialogArrivalListBinding binding = DialogArrivalListBinding.inflate(LayoutInflater.from(activity));
+        dialog.setContentView(binding.getRoot());
+        dialog.setCancelable(true);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        dialog.getWindow().setAttributes(lp);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.show();
+        return binding;
+    }
+
+    public static DialogDepartureListBinding showDepartureOperations(Activity activity) {
+        final Dialog dialog = new Dialog(activity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        DialogDepartureListBinding binding = DialogDepartureListBinding.inflate(LayoutInflater.from(activity));
+        dialog.setContentView(binding.getRoot());
+        dialog.setCancelable(true);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        dialog.getWindow().setAttributes(lp);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.show();
+        return binding;
+    }
+
+    public static DialogReservationListBinding showReservationOperations(Activity activity) {
+        final Dialog dialog = new Dialog(activity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        DialogReservationListBinding binding = DialogReservationListBinding.inflate(LayoutInflater.from(activity));
+        dialog.setContentView(binding.getRoot());
+        dialog.setCancelable(true);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        dialog.getWindow().setAttributes(lp);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.show();
+        return binding;
+    }
+
+    public static DialogInhouseListBinding showInHouseOperations(Activity activity) {
+        final Dialog dialog = new Dialog(activity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        DialogInhouseListBinding binding = DialogInhouseListBinding.inflate(LayoutInflater.from(activity));
+        dialog.setContentView(binding.getRoot());
+        dialog.setCancelable(true);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        dialog.getWindow().setAttributes(lp);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.show();
+        return binding;
+    }
+
 
     public static CalendarConstraints.Builder limitRange(int year, int month, int day) {
 
