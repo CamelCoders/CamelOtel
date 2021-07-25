@@ -82,6 +82,11 @@ public class PmsTabDashboard extends AppCompatActivity {
         initView();
 
         SelectDate=findViewById(R.id.SelectDate);
+
+        simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+        SelectDate.setText(simpleDateFormat.format(calendar.getTime()));
+
         SelectDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,7 +146,7 @@ public class PmsTabDashboard extends AppCompatActivity {
 
                             List<StayInformation> stayInformationList2 = new ArrayList<>();
                             for (int i = 0; i < stayInformationList.size(); i++) {
-                                if (stayInformationList.get(i).getCheckin().equals(simpleDateFormat.format(calendar.getTime()))||stayInformationList.get(i).getCheckout().equals(simpleDateFormat.format(calendar.getTime()))){
+                                if (stayInformationList.get(i).getCheckin().equals(SelectDate.getText().toString())||stayInformationList.get(i).getCheckout().equals(SelectDate.getText().toString())){
                                     stayInformationList2.add(stayInformationList.get(i));
                                 }
                             }
@@ -173,7 +178,7 @@ public class PmsTabDashboard extends AppCompatActivity {
 
                             for (int i = 0; i < stayInformationList.size(); i++) {
 
-                                if (!stayInformationList.get(i).getCheckin().equals(simpleDateFormat.format(calendar.getTime()))){
+                                if (!stayInformationList.get(i).getCheckin().equals(SelectDate.getText().toString())){
                                         stayInformationList.remove(i);
                                 }
                             }
@@ -211,7 +216,7 @@ public class PmsTabDashboard extends AppCompatActivity {
 
 
                             for (int i = 0; i < stayInformationList.size(); i++) {
-                                if (!(stayInformationList.get(i).getCheckout().equals(simpleDateFormat.format(calendar.getTime())))
+                                if (!(stayInformationList.get(i).getCheckout().equals(SelectDate.getText().toString()))
                                 ) {
                                     stayInformationList.remove(i);
                                 }
@@ -253,7 +258,7 @@ public class PmsTabDashboard extends AppCompatActivity {
 
                             for (int i = 0; i < stayInformationList.size(); i++) {
 
-                                if (!stayInformationList.get(i).getCheckout().equals(simpleDateFormat.format(calendar.getTime()))){
+                                if (!stayInformationList.get(i).getCheckout().equals(SelectDate.getText().toString())){
                                     stayInformationList.remove(i);
                                 }
                             }
@@ -316,7 +321,6 @@ public class PmsTabDashboard extends AppCompatActivity {
                 initNavigationMenu();
             }
         });
-        simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         mainRecyclerView = findViewById(R.id.listRecyclerView);
         dashboardMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -402,7 +406,7 @@ public class PmsTabDashboard extends AppCompatActivity {
 
                 List<StayInformation> stayInformationList2 = new ArrayList<>();
                 for (int i = 0; i < stayInformationList.size(); i++) {
-                    if (stayInformationList.get(i).getCheckin().equals(simpleDateFormat.format(calendar.getTime()))||stayInformationList.get(i).getCheckout().equals(simpleDateFormat.format(calendar.getTime()))){
+                    if (stayInformationList.get(i).getCheckin().equals(SelectDate.getText().toString())||stayInformationList.get(i).getCheckout().equals(SelectDate.getText().toString())){
                         stayInformationList2.add(stayInformationList.get(i));
                     }
                 }
