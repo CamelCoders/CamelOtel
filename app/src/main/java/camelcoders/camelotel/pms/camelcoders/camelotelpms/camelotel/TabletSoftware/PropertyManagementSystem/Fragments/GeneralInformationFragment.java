@@ -9,11 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.FragmentGeneralInformationBinding;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.FragmentRoomChargesBinding;
 
 public class GeneralInformationFragment extends Fragment {
 
-    FragmentRoomChargesBinding binding;
+    FragmentGeneralInformationBinding binding;
     public GeneralInformationFragment() {
         // Required empty public constructor
     }
@@ -27,7 +28,7 @@ public class GeneralInformationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentRoomChargesBinding.inflate(inflater, container, false);
+        binding = FragmentGeneralInformationBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 }

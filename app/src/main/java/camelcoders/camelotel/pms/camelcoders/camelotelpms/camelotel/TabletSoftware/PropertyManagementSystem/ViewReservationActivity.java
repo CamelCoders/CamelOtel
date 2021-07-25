@@ -41,7 +41,7 @@ public class ViewReservationActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(GeneralInformationFragment.newInstance(), "Genral Information");
+        adapter.addFragment(GeneralInformationFragment.newInstance(), "General Information");
         adapter.addFragment(RoomChargesFragment.newInstance(), "Room Charges");
         adapter.addFragment(FolioDetailsFragment.newInstance(), "Folio Details");
         adapter.addFragment(SharerInformationFragment.newInstance(), "Sharer Information");

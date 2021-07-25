@@ -43,7 +43,7 @@ public class FolioDetailsItemAdapter extends RecyclerView.Adapter<FolioDetailsIt
         FolioDetailsItem adapter = FolioDetailsItemAdapterList.get(position);
         holder.chargesCategoryText.setText(adapter.getChargesCategoryText());
         holder.refNoText.setText(adapter.getRefNoText());
-        holder.dateText.setText(adapter.getDateText());
+//        holder.dateText.setText(adapter.getDateText());
         holder.roomNo.setText(adapter.getRoomNo());
         holder.voucherNoText.setText(adapter.getVoucherNoText());
         holder.posUserName.setText(adapter.getPosUserName());

@@ -91,18 +91,14 @@ public class RoomViewAdapter extends RecyclerView.Adapter<RoomViewAdapter.RoomVi
 
                 for (int i=0;i<stayInformationList.size();i++){
 
-                    if (stayInformationList.get(i).getRoomnumber().equals(contact.getRoom_name()) &&
-                            stayInformationList.get(i).getCheckin().equals(simpleDateFormat.format(calendar.getTime()))){
-                        currentString =stayInformationList.get(i).getGuestid();
-                        separated = currentString.split(",");
+                    if (stayInformationList.get(i).getRoomnumber().equals(contact.getRoom_name()) ){
 
+                        if (stayInformationList.get(i).getStatus().equals("0") || stayInformationList.get(i).getStatus().equals("1"))
+                        currentString =stayInformationList.get(i).getParentGuestId();
 
-                        if (stayInformationList.get(i).getStatus().equals("0")){
-                            holder.roomCat.setTextColor(ContextCompat.getColor(mContext, R.color.green_800));
-
-                        }
 
                     }
+
 
 
 
@@ -127,28 +123,28 @@ public class RoomViewAdapter extends RecyclerView.Adapter<RoomViewAdapter.RoomVi
 
 
 
-//        Call<List<Guest>> callGuest = apiInterface.getGuest();
-//        callGuest.enqueue(new Callback<List<Guest>>() {
-//            @Override
-//            public void onResponse(Call<List<Guest>> call, Response<List<Guest>> response) {
-//                guestList = response.body();
-//                for (int i=0;i<guestList.size() ;i++){
-//
-//                    if (guestList.get(i).getGuestid().equals(separated[0])){
-//                        holder.guestName.setText(guestList.get(i).getFirstName()+" "+guestList.get(i).getMidName()
-//                        +" "+guestList.get(i).getLastName());
-//                    }
-//
-//                }
-//
-//
-//            }
-//            @Override
-//            public void onFailure(Call<List<Guest>> call, Throwable t) {
-//                Log.e(":df",""+t.getMessage());
-//
-//            }
-//        });
+        Call<List<Guest>> callGuest = apiInterface.getGuest();
+        callGuest.enqueue(new Callback<List<Guest>>() {
+            @Override
+            public void onResponse(Call<List<Guest>> call, Response<List<Guest>> response) {
+                guestList = response.body();
+                for (int i=0;i<guestList.size() ;i++){
+
+                    if (guestList.get(i).getGuestid().equals(currentString)){
+                        holder.guestName.setText(guestList.get(i).getFirstName()+" "+guestList.get(i).getMidName()
+                        +" "+guestList.get(i).getLastName());
+                    }
+
+                }
+
+
+            }
+            @Override
+            public void onFailure(Call<List<Guest>> call, Throwable t) {
+                Log.e(":df",""+t.getMessage());
+
+            }
+        });
 ////
         holder.guestName.setTextColor(ContextCompat.getColor(mContext, R.color.blue_800));
 

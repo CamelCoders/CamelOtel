@@ -46,6 +46,8 @@ public class StayInformation {
 
     @SerializedName("guestid")
     private String guestid;
+    @SerializedName("parentGuestId")
+    private String parentGuestId;
 
     @SerializedName("amount")
     private String amount;
@@ -71,6 +73,14 @@ public class StayInformation {
     public void  StayInformation() {
 
 
+    }
+
+    public String getParentGuestId() {
+        return parentGuestId;
+    }
+
+    public void setParentGuestId(String parentGuestId) {
+        this.parentGuestId = parentGuestId;
     }
 
     public String getSubRatePlan() {

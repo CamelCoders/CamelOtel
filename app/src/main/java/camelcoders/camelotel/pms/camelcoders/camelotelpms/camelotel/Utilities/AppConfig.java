@@ -106,6 +106,20 @@ public class AppConfig {
         }
     }
 
+    public static void jumpTowithData(Activity thisActivity, Class jumpClass, String anim,String sendData ) {
+        Intent intent = new Intent(thisActivity, jumpClass);
+        intent.putExtra("id",sendData);
+        thisActivity.startActivity(intent);
+        switch (anim) {
+            case "fade":
+                thisActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                break;
+            case "slide":
+                thisActivity.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                break;
+        }
+    }
+
     public static void setStatusBarColor(Activity activity, int color) {
         activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
