@@ -924,22 +924,22 @@ public class AppConfig {
                         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                         long date_ship_millis = calendar.getTimeInMillis();
                         String meetDate = "";
-                        if (String.valueOf(dayOfMonth).length() == 1 && String.valueOf(dayOfMonth).length() == 1) {
+                        if (String.valueOf(monthOfYear+1).length() == 1 && String.valueOf(dayOfMonth).length() == 1) {
 
                             meetDate = "0" +dayOfMonth + "-0" +  (monthOfYear + 1) + "-" + year;
 
 
-                        } else if (String.valueOf(monthOfYear).length() == 2 && String.valueOf(dayOfMonth).length() == 1) {
+                        } else if (String.valueOf(monthOfYear+1).length() == 2 && String.valueOf(dayOfMonth).length() == 1) {
 
                             meetDate ="0" + dayOfMonth + "-"+ (monthOfYear + 1) + "-" + year;
 
 
-                        } else if (String.valueOf(monthOfYear).length() == 1 && String.valueOf(dayOfMonth).length() == 2) {
+                        } else if (String.valueOf(monthOfYear+1).length() == 1 && String.valueOf(dayOfMonth).length() == 2) {
 
-                            meetDate =  + dayOfMonth + "-0" + (monthOfYear + 1) + "-" + year;
+                            meetDate =   dayOfMonth + "-0" + (monthOfYear + 1) + "-" + year;
 
 
-                        } else if (String.valueOf(monthOfYear).length() == 2 && String.valueOf(dayOfMonth).length() == 2) {
+                        } else if (String.valueOf(monthOfYear+1).length() == 2 && String.valueOf(dayOfMonth).length() == 2) {
 
                             meetDate = dayOfMonth + "-" + (monthOfYear + 1)  + "-" + year;
 
