@@ -19,51 +19,26 @@ import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.CheckInData;
 
 
-public class FolioPlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
+public class FolioPlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-GuestCrud newGuest=new GuestCrud();
-
-
-
+    GuestCrud newGuest = new GuestCrud();
+    EditText editText;
+     RecyclerView newRecycler;
     private List<FolioPlan> items = new ArrayList<>();
     private List<FolioPlan> itemFilter = new ArrayList<>();
-
     private Context ctx;
     private OnItemClickListener mOnItemClickListener;
-    EditText editText;
-    EditText edittext;
-    RecyclerView newRecycler;
-
-    public interface OnItemClickListener {
-        void onItemClick(View view, FolioPlan obj, int position);
-    }
-
-    public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
-        this.mOnItemClickListener = mItemClickListener;
-    }
 
     public FolioPlanAdapter(Context context, List<FolioPlan> items, EditText editText, RecyclerView newRecycler) {
         this.items = items;
         this.itemFilter = items;
         this.editText = editText;
-         this.newRecycler = newRecycler;
+        this.newRecycler = newRecycler;
         ctx = context;
     }
 
-    public class OriginalViewHolder extends RecyclerView.ViewHolder  {
-         public TextView name;
-         LinearLayout fillFolioPlan;
-
-
-        public OriginalViewHolder(View v) {
-            super(v);
-            name=v.findViewById(R.id.optionType);
-
-
-        }
-
-
-
+    public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
+        this.mOnItemClickListener = mItemClickListener;
     }
 
     @Override
@@ -83,20 +58,18 @@ GuestCrud newGuest=new GuestCrud();
             final FolioPlan p = items.get(position);
             view.name.setText(p.getTypename());
 
-    view.name.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            CheckInData.creditdebit=p.getType();
+            view.name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CheckInData.creditdebit = p.getType();
 
-                        editText.setText(p.getTypename());
+                    editText.setText(p.getTypename());
 
-        }
-    });
+                }
+            });
 
         }
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -104,7 +77,27 @@ GuestCrud newGuest=new GuestCrud();
     }
 
     public void filterList(List<FolioPlan> filterdNames) {
-         this.items = filterdNames;
+        this.items = filterdNames;
         notifyDataSetChanged();
+    }
+
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, FolioPlan obj, int position);
+    }
+
+    public class OriginalViewHolder extends RecyclerView.ViewHolder {
+        public TextView name;
+        LinearLayout fillFolioPlan;
+
+
+        public OriginalViewHolder(View v) {
+            super(v);
+            name = v.findViewById(R.id.optionType);
+
+
+        }
+
+
     }
 }

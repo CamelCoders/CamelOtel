@@ -3,6 +3,7 @@ package camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftw
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -67,6 +68,7 @@ public class PmsTabDashboard extends AppCompatActivity {
     LinearLayout nightAudit, guestView, dashboardMain, roomView, listLayout;
     DrawerLayout drawer;
     FrameLayout main_container;
+    EditText SelectDate;
 
 
     @Override
