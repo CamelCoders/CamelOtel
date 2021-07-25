@@ -931,12 +931,12 @@ public class AppConfig {
 
                         } else if (String.valueOf(monthOfYear).length() == 2 && String.valueOf(dayOfMonth).length() == 1) {
 
-                            meetDate = dayOfMonth + "-0" + (monthOfYear + 1) + "-" + year;
+                            meetDate ="0" + dayOfMonth + "-"+ (monthOfYear + 1) + "-" + year;
 
 
                         } else if (String.valueOf(monthOfYear).length() == 1 && String.valueOf(dayOfMonth).length() == 2) {
 
-                            meetDate = "0" + dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+                            meetDate =  + dayOfMonth + "-0" + (monthOfYear + 1) + "-" + year;
 
 
                         } else if (String.valueOf(monthOfYear).length() == 2 && String.valueOf(dayOfMonth).length() == 2) {
