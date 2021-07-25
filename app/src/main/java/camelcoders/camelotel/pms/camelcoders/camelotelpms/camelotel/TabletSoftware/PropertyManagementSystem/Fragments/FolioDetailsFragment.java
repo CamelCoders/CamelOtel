@@ -9,10 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.FragmentFolioDetailsBinding;
 
 public class FolioDetailsFragment extends Fragment {
 
-
+    FragmentFolioDetailsBinding binding;
     public FolioDetailsFragment() {
         // Required empty public constructor
     }
@@ -25,6 +26,7 @@ public class FolioDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_folio_details, container, false);
+        binding = FragmentFolioDetailsBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 }
