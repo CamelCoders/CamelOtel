@@ -12,8 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.AuditTrailFragment;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.FolioDetailsFragment;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.GeneralInformationFragment;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.RemarksFragment;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.RoomChargesFragment;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.SharerInformationFragment;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Utilities.AppConfig;
@@ -36,6 +38,7 @@ public class ViewReservationActivity extends AppCompatActivity {
 
     private void initComponent() {
         setupViewPager(binding.viewPager);
+        setupViewPager2(binding.viewPager2);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
     }
 
@@ -48,6 +51,18 @@ public class ViewReservationActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    private void setupViewPager2(ViewPager viewPager) {
+        SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(AuditTrailFragment.newInstance(), "Audit Trail");
+        adapter.addFragment(RemarksFragment.newInstance(), "Remarks");
+        viewPager.setAdapter(adapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        AppConfig.jumpTo(ViewReservationActivity.this, PmsTabDashboard.class, "fade");
+    }
 
     private class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -77,11 +92,5 @@ public class ViewReservationActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        AppConfig.jumpTo(ViewReservationActivity.this,PmsTabDashboard.class,"fade");
     }
 }
