@@ -733,7 +733,8 @@ TextView folioValue;
         });
 
     }
-    public void addView(String id){
+    public void addView(String id)
+    {
 
         TextView guestName,identitynumber,pincode,phonenumber;
         LinearLayout fillGuest;

@@ -77,7 +77,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
                                     android:layout_weight="1"
-                                    android:text="Rate Type"
+                                    android:text="Rate Plan"
                                     android:textSize="16sp" />
 
                                 <View
@@ -86,6 +86,7 @@
                                     android:background="@color/grey_40" />
 
                                 <TextView
+                                    android:id="@+id/ratePlan"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
@@ -123,6 +124,7 @@
                                     android:background="@color/grey_40" />
 
                                 <TextView
+                                    android:id="@+id/averagerate"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"

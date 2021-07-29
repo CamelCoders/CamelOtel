@@ -46,6 +46,9 @@ public class StayInformation {
 
     @SerializedName("guestid")
     private String guestid;
+
+    @SerializedName("date")
+    private String date;
     @SerializedName("parentGuestId")
     private String parentGuestId;
 
@@ -73,6 +76,14 @@ public class StayInformation {
     public void  StayInformation() {
 
 
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getParentGuestId() {

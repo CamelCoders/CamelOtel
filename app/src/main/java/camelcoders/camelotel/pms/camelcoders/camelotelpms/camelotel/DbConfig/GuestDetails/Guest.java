@@ -2,7 +2,12 @@ package camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Gu
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Guest {
+    public boolean expanded = false;
+    public boolean parent = false;
 
 
     @SerializedName("id")
@@ -70,8 +75,33 @@ public class Guest {
     @SerializedName("value")
     private String value;
 
+    List<Guest> guest=new ArrayList<>();
+
     public Guest() {
 
+    }
+
+    public Guest(int id, String salutation, String firstName, String midName, String lastName, String address, String state, String city, String zipode, String country, String nationality, String vipstatus, String email, String number, String fax, String GENDER, String idType, String idNumber, String date, String guestid) {
+        this.id = id;
+        this.salutation = salutation;
+        this.firstName = firstName;
+        this.midName = midName;
+        this.lastName = lastName;
+        this.address = address;
+        this.state = state;
+        this.city = city;
+        this.zipode = zipode;
+        this.country = country;
+        this.nationality = nationality;
+        this.vipstatus = vipstatus;
+        this.email = email;
+        this.number = number;
+        this.fax = fax;
+        this.GENDER = GENDER;
+        this.idType = idType;
+        this.idNumber = idNumber;
+        this.date = date;
+        this.guestid = guestid;
     }
 
     public String getDate() {

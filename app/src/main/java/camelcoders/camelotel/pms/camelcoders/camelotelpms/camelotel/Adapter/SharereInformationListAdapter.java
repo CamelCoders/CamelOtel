@@ -12,17 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Models.SharereInformationListModel;
-import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.GuestDetails.Guest;
+ import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Utilities.AppConfig;
 
 public class SharereInformationListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final Context ctx;
-    private List<SharereInformationListModel> items = new ArrayList<>();
+    private List<Guest> items = new ArrayList<>();
     private OnItemClickListener mOnItemClickListener;
 
-    public SharereInformationListAdapter(Context context, List<SharereInformationListModel> items) {
+    public SharereInformationListAdapter(Context context, List<Guest> items) {
         this.items = items;
         ctx = context;
     }
@@ -44,29 +44,29 @@ public class SharereInformationListAdapter extends RecyclerView.Adapter<Recycler
         if (holder instanceof OriginalViewHolder) {
             final OriginalViewHolder view = (OriginalViewHolder) holder;
 
-            final SharereInformationListModel p = items.get(position);
+            final Guest p = items.get(position);
 
-            view.sharerName.setText(p.getSharerName());
-            view.sharerCountry.setText(p.getSharerCountry());
-            view.registrationCardNoText.setText(p.getRegistrationCardNoText());
+            view.sharerName.setText(p.getSalutation()+" "+p.getFirstName()+" "+p.getMidName()
+                    +" "+p.getLastName());
+            view.sharerCountry.setText(p.getNationality());
+            view.registrationCardNoText.setText(p.getIdNumber());
 
 
-            view.guestName.setText(p.getGuestName());
-            view.guestEmailId.setText(p.getGuestEmailId());
-            view.guestPhone.setText(p.getGuestPhone());
-            view.identityCategory.setText(p.getIdentityCategory());
-            view.identityNumber.setText(p.getIdentityNumber());
-            view.arrivalText.setText(p.getArrivalText());
-            view.nightText.setText(p.getNightText());
-            view.departuteText.setText(p.getDepartuteText());
-            view.adultText.setText(p.getAdultText());
-            view.roomCatText.setText(p.getRoomCatText());
-            view.ratetypeText.setText(p.getRatetypeText());
-            view.tarrifText.setText(p.getTarrifText());
-            view.taxText.setText(p.getTaxText());
-            view.discountText.setText(p.getDiscountText());
-            view.adjustmentText.setText(p.getAdjustmentText());
-            view.netAmountText.setText(p.getNetAmountText());
+             view.guestEmailId.setText(p.getEmail());
+            view.guestPhone.setText(p.getNumber());
+            view.identityCategory.setText(p.getIdType());
+            view.identityNumber.setText(p.getIdNumber());
+//            view.arrivalText.setText(p.getArrivalText());
+//            view.nightText.setText(p.getNightText());
+//            view.departuteText.setText(p.getDepartuteText());
+//            view.adultText.setText(p.getAdultText());
+//            view.roomCatText.setText(p.getRoomCatText());
+//            view.ratetypeText.setText(p.getRatetypeText());
+//            view.tarrifText.setText(p.getTarrifText());
+//            view.taxText.setText(p.getTaxText());
+//            view.discountText.setText(p.getDiscountText());
+//            view.adjustmentText.setText(p.getAdjustmentText());
+//            view.netAmountText.setText(p.getNetAmountText());
 
 
             view.lyt_parent.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +114,7 @@ public class SharereInformationListAdapter extends RecyclerView.Adapter<Recycler
     }
 
     public interface OnItemClickListener {
-        void onItemClick(View view, SharereInformationListModel obj, int position);
+        void onItemClick(View view, Guest obj, int position);
     }
 
     public class OriginalViewHolder extends RecyclerView.ViewHolder {

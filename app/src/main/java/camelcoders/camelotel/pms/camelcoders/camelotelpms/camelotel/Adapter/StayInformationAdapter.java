@@ -136,8 +136,19 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
                             Intent intent = new Intent(ctx, ViewReservationActivity.class);
                             intent.putExtra("stayId",p.getId());
                              intent.putExtra("bookingId",p.getBookingid());
+                             intent.putExtra("guestId",p.getParentGuestId());
+                             intent.putExtra("guestIds",p.getGuestid());
                             ctx.startActivity(intent);
                             ((Activity) ctx).finish();
+                        }
+                    });
+                    binding.ReservationAuditTrail.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(ctx, ViewReservationActivity.class);
+                            intent.putExtra("auditTrail","true");
+                            ctx.startActivity(intent);
+                            ((Activity)ctx).finish();
                         }
                     });
                 } else if (function.equals("Arrival")) {

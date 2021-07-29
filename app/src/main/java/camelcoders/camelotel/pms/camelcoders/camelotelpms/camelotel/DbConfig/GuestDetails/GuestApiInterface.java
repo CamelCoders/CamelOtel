@@ -12,11 +12,17 @@ public interface GuestApiInterface {
 
     @POST("GuestCrud/GetGuestList.php")
     Call<List<Guest>> getGuest();
+
+
     @POST("GuestCrud/GetGuestList.php")
     Call<List<Guest>> getGuest(
-
             @Field("guestid") String guestid
+    );
 
+    @POST("GuestCrud/GetGuestListByIds.php")
+    Call<List<Guest>> getSharer(
+
+           @Field("guestIds") String guestIds
     );
 
 
