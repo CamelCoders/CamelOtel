@@ -68,7 +68,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         void onItemClick(View view, Booking obj, int position);
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder   {
         public TextView title_price, title_time_label, title_date_label, phonenumber;
         LinearLayout fillBooking;
         OnItemClick onItemClick;
@@ -85,11 +85,6 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
 
         }
 
-        @Override
-        public void onClick(View view) {
-            if (onItemClick != null) {
-                onItemClick.onItemClick(getLayoutPosition(), view);
-            }
-        }
+
     }
 }

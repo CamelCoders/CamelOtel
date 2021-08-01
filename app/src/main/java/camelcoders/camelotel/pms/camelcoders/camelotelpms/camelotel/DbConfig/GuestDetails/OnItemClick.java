@@ -3,5 +3,5 @@ package camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Gu
 import android.view.View;
 
 public interface OnItemClick {
-    public void onItemClick(int position , View view);
+    public void onClick(View view, Guest position);
 }

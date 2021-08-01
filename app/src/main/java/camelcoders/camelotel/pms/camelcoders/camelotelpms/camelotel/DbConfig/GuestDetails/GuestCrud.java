@@ -40,8 +40,8 @@ public class GuestCrud {
                 layoutManager.setFlexDirection(FlexDirection.ROW);
                 layoutManager.setJustifyContent(JustifyContent.FLEX_START);
                 recyclerView.setLayoutManager(layoutManager);
-                 guestAdapter = new GuestAdapter(context, guestList,"reservationGuest");
-                recyclerView.setAdapter(guestAdapter);
+//                 guestAdapter = new GuestAdapter(context, guestList,"reservationGuest");
+//                recyclerView.setAdapter(guestAdapter);
 
             }
             @Override

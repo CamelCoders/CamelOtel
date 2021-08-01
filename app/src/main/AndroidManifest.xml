@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Camelotel"
         android:usesCleartextTraffic="true">
+        <activity android:name=".TabletSoftware.PropertyManagementSystem.AmendStayActivity"></activity>
         <activity android:name=".TabletSoftware.PropertyManagementSystem.ViewReservationActivity" />
         <activity android:name=".TabletSoftware.PropertyManagementSystem.CheckInData" />
         <activity

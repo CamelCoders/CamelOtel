@@ -1,12 +1,17 @@
 package camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments;
 
+import android.app.ActivityOptions;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.android.flexbox.JustifyContent;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.DateFormat;
@@ -24,12 +30,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Adapter.GuestAdapter;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Adapter.SharereInformationListAdapter;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.BookingDetails.CheckIn.ChecKInApiInterface;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.BookingDetails.StayInformation.StayInformation;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.BookingDetails.StayInformation.StayInformationApiInterface;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.GuestDetails.Guest;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.GuestDetails.GuestApiInterface;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.GuestDetails.OnItemClick;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Masters.Rooms.RoomsCrud;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Masters.Salutations.SalutationsCrud;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Service.ApiClient;
@@ -42,13 +50,44 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SharerInformationFragment extends Fragment {
+public class SharerInformationFragment extends Fragment implements OnItemClick {
+    public OnItemClick onItemClick=new OnItemClick() {
+        @Override
+        public void onClick(View view, Guest position) {
+
+            getGuestId=position.getGuestid();
+            guestSalutation.setText(position.getSalutation());
+            guestFirstName.setText(position.getFirstName());
+            guestLastName.setText(position.getLastName());
+            guestMiddleName.setText(position.getMidName());
+            guestPhone.setText(position.getNumber());
+            guestPincode.setText(position.getZipode());
+            guestFullAddress.setText(position.getAddress());
+            guestCity.setText(position.getCity());
+            guestEmail.setText(position.getEmail());
+            guestState.setText(position.getState());
+            guestIdType.setText(position.getIdType());
+            guestIdNumber.setText(position.getIdNumber());
+            guestCountry.setText(position.getCountry());
+            gender.setText(position.getGENDER());
+
+
+        }
+    };
+    GuestAdapter guestAdapter;
+
+    Button addGuest;
+    TextInputEditText guestSalutation, guestFirstName, guestMiddleName,
+            guestLastName, guestPincode, guestFullAddress,gender,
+            guestCity, guestCountry, guestPhone, guestEmail, guestIdType, guestIdNumber, guestState;
+    RecyclerView guestRecyler;
     GuestApiInterface apiInterface = ApiClient.getApiClient().create(GuestApiInterface.class);
     String[] guestAdd= new String[1];
     SalutationsCrud salutationsCrud=new SalutationsCrud();
 Calendar cal=Calendar.getInstance();
    static String currentString ;
     String[] separated ;
+    String getGuestId="null";
     private final ArrayList<SharereInformationListModel> sharereInformationListModelArrayList = new ArrayList<>();
     FragmentSharerInformationBinding binding;
     private SharereInformationListAdapter listAdapter;
@@ -159,9 +198,6 @@ Calendar cal=Calendar.getInstance();
                 listAdapter = new SharereInformationListAdapter(getContext(), guestList1);
                 binding.sharerListRecyclerView.setAdapter(listAdapter);
 
-                //Load the date from the network or other resources
-                //into the array list asynchronously
-
                 listAdapter.notifyDataSetChanged();
 
 
@@ -177,11 +213,6 @@ Calendar cal=Calendar.getInstance();
 
         addGuestDialog= AppConfig.showFullScreenCustomDialog(R.layout.guest_layout, getActivity());
 
-        Button addGuest;
-        TextInputEditText guestSalutation, guestFirstName, guestMiddleName,
-                guestLastName, guestPincode, guestFullAddress,gender,
-                guestCity, guestCountry, guestPhone, guestEmail, guestIdType, guestIdNumber, guestState;
-        RecyclerView guestRecyler;
         guestRecyler = addGuestDialog.findViewById(R.id.guestList);
         addGuest = addGuestDialog.findViewById(R.id.SaveGuest);
         guestSalutation = addGuestDialog.findViewById(R.id.guestSalutation);
@@ -198,6 +229,7 @@ Calendar cal=Calendar.getInstance();
         guestPhone = addGuestDialog.findViewById(R.id.guestPhoneNumber);
         guestIdType = addGuestDialog.findViewById(R.id.guestIdType);
         guestIdNumber = addGuestDialog.findViewById(R.id.guestIdNumber);
+        salutationsCrud.getSalutations(getActivity(), guestRecyler, guestSalutation,guestFirstName);
 
         guestSalutation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -207,6 +239,41 @@ Calendar cal=Calendar.getInstance();
             }
         });
 
+guestSalutation.addTextChangedListener(new TextWatcher() {
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        guestList.clear();
+        Call<List<Guest>> call = apiInterface.getGuest();
+        call.enqueue(new Callback<List<Guest>>() {
+            @Override
+            public void onResponse(Call<List<Guest>> call, Response<List<Guest>> response) {
+                guestList = response.body();
+                FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(getActivity());
+                layoutManager.setFlexDirection(FlexDirection.ROW);
+                layoutManager.setJustifyContent(JustifyContent.FLEX_START);
+                guestRecyler.setLayoutManager(layoutManager);
+                 guestAdapter = new GuestAdapter(getActivity(), guestList,onItemClick,"reservationGuest");
+                guestRecyler.setAdapter(guestAdapter);
+
+            }
+            @Override
+            public void onFailure(Call<List<Guest>> call, Throwable t) {
+                Log.e(":df",""+t.getMessage());
+
+            }
+        });
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
+});
         addGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -290,4 +357,8 @@ Calendar cal=Calendar.getInstance();
 
     }
 
+    @Override
+    public void onClick(View view, Guest position) {
+        Toast.makeText(getActivity(), "sdgfhgjj", Toast.LENGTH_SHORT).show();
+    }
 }

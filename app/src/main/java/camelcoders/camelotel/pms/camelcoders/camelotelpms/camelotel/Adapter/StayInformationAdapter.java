@@ -31,6 +31,7 @@ import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Gue
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Masters.Salutations.SalutationsCrud;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Service.ApiClient;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.AmendStayActivity;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.ViewReservationActivity;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Utilities.AppConfig;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.databinding.DialogArrivalListBinding;
@@ -101,27 +102,27 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
         //      holder.pincode.setText(p.getZipode());
 
 
-
         Call<List<Guest>> callGuest = apiInterface.getGuest();
         callGuest.enqueue(new Callback<List<Guest>>() {
             @Override
             public void onResponse(Call<List<Guest>> call, Response<List<Guest>> response) {
                 guestList = response.body();
-                for (int i=0;i<guestList.size() ;i++){
+                for (int i = 0; i < guestList.size(); i++) {
 
-                    if (guestList.get(i).getGuestid().equals(p.getParentGuestId())){
+                    if (guestList.get(i).getGuestid().equals(p.getParentGuestId())) {
                         holder.guestName.setText(guestList.get(i).getSalutation()
-                                +" "+guestList.get(i).getFirstName()+" "+guestList.get(i).getMidName()
-                                +" "+guestList.get(i).getLastName());
+                                + " " + guestList.get(i).getFirstName() + " " + guestList.get(i).getMidName()
+                                + " " + guestList.get(i).getLastName());
                     }
 
                 }
 
 
             }
+
             @Override
             public void onFailure(Call<List<Guest>> call, Throwable t) {
-                Log.e(":df",""+t.getMessage());
+                Log.e(":df", "" + t.getMessage());
 
             }
         });
@@ -134,10 +135,10 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(ctx, ViewReservationActivity.class);
-                            intent.putExtra("stayId",p.getId());
-                             intent.putExtra("bookingId",p.getBookingid());
-                             intent.putExtra("guestId",p.getParentGuestId());
-                             intent.putExtra("guestIds",p.getGuestid());
+                            intent.putExtra("stayId", p.getId());
+                            intent.putExtra("bookingId", p.getBookingid());
+                            intent.putExtra("guestId", p.getParentGuestId());
+                            intent.putExtra("guestIds", p.getGuestid());
                             ctx.startActivity(intent);
                             ((Activity) ctx).finish();
                         }
@@ -146,9 +147,30 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(ctx, ViewReservationActivity.class);
-                            intent.putExtra("auditTrail","true");
+                            intent.putExtra("auditTrail", "true");
+                            intent.putExtra("stayId", p.getId());
+                            intent.putExtra("bookingId", p.getBookingid());
+                            intent.putExtra("guestId", p.getParentGuestId());
+                            intent.putExtra("guestIds", p.getGuestid());
                             ctx.startActivity(intent);
-                            ((Activity)ctx).finish();
+                            ((Activity) ctx).finish();
+                        }
+                    });
+                    binding.ReservationUnassignRoom.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (true) {
+                                Dialog dialog = AppConfig.showFullScreenCustomDialog(R.layout.unassign_room_alert_item, ctx);
+                                dialog.show();
+                            } else {
+
+                            }
+                        }
+                    });
+                    binding.ReservationAmendStay.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AmendStayActivity obj = new AmendStayActivity(R.layout.activity_amend_stay, ctx);
                         }
                     });
                 } else if (function.equals("Arrival")) {
@@ -156,25 +178,25 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
                     binding.viewArrivalReservation.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            AppConfig.jumpTo((Activity) ctx, ViewReservationActivity.class,"fade");
+                            AppConfig.jumpTo((Activity) ctx, ViewReservationActivity.class, "fade");
                             ((Activity) ctx).finish();
                         }
                     });
                 } else if (function.equals("Departure")) {
-                    DialogDepartureListBinding binding = AppConfig.showDepartureOperations((Activity)ctx);
+                    DialogDepartureListBinding binding = AppConfig.showDepartureOperations((Activity) ctx);
                     binding.viewDepartureReservation.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            AppConfig.jumpTo((Activity) ctx, ViewReservationActivity.class,"fade");
+                            AppConfig.jumpTo((Activity) ctx, ViewReservationActivity.class, "fade");
                             ((Activity) ctx).finish();
                         }
                     });
                 } else if (function.equals("InHouse")) {
-                    DialogInhouseListBinding binding = AppConfig.showInHouseOperations((Activity)ctx);
+                    DialogInhouseListBinding binding = AppConfig.showInHouseOperations((Activity) ctx);
                     binding.viewInHouseReservaton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            AppConfig.jumpTo((Activity) ctx, ViewReservationActivity.class,"fade");
+                            AppConfig.jumpTo((Activity) ctx, ViewReservationActivity.class, "fade");
                             ((Activity) ctx).finish();
                         }
                     });
@@ -194,7 +216,6 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
         this.items = filterdNames;
         notifyDataSetChanged();
     }
-
 
 
     private boolean setTotalPrice() {
@@ -321,7 +342,7 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
         void onItemClick(View view, StayInformation obj, int position);
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView guestName, roomnumber, title_time_label, title_date_label, phonenumber;
         LinearLayout checkinClick;
         OnItemClick onItemClick;
@@ -339,12 +360,7 @@ public class StayInformationAdapter extends RecyclerView.Adapter<StayInformation
 
         }
 
-        @Override
-        public void onClick(View view) {
-            if (onItemClick != null) {
-                onItemClick.onItemClick(getLayoutPosition(), view);
-            }
-        }
+
     }
 
 }

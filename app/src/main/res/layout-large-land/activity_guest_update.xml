@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingDefaultResource">
+    <LinearLayout
+        android:id="@+id/formGuestInformation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/spacing_xsmall"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_color"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:gravity="left|center"
+                        android:minHeight="40dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Guest Information"
+                            android:textAllCaps="true"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/dark_color"
+                            app:fontFamily="sans-serif-medium" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_color" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_mlarge"
+                            android:text="Salutation"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/grey_60" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:layout_marginTop="@dimen/spacing_middle"
+                            android:background="@color/grey_3">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/guestSalutation"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/edit_text_round_bg_outline"
+                                android:drawableEnd="@drawable/ic_expand_arrow"
+                                android:drawableRight="@drawable/ic_expand_arrow"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:maxLines="1"
+                                android:textColorHint="@color/grey_40" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/spacing_medium"
+                        android:layout_height="90dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_mlarge"
+                            android:text="First Name"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/grey_60" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:layout_marginTop="@dimen/spacing_middle"
+                            android:background="@color/grey_3">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/guestFirstName"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/edit_text_round_bg_outline"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:nextFocusRight="@+id/guestMiddleName"
+                                android:nextFocusDown="@+id/guestMiddleName"
+                                android:nextFocusForward="@+id/guestMiddleName"
+                                android:singleLine="true"
+                                android:textColorHint="@color/grey_40" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/spacing_medium"
+                        android:layout_height="90dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_mlarge"
+                            android:text="Middle Name"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/grey_60" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:layout_marginTop="@dimen/spacing_middle"
+                            android:background="@color/grey_3">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/guestMiddleName"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/edit_text_round_bg_outline"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:nextFocusLeft="@+id/guestFirstName"
+                                android:nextFocusRight="@+id/guestLastName"
+                                android:nextFocusUp="@+id/guestFirstName"
+                                android:nextFocusDown="@+id/guestLastName"
+                                android:nextFocusForward="@+id/guestLastName"
+                                android:singleLine="true"
+                                android:textColorHint="@color/grey_40" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/spacing_medium"
+                        android:layout_height="90dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_mlarge"
+                            android:text="Last Name"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/grey_60" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:layout_marginTop="@dimen/spacing_middle"
+                            android:background="@color/grey_3">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/guestLastName"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/edit_text_round_bg_outline"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:nextFocusLeft="@+id/guestMiddleName"
+                                android:nextFocusRight="@+id/guestPincode"
+                                android:nextFocusUp="@+id/guestMiddleName"
+                                android:nextFocusDown="@+id/guestPincode"
+                                android:nextFocusForward="@+id/guestPincode"
+                                android:singleLine="true"
+                                android:textColorHint="@color/grey_40" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.75"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_mlarge"
+                            android:text="Pincode"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/grey_60" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:layout_marginTop="@dimen/spacing_middle"
+                            android:background="@color/grey_3">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/guestPincode"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/edit_text_round_bg_outline"
+                                android:inputType="number"
+                                android:lines="1"
+                                android:maxLength="6"
+                                android:maxLines="1"
+                                android:nextFocusLeft="@+id/guestLastName"
+                                android:nextFocusRight="@+id/guestState"
+                                android:nextFocusUp="@+id/guestLastName"
+                                android:nextFocusDown="@+id/guestState"
+                                android:nextFocusForward="@+id/guestState"
+                                android:singleLine="true"
+                                android:textColorHint="@color/grey_40" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/spacing_medium"
+                        android:layout_height="90dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_mlarge"
+                            android:text="State"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/grey_60" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:layout_marginTop="@dimen/spacing_middle"
+                            android:background="@color/grey_3">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/guestState"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/edit_text_round_bg_outline"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:nextFocusLeft="@+id/guestPincode"
+                                android:nextFocusRight="@+id/guestCity"
+                                android:nextFocusUp="@+id/guestPincode"
+                                android:nextFocusDown="@+id/guestCity"
+                                android:nextFocusForward="@+id/guestCity"
+                                android:singleLine="true"
+                                android:textColorHint="@color/grey_40" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/spacing_medium"
+                        android:layout_height="90dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_mlarge"
+                            android:text="City"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/grey_60" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:layout_marginTop="@dimen/spacing_middle"
+                            android:background="@color/grey_3">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/guestCity"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/edit_text_round_bg_outline"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:nextFocusLeft="@+id/guestState"
+                                android:nextFocusRight="@+id/guestfullAdrress"
+                                android:nextFocusUp="@+id/guestState"
+                                android:nextFocusDown="@+id/guestfullAdrress"
+                                android:nextFocusForward="@+id/guestfullAdrress"
+                                android:singleLine="true"
+                                android:textColorHint="@color/grey_40" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="@dimen/spacing_medium"
+                        android:layout_height="90dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_mlarge"
+                            android:text="Gender"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/grey_60" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:layout_marginTop="@dimen/spacing_middle"
+                            android:background="@color/grey_3">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/guestGender"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/edit_text_round_bg_outline"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:nextFocusLeft="@+id/guestState"
+                                android:nextFocusRight="@+id/guestfullAdrress"
+                                android:nextFocusUp="@+id/guestState"
+                                android:nextFocusDown="@+id/guestfullAdrress"
+                                android:nextFocusForward="@+id/guestfullAdrress"
+                                android:singleLine="true"
+                                android:textColorHint="@color/grey_40" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_mlarge"
+                            android:text="Full Address"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/grey_60" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_middle"
+                            android:background="@color/grey_3"
+                            app:hintEnabled="false">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/guestfullAdrress"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/edit_text_round_bg_outline"
+                                android:gravity="start"
+                                android:inputType="textMultiLine"
+                                android:lines="3"
+                                android:nextFocusLeft="@+id/guestCity"
+                                android:nextFocusRight="@+id/guestEmail"
+                                android:nextFocusUp="@+id/guestCity"
+                                android:nextFocusDown="@+id/guestEmail"
+                                android:nextFocusForward="@+id/guestEmail"
+                                android:textColor="@color/black" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_mlarge"
+                            android:text="Email"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/grey_60" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:layout_marginTop="@dimen/spacing_middle"
+                            android:background="@color/grey_3">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/guestEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/edit_text_round_bg_outline"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:nextFocusLeft="@+id/guestfullAdrress"
+                                android:nextFocusRight="@+id/guestPhoneNumber"
+                                android:nextFocusUp="@+id/guestfullAdrress"
+                                android:nextFocusDown="@+id/guestPhoneNumber"
+                                android:nextFocusForward="@+id/guestPhoneNumber"
+                                android:singleLine="true"
+                                android:textColorHint="@color/grey_40" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/spacing_medium"
+                        android:layout_height="90dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_mlarge"
+                            android:text="Phone No"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/grey_60" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:layout_marginTop="@dimen/spacing_middle"
+                            android:background="@color/grey_3">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/guestPhoneNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/edit_text_round_bg_outline"
+                                android:lines="1"
+                                android:maxLength="10"
+                                android:maxLines="1"
+                                android:nextFocusLeft="@+id/guestEmail"
+                                android:nextFocusRight="@+id/guestCountry"
+                                android:nextFocusUp="@+id/guestEmail"
+                                android:nextFocusDown="@+id/guestCountry"
+                                android:nextFocusForward="@+id/guestCountry"
+                                android:singleLine="true"
+                                android:textColorHint="@color/grey_40" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/spacing_medium"
+                        android:layout_height="90dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_mlarge"
+                            android:text="Country"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/grey_60" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:layout_marginTop="@dimen/spacing_middle"
+                            android:background="@color/grey_3"
+                            app:hintEnabled="false">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/guestCountry"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/edit_text_round_bg_outline"
+                                android:drawableEnd="@drawable/ic_expand_arrow"
+                                android:drawableRight="@drawable/ic_expand_arrow"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:nextFocusLeft="@+id/guestPhoneNumber"
+                                android:nextFocusRight="@+id/guestIdNumber"
+                                android:nextFocusUp="@+id/guestPhoneNumber"
+                                android:nextFocusDown="@+id/guestIdNumber"
+                                android:nextFocusForward="@+id/guestIdNumber"
+                                android:singleLine="true"
+                                android:textColorHint="@color/grey_40" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_mlarge"
+                            android:text="Identity Type"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/grey_60" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:layout_marginTop="@dimen/spacing_middle"
+                            android:background="@color/grey_3"
+                            app:hintEnabled="false">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/guestIdType"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/edit_text_round_bg_outline"
+                                android:drawableEnd="@drawable/ic_expand_arrow"
+                                android:drawableRight="@drawable/ic_expand_arrow"
+                                android:focusable="false"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:textColorHint="@color/grey_40" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/spacing_medium"
+                        android:layout_height="90dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_mlarge"
+                            android:text="Identity Number"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/grey_60" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:layout_marginTop="@dimen/spacing_middle"
+                            android:background="@color/grey_3"
+                            app:hintEnabled="false">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/guestIdNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/edit_text_round_bg_outline"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:nextFocusLeft="@+id/guestCountry"
+                                android:nextFocusUp="@+id/guestCountry"
+                                android:singleLine="true"
+                                android:textColorHint="@color/grey_40" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/spacing_medium"
+                        android:layout_height="90dp" />
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/SaveGuest"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Add Guest"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/spacing_xsmall"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_color"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:gravity="left|center"
+                        android:minHeight="40dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Matching Guest"
+                            android:textAllCaps="true"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/dark_color"
+                            app:fontFamily="sans-serif-medium" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_color" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="1dp"
+                    app:cardUseCompatPadding="true">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/guestList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/spacing_medium"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ProgressBar
+                        android:id="@+id/lyt_progress"
+                        style="@style/Widget.AppCompat.ProgressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_medium" />
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

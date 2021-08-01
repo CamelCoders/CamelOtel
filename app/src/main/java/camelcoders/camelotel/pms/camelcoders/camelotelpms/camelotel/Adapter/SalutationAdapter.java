@@ -89,7 +89,6 @@ GuestCrud newGuest=new GuestCrud();
         @Override
         public void onClick(View v) {
             editText.setText(p.getSalutationName());
-            newGuest.getGuest(ctx,newRecycler);
             guestName.requestFocus();
 
         }
