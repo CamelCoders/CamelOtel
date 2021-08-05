@@ -60,9 +60,6 @@ public class GuestAdapter extends RecyclerView.Adapter<GuestAdapter.ViewHolder> 
         notifyDataSetChanged();
     }
 
-    public interface OnNoteListener {
-        void onNoteClick(int position);
-    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 

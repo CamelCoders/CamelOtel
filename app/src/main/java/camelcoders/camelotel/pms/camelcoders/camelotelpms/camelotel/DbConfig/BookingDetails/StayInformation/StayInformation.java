@@ -14,6 +14,8 @@ public class StayInformation {
 
     @SerializedName("checkin")
     private String checkin;
+    @SerializedName("DiscountAmount")
+    private String DiscountAmount;
 
     @SerializedName("roomnumber")
     private String roomnumber;
@@ -76,6 +78,14 @@ public class StayInformation {
     public void  StayInformation() {
 
 
+    }
+
+    public String getDiscountAmount() {
+        return DiscountAmount;
+    }
+
+    public void setDiscountAmount(String discountAmount) {
+        DiscountAmount = discountAmount;
     }
 
     public String getDate() {

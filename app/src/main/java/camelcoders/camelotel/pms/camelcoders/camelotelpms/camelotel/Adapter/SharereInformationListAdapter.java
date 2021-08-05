@@ -13,23 +13,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.GuestDetails.Guest;
- import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.GuestDetails.OnItemClick;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Utilities.AppConfig;
 
 public class SharereInformationListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final Context ctx;
     private List<Guest> items = new ArrayList<>();
-    private OnItemClickListener mOnItemClickListener;
+    public OnItemClick mOnItemClickListener;
 
-    public SharereInformationListAdapter(Context context, List<Guest> items) {
+    public SharereInformationListAdapter(Context context, List<Guest> items,OnItemClick onItemClick) {
         this.items = items;
         ctx = context;
+        this.mOnItemClickListener=onItemClick;
     }
 
-    public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
-        this.mOnItemClickListener = mItemClickListener;
-    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -68,15 +67,6 @@ public class SharereInformationListAdapter extends RecyclerView.Adapter<Recycler
 //            view.adjustmentText.setText(p.getAdjustmentText());
 //            view.netAmountText.setText(p.getNetAmountText());
 
-
-            view.lyt_parent.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mOnItemClickListener != null) {
-                        mOnItemClickListener.onItemClick(view, items.get(position), position);
-                    }
-                }
-            });
 
             view.bt_expand.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -153,6 +143,12 @@ public class SharereInformationListAdapter extends RecyclerView.Adapter<Recycler
             discountText = (TextView) v.findViewById(R.id.discountText);
             adjustmentText = (TextView) v.findViewById(R.id.adjustmentText);
             netAmountText = (TextView) v.findViewById(R.id.netAmountText);
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnItemClickListener.onClick(v, items.get(getAdapterPosition()));
+                }
+            });
         }
     }
 
