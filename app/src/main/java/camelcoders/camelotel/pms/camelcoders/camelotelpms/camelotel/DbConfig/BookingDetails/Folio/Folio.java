@@ -28,6 +28,7 @@ public class Folio {
     private String id;
     @SerializedName("roomId")
     private String roomId;
+
     @SerializedName("date")
     private String date;
 

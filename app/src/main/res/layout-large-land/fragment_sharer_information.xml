@@ -37,7 +37,6 @@
                     app:srcCompat="@drawable/ic_arrow_left" />
 
                 <TextView
-                    android:id="@+id/addSharer"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -49,6 +48,7 @@
                     app:fontFamily="sans-serif-medium" />
 
                 <ImageButton
+                    android:id="@+id/addSharer"
                     android:layout_width="?attr/actionBarSize"
                     android:layout_height="?attr/actionBarSize"
                     android:background="?attr/selectableItemBackgroundBorderless"

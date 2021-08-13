@@ -41,6 +41,7 @@ public interface BookingApiInterface {
             //stay
 
             @Field("staylist[]") String[] staylist,
+            @Field("roomprice[]") String[] roomPrice,
 
             @Field("reservationtype") String reservationtype,
             @Field("noofrooms") String noofrooms,

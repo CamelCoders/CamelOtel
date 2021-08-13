@@ -29,7 +29,7 @@ public class FolioPlanCrud {
 List<FolioPlan> folioPlanList=new ArrayList<>();
     public FolioAPiInterFace folioAPiInterFace = ApiClient.getApiClient().create(FolioAPiInterFace.class);
 
-    public void getFolioMaster(Context context, RecyclerView recyclerView, EditText editText,String masterFolio) {
+ public void getFolioMaster(Context context, RecyclerView recyclerView, EditText editText,String masterFolio) {
 
         Call<List<FolioPlan>> call = folioAPiInterFace.getFolioPlan();
         call.enqueue(new Callback<List<FolioPlan>>() {
@@ -42,8 +42,6 @@ List<FolioPlan> folioPlanList=new ArrayList<>();
                     if (!folioPlanList.get(i).getMasterType().equals(masterFolio)){
                         folioPlanList.remove(i);
                     }
-
-
                 }
                 FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(context);
                 layoutManager.setFlexDirection(FlexDirection.ROW);
@@ -60,7 +58,7 @@ List<FolioPlan> folioPlanList=new ArrayList<>();
             }
         });
 }
-    public void folioType(Context context, RecyclerView recyclerView, EditText editText, EditText editText1) {
+ public void folioType(Context context, RecyclerView recyclerView, EditText editText, EditText editText1) {
 
         misclleniousModels.clear();
 

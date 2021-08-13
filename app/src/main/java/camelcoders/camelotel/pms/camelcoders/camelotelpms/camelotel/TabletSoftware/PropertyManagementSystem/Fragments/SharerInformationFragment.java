@@ -237,9 +237,8 @@ Calendar cal=Calendar.getInstance();
         binding = FragmentSharerInformationBinding.inflate(inflater, container, false);
         stayInformationId=getActivity().getIntent().getStringExtra("stayId");
         bookingID=getActivity().getIntent().getStringExtra("bookingId");
-        guestId=getActivity().getIntent().getStringExtra("guestId");
-        guestIds=getActivity().getIntent().getStringExtra("guestIds");
-        separated = guestIds.split(",");
+
+        setStayInfo();
         binding.addSharer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -248,9 +247,8 @@ Calendar cal=Calendar.getInstance();
         });
 
 
-//        setStayInfo();
 //
-      setGuestData();
+
 
 //        }
 
@@ -259,6 +257,36 @@ Calendar cal=Calendar.getInstance();
         return binding.getRoot();
     }
 
+    public void setStayInfo() {
+        StayInformationApiInterface apiInterface = ApiClient.getApiClient().create(StayInformationApiInterface.class);
+
+        Call<List<StayInformation>> call = apiInterface.getStayInfomation();
+        call.enqueue(new Callback<List<StayInformation>>() {
+            @Override
+            public void onResponse(Call<List<StayInformation>> call, Response<List<StayInformation>> response) {
+                stayInformationList = response.body();
+
+                for (int i = 0; i < stayInformationList.size(); i++) {
+
+                    if (stayInformationList.get(i).getId().equals(stayInformationId)) {
+                        guestIds=stayInformationList.get(i).getGuestid();
+                        separated = guestIds.split(",");
+                        setGuestData();
+
+                    }
+
+                }
+
+//
+
+            }
+
+            @Override
+            public void onFailure(Call<List<StayInformation>> call, Throwable t) {
+            }
+        });
+
+    }
 
 
 
@@ -349,6 +377,8 @@ guestSalutation.addTextChangedListener(new TextWatcher() {
             @Override
             public void onResponse(Call<List<Guest>> call, Response<List<Guest>> response) {
                 guestList = response.body();
+
+
                 FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(getActivity());
                 layoutManager.setFlexDirection(FlexDirection.ROW);
                 layoutManager.setJustifyContent(JustifyContent.FLEX_START);

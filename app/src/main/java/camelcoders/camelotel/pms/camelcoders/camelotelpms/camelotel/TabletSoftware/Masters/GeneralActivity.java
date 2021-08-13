@@ -2413,7 +2413,7 @@ public class GeneralActivity extends AppCompatActivity {
 
                             String value = response.body().getValue();
                             String message = response.body().getMassage();
-                            Log.e("rr", value);
+                            Log.e("rr", message);
 
                             if (value.equals("1")) {
                                 Dialog dialog1 = AppConfig.showSuccessDialog(GeneralActivity.this, "Rate Type Added Successfully");
@@ -2444,6 +2444,7 @@ public class GeneralActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<RateType> call, Throwable t) {
                             progressDialog.dismiss();
+                            Log.e("hjk","erfghm"+t.getMessage());
                             Dialog dialog1 = AppConfig.showWarningDialog(GeneralActivity.this, "Oops Error Occured");
                             dialog1.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
                                 @Override

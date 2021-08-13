@@ -12,16 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.BookingDetails.Folio.OnItemClickFolio;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.Models.FolioDetailsItem;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
 
 public class FolioDetailsItemAdapter extends RecyclerView.Adapter<FolioDetailsItemAdapter.FolioDetailsItemHolder> {
 
     private final Context mContext;
-    List<FolioDetailsItem> FolioDetailsItemAdapterList = new ArrayList<>();
+   public List<FolioDetailsItem> FolioDetailsItemAdapterList = new ArrayList<>();
+    public OnItemClickFolio mOnItemClickListener;
 
-    public FolioDetailsItemAdapter(List<FolioDetailsItem> FolioDetailsItemAdapterList, Context context) {
+    public FolioDetailsItemAdapter(List<FolioDetailsItem> FolioDetailsItemAdapterList, Context context,OnItemClickFolio onItemClickFolio) {
         this.FolioDetailsItemAdapterList = FolioDetailsItemAdapterList;
+        this.mOnItemClickListener=onItemClickFolio;
         this.mContext = context;
     }
 
@@ -64,15 +67,20 @@ public class FolioDetailsItemAdapter extends RecyclerView.Adapter<FolioDetailsIt
             super(itemView);
             chargesCategoryText = itemView.findViewById(R.id.chargesCategoryText);
             refNoText = itemView.findViewById(R.id.refNoText);
-            dateText = itemView.findViewById(R.id.reservationDate);
-            roomNo = itemView.findViewById(R.id.dateText);
+            dateText = itemView.findViewById(R.id.folioDate);
+            roomNo = itemView.findViewById(R.id.roomNo);
             voucherNoText = itemView.findViewById(R.id.voucherNoText);
             posUserName = itemView.findViewById(R.id.posUserName);
             outletText = itemView.findViewById(R.id.outletText);
             chargesCategory = itemView.findViewById(R.id.chargesCategory);
             folioCharges = itemView.findViewById(R.id.folioCharges);
             adminText = itemView.findViewById(R.id.adminText);
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnItemClickListener.onClick(itemView, FolioDetailsItemAdapterList.get(getAdapterPosition()));
+                }
+            });
         }
 
     }

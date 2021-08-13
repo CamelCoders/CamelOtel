@@ -17,6 +17,7 @@ import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Gue
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.DbConfig.Masters.FolioPlan.FolioPlan;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.R;
 import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.CheckInData;
+import camelcoders.camelotel.pms.camelcoders.camelotelpms.camelotel.TabletSoftware.PropertyManagementSystem.Fragments.FolioDetailsFragment;
 
 
 public class FolioPlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -61,7 +62,7 @@ public class FolioPlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             view.name.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    CheckInData.creditdebit = p.getType();
+                    FolioDetailsFragment.creditdebit = p.getType();
 
                     editText.setText(p.getTypename());
 

@@ -7,7 +7,7 @@ public class FolioDetailsItem {
     public FolioDetailsItem(String chargesCategoryText, String refNoText, String dateText, String roomNo, String voucherNoText, String posUserName, String outletText, String chargesCategory, String folioCharges, String adminText) {
         this.chargesCategoryText = chargesCategoryText;
         this.refNoText = refNoText;
-        this.dateText = dateText;
+        this.dateText = "dateText";
         this.roomNo = roomNo;
         this.voucherNoText = voucherNoText;
         this.posUserName = posUserName;

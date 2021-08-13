@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputEditText;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -48,6 +49,9 @@ import retrofit2.Response;
 
 
 public class Reservation {
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    Calendar c = Calendar.getInstance();
+    String pricesByDay[];
     public Dialog priceListDialog;
     public static   ArrayList<RoomData> roomData = new ArrayList<>();
     public static   ArrayList<RoomData> priceListByDay = new ArrayList<>();
@@ -133,7 +137,7 @@ public class Reservation {
 
                     Call<Booking> call = apiInterface.insertBooking(biilid,biilid,guestid,date1.format(cal.getTime())
                             ,"0",guestsal,guesFirtnam,guestMidnam,guestLAstnam,pincod,guestcity,gueststate,guestcountry
-                            ,guesthouse,guestemail,guestphone,guestid,idtype,guestcountry,"","Male",stayInformation
+                            ,guesthouse,guestemail,guestphone,guestid,idtype,guestcountry,"","Male",stayInformation,pricesByDay
                             ,statusBooking,String.valueOf(roomData.size()),reservationForm.rate.getText().toString()
                             ,reservationForm.amount.getText().toString(),rateType,
                             billto,"","","","","","","","",
@@ -744,34 +748,37 @@ public class Reservation {
                 priceListDialog = AppConfig.showFullScreenCustomDialog(R.layout.price_reservaation, activity);
                 priceList=priceListDialog.findViewById(R.id.roomPriceList);
                 buttonSubmitList=priceListDialog.findViewById(R.id.calculate);
-                buttonSubmitList.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Log.e("sd","sd");
 
-                    }
-                });
                 Float amountDay=Float.parseFloat(amount.getText().toString())/Float.parseFloat(reservationForm.stayArrivalNight.getText().toString());
                 Float rateDay=Float.parseFloat(rate.getText().toString())/Float.parseFloat(reservationForm.stayArrivalNight.getText().toString());
                 Float taxAmountDay=Float.parseFloat(taxamount.getText().toString())/Float.parseFloat(reservationForm.stayArrivalNight.getText().toString());
                 RoomData priceDay=new RoomData();
-                Log.e("",""+rateDay);
-                priceDay.setTaxtPer(taxper.getText().toString());
+                 priceDay.setTaxtPer(taxper.getText().toString());
                 priceDay.setAmountWtax(String.valueOf(amountDay));
                 priceDay.setAmountWOtax(String.valueOf(rateDay));
                 priceDay.setTacamount(String.valueOf(taxAmountDay));
                 for (int i=1; i<=Integer.parseInt(reservationForm.stayArrivalNight.getText().toString());i++) {
                     priceListByDay.add(priceDay);
 
+
                     final View view = activity.getLayoutInflater().inflate(R.layout.list_price_rresevation,null,false);
-                    EditText rateList,amountList,taxperList,taxamountList;
+                    EditText rateList,amountList,taxperList,taxamountList,roomPriceDate;
                     rateList=view.findViewById(R.id.roomPriceWOtax);
+                    roomPriceDate=view.findViewById(R.id.roomPriceDate);
                     amountList=view.findViewById(R.id.roomPriceWtax);
                     taxamountList=view.findViewById(R.id.roomPriceTaxAmount);
                     taxperList=view.findViewById(R.id.taxPercentage);
                     amountList.setEnabled(false);
                     taxamountList.setEnabled(false);
+                    try {
+                        c.setTime(sdf.parse(reservationForm.stayArrivalDate.getText().toString()));
+                        c.add(Calendar.DATE, i);  // number of days to add
+                        String date1 = sdf.format(c.getTime());
+                        roomPriceDate.setText(date1);
 
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                     rateList.setText(String.valueOf(rateDay));
                     amountList.setText(String.valueOf(amountDay));
                     taxamountList.setText(String.valueOf(taxAmountDay));
@@ -800,7 +807,6 @@ public class Reservation {
                                 priceDay=priceDay+Float.parseFloat(taxvalue)*priceDay/100;
                                 amountList.setText(String.valueOf(priceDay));
 
-                                setTotalPriceSaveChange(rate,amount,taxamount,taxper);
 
 
                             }
@@ -823,6 +829,14 @@ public class Reservation {
                 }
 
                 priceListDialog.show();
+                buttonSubmitList.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        setTotalPriceSaveChange(rate,amount,taxamount,taxper);
+
+
+                    }
+                });
 
             }
         });
@@ -835,6 +849,14 @@ public class Reservation {
             priceListDialog = AppConfig.showFullScreenCustomDialog(R.layout.price_reservaation, activity);
             priceList=priceListDialog.findViewById(R.id.roomPriceList);
             buttonSubmitList=priceListDialog.findViewById(R.id.calculate);
+
+           buttonSubmitList.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   setTotalPriceSaveChange(rate,amount,taxamount,taxper);
+
+               }
+           });
             Float amountDay=Float.parseFloat(amount.getText().toString())/Float.parseFloat(reservationForm.stayArrivalNight.getText().toString());
             Float rateDay=Float.parseFloat(rate.getText().toString())/Float.parseFloat(reservationForm.stayArrivalNight.getText().toString());
             Float taxAmountDay=Float.parseFloat(taxamount.getText().toString())/Float.parseFloat(reservationForm.stayArrivalNight.getText().toString());
@@ -848,11 +870,22 @@ public class Reservation {
                 priceListByDay.add(priceDay);
 
                 final View view = activity.getLayoutInflater().inflate(R.layout.list_price_rresevation,null,false);
-                EditText rateList,amountList,taxperList,taxamountList;
+                EditText rateList,amountList,taxperList,taxamountList,roomPriceDate;
+                roomPriceDate=view.findViewById(R.id.roomPriceDate);
+
                 rateList=view.findViewById(R.id.roomPriceWOtax);
                 amountList=view.findViewById(R.id.roomPriceWtax);
                 taxamountList=view.findViewById(R.id.roomPriceTaxAmount);
                 taxperList=view.findViewById(R.id.taxPercentage);
+                try {
+                    c.setTime(sdf.parse(reservationForm.stayArrivalDate.getText().toString()));
+                    c.add(Calendar.DATE, i);  // number of days to add
+                    String date1 = sdf.format(c.getTime());
+                    roomPriceDate.setText(date1);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 rateList.setText(String.valueOf(rateDay));
                 amountList.setText(String.valueOf(amountDay));
                 taxamountList.setText(String.valueOf(taxAmountDay));
@@ -882,7 +915,6 @@ public class Reservation {
 
                             rateList.setText(String.valueOf(amountDay/(Float.parseFloat(taxvalue)/100+1)));
                              taxamountList.setText(String.valueOf(amountDay-(amountDay/(Float.parseFloat(taxvalue)/100+1))));
-                            setTotalPriceSaveChange(rate,amount,taxamount,taxper);
 
 
                         }
@@ -999,22 +1031,30 @@ public class Reservation {
         Float roomPriceWOtax=00.00f,roomPriceWtax=00.00f,roomTaxAmount=00.00f;
         roomData.clear();
         boolean result = true;
+         pricesByDay=new String[priceList.getChildCount()];
 
         for(int i=0;i<priceList.getChildCount();i++){
 
             View view = priceList.getChildAt(i);
 
-            EditText rateList,amountList,taxperList,taxamountList;
+            EditText roomDatePrice,rateList,amountList,taxperList,taxamountList;
             rateList=view.findViewById(R.id.roomPriceWOtax);
+            roomDatePrice=view.findViewById(R.id.roomPriceDate);
             amountList=view.findViewById(R.id.roomPriceWtax);
             taxamountList=view.findViewById(R.id.roomPriceTaxAmount);
             taxperList=view.findViewById(R.id.taxPercentage);
+
+
+            pricesByDay[i]=roomDatePrice.getText().toString()+"!"+rateList.getText().toString()+"!"+amountList.getText().toString()+"!"
+                    +taxamountList.getText().toString()+"!"+taxamountList.getText().toString();
 
 
 
                 roomPriceWOtax+=Float.parseFloat(rateList.getText().toString());
                  roomPriceWtax+=Float.parseFloat(amountList.getText().toString());
                  roomTaxAmount+=Float.parseFloat(taxamountList.getText().toString());
+
+
 
 
 

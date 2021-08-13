@@ -166,7 +166,7 @@ public interface ApiInterface {
     @POST("Folio/insertFolioPlan.php")
     Call<RateType> insertFoliotype(
             @Field("type") String type,
-            @Field("ratetypename") String ratetypename,
+            @Field("typename") String typename,
             @Field("masterType") String masterType,
             @Field("createdbyuid") String createdbyuid,
             @Field("createddate") String createddate,
