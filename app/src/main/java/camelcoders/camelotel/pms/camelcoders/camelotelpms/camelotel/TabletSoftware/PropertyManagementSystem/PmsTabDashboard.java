@@ -342,7 +342,10 @@ SelectDate.addTextChangedListener(new TextWatcher() {
 
                 List<StayInformation> stayInformationList2 = new ArrayList<>();
                 for (int i = 0; i < stayInformationList.size(); i++) {
-                    if (stayInformationList.get(i).getCheckin().equals(SelectDate.getText().toString())||stayInformationList.get(i).getCheckout().equals(SelectDate.getText().toString())){
+                        if (stayInformationList.get(i).getCheckin()
+                            .equals(SelectDate.getText().toString())||
+                            stayInformationList.get(i).getCheckout().
+                                    equals(SelectDate.getText().toString())){
                         stayInformationList2.add(stayInformationList.get(i));
                     }
                 }
